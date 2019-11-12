@@ -1,0 +1,55 @@
+body {
+    background-color: #BFD5F6;
+    margin:0;
+}
+
+#all {
+    display: grid;
+    grid-template-rows: 3fr auto;
+}
+
+#topBar {
+    display: grid;
+    background-color: #789BD0;
+    align-items: center;
+    grid-template-columns: 100px 300px 350px auto auto;
+}
+
+#profilePic {
+    margin: auto;
+    clip-path: circle(30px at center);
+}
+
+#logOut {
+    margin: auto;
+}
+
+#logo {
+    margin: auto;
+}
+
+#addHouse {
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+#searchBar {
+    margin: auto;
+    background-color: #BFD5F6;
+    height: 2em;
+    width: 90%;
+    border-radius: 25px;
+}
+
+#searchField {
+    display: block;
+    padding: 0;
+    margin-left: 0.5em;
+    margin-top: 0.16em;
+    border: 0;
+    background-color: transparent;
+
+    width: 100%;
+    font-size: 20px;
+
+}
