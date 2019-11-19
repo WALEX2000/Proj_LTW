@@ -12,7 +12,7 @@ body {
     display: grid;
     background-color: #789BD0;
     align-items: center;
-    grid-template-columns: 100px 300px 350px auto auto;
+    grid-template-columns: 5em 20em auto 5em 5em;
 }
 
 #profilePic {
@@ -21,6 +21,7 @@ body {
 }
 
 #logOut {
+    font-family: Righteous, sans-serif;
     margin: auto;
 }
 
@@ -42,14 +43,23 @@ body {
 }
 
 #searchField {
+    float: left;
     display: block;
     padding: 0;
     margin-left: 0.5em;
-    margin-top: 0.16em;
+    margin-top: 0.18em;
+    margin-right: 0;
     border: 0;
     background-color: transparent;
 
-    width: 100%;
+    width: 80%;
     font-size: 20px;
+}
 
+#searchButton {
+    padding: 0;
+    width: 3em;
+    height: 2.9em;
+    border: none;
+    background-color: #BFD5F6;
 }
