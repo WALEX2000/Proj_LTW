@@ -8,12 +8,6 @@ body {
     grid-template-rows: 3fr auto;
 }
 
-#topBar {
-    display: flex;
-    background-color: #789BD0;
-    align-items: center;
-}
-
-#profilePic {
-    clip-path: circle(30px at center);
+#body {
+    
 }
