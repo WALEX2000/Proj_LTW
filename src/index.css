@@ -1,5 +1,4 @@
 body {
-    background-color: #BFD5F6;
     margin:0;
 }
 
@@ -9,5 +8,40 @@ body {
 }
 
 #body {
-    
+    display: grid;
+    grid-template-rows: auto auto;
+}
+
+#TopHouseFrame {
+    margin: 3em auto auto;
+    width: 50em;
+}
+
+#TopHouse {
+    border-radius: 25px;
+    width: 100%;
+}
+
+.HousePreviewer {
+    display: flex;
+    background-color: #BFD5F6;
+    margin: 3em auto auto;
+    width: 70em;
+    height: 15em;
+    border-radius: 25px;
+}
+
+.PreviewedHouse {
+    flex: 1 1 0;
+    margin-right: 1em;
+    margin-left: 1em;
+}
+
+.PreviewedHouseImage {
+    display: block;
+
+
+
+    width: 100%;
+    border-radius: 25px;
 }
