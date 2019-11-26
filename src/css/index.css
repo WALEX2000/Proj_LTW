@@ -1,0 +1,13 @@
+body {
+    background-color: #BFD5F6;
+    margin:0;
+}
+
+#all {
+    display: grid;
+    grid-template-rows: 3fr auto;
+}
+
+#body {
+    
+}
