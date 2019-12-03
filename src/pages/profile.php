@@ -9,9 +9,14 @@ include_once('../includes/session.php');
 $user_given = $_SESSION['username'];
 $user_info = get_user_info($user_given);
 $profile_pic = get_image_url($user_info['profile_image']);
-draw_header();
+draw_header("index.css");
 draw_user_info($user_info,$profile_pic);
+
+/* put button to choose one or another */
 $rented_by_user = get_user_rented($user_info['username']);
 draw_rented_stories($rented_by_user);
+$renting_by_user = get_user_renting($user_info['username']);
+draw_renting_stories($renting_by_user);
+
 draw_footer();
 ?>

@@ -1,4 +1,4 @@
-<?php function draw_home()
+<?php function draw_home($all_stories)
 { ?>
     <div id="body">
             <div id="TopHouseFrame">
@@ -10,7 +10,18 @@
             <div id="SpotlightFrame">
                 <div id="Recommendations" class="HousePreviewer">
                     <div class="PreviewedHouse">
-                        <img src="../../images/Room1.jpg" class="PreviewedHouseImage"/>
+                        <?php
+                        foreach ($all_stories as $story) {
+                            $image_url = get_image_url($story['main_image']);
+                                ?>
+                                <a href="story.php?story_id=<?= $story['id'] ?>">
+                                    <img src="../../images/<?= $image_url ?>" alt="Photo of <?= $story['name'] ?> story">
+                                </a>
+                                <br></br>
+                                <?php
+                            
+                        }
+                        ?>
                         <div class="BottomTextPreview">
                             <p>Nome</p>
                         </div>

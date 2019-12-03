@@ -1,13 +1,13 @@
 <?php
- include_once('../includes/session.php');
- include_once('../templates/tpl_common.php');
- include_once('../templates/tpl_authentication.php');
+    include_once('../includes/session.php');
+    include_once('../templates/tpl_common.php');
+    include_once('../templates/tpl_authentication.php');
 
- if (isset($_SESSION['username']))
-    die(header('Location: profile.php'));
+    if (isset($_SESSION['username']))
+        die(header('Location: profile.php'));
 
-draw_header();
-draw_login();
-draw_footer();
+    draw_header("index.css");
+    draw_login();
+    draw_footer();
 
 ?>

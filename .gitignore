@@ -1,6 +1,6 @@
 
 .idea/
-
+*.exe
 .DS_Store
 
 ._.DS_Store
