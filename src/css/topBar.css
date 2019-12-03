@@ -1,3 +1,13 @@
+body {
+    background-color: white;
+    margin:0;
+}
+
+#all {
+    display: grid;
+    grid-template-rows: 3fr auto;
+}
+
 #topBar {
     display: grid;
     background-color: #789BD0;
