@@ -50,10 +50,8 @@ include_once('../database/image_queries.php');
         }
         else{
           ?>
-          <a href="register.php">
-          <p id="Register">Register| </p>
-          </a>
-          <a id="Log In" href= "../pages/login.php">Log In</a>
+          <a id="Register" href="register.php">Register</a>
+          <a id="LogIn" href= "../pages/login.php">Log In</a>
           <?php
         }
         if(isset($_SESSION['message'])){
