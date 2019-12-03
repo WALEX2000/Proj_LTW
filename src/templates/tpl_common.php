@@ -27,9 +27,10 @@ function draw_header($stylesheet)
           <input id="searchField" type="text" placeholder="Search..">
           <button id="searchButton" type="submit" onclick=""><i class="fa fa-search fa-2x"></i></button>
         </div>
+        <div></div>
         <div id="addHouse">
           <a href="add_story.php">
-            <img id="addHouse" src="../../images/addHouse.png" />
+            <img id="addHouseImg" src="../../images/addHouse.png" />
           </a>
         </div>
         <?php

@@ -17,12 +17,13 @@ a {
     display: grid;
     background-color: #789BD0;
     align-items: center;
-    grid-template-columns: 5em 20em auto 5em 5em;
-    grid-template-rows: auto;
-    height: 4em;
+    grid-template-columns: 5em 20em auto 5em 5em 5em;
+    grid-template-rows: 4em;
 }
 
 #profilePic {
+    width:100%;
+    height:100%;
     margin: auto;
     clip-path: circle(30px at center);
 }
@@ -39,8 +40,8 @@ a {
 }
 
 #addHouse {
-    margin-left: auto;
-    margin-right: 20px;
+    margin-left: 1em;
+    margin-right: 1em;
 }
 
 #searchBar {
