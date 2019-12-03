@@ -22,19 +22,19 @@ CREATE TABLE User(
 
 
 CREATE TABLE Image(
-    id INTEGER PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     url TEXT NOT NULL,
     story INTEGER REFERENCES Story
 );
 
 CREATE TABLE Story(
-    id INTEGER PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     country TEXT NOT NULL,
     city TEXT NOT NULL,
     address TEXT NOT NULL,
-    main_image TEXT REFERENCES Image UNIQUE,
+    main_image INTEGER REFERENCES Image UNIQUE,
     details TEXT NOT NULL,
     average_rating FLOAT NOT NULL,
     owner TEXT REFERENCES User,
@@ -43,7 +43,7 @@ CREATE TABLE Story(
 );
 
 CREATE TABLE Comment(
-    id INTEGER PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     username TEXT REFERENCES User,
     story INTEGER REFERENCES Story,
     comment_date DATE NOT NULL,
@@ -51,16 +51,16 @@ CREATE TABLE Comment(
 );
 
 CREATE TABLE Rented(
-    id INTEGER PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     renter TEXT REFERENCES User,
     story INTEGER REFERENCES Story,
     stay_start date NOT NULL,
     stay_end date NOT NULL,
     --check if start after end
-    rating INTEGER CHECK(
+   /* rating INTEGER CHECK(
         rating >= 1
         and rating <= 5
-    ),
+    ),*/
     number_of_people INTEGER NOT NULL,
     total_price FLOAT NOT NULL
 );
@@ -144,7 +144,6 @@ VALUES
         1,
         '2019-01-06',
         '2019-01-16',
-        5,
         1,
         90
     );
@@ -158,7 +157,6 @@ VALUES
         2,
         '2019-02-06',
         '2019-02-16',
-        5,
         1,
         90
     );
@@ -166,20 +164,31 @@ VALUES
 INSERT INTO
     Image
 VALUES
-    (1, 'scarlet_pic', 'profilePic.jpg', NULL);
+    (1, 'default_avatar', 'avatar_male.png', NULL);
 
 INSERT INTO
     Image
 VALUES
-    (2, 'alex_pic', 'url1', NULL);
+    (2, 'scarlet_pic', 'profilePic.jpg', NULL);
+
 
 INSERT INTO
     Image
 VALUES
-    (3, 'qrom_image', 'profilePic.jpg', 1);
+    (3, 'alex_pic', 'url1', NULL);
+
+INSERT INTO
+    Image
+VALUES
+    (4, 'qrom_image', 'Room2.jpg', 1);
 
     
 INSERT INTO
     Image
 VALUES
-    (4, 'qamor_image', 'url3', 1);
+    (5, 'qamor_image', 'Room1.jpg', 1);
+
+INSERT INTO
+    Image
+VALUES
+    (6, 'main_image', 'topHouse.jpg', 1);
