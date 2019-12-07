@@ -3,8 +3,6 @@
   include_once('../database/profile_queries.php');
   include_once('../database/connection.php');
 
-
-  // TODO: password n existe e current_password bem?
 $username = $_SESSION['username'];
 $name =  $_POST['name'];
 $email=  $_POST['email'];
@@ -17,7 +15,7 @@ try{
   if(check_user_password($username,$current_password)){
     $new_user_info = array('username' => $username, 'name' =>$name, 'email' =>$email, 'birthday' =>$birthday, 'nationality' =>$nationality, 'password' =>$new_password);
     $old_user_info = get_user_info($username);
-    update_user_info($old_user_info,$new_user_info, $current_password);
+    update_user_info($old_user_info, $new_user_info, $current_password);
     $_SESSION['username'] = $username;
     $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Profile updated with success');
     header('Location: ../pages/home.php');

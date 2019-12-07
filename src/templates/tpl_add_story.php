@@ -10,7 +10,7 @@
            <!-- Upload images and choose main one-->
            <label> Details <input type="text" name= "details" required> </label>
            <label> Price Per Night <input type="double" name= "price_night" required> </label>
-           <label> Capacity <input type="number" min=1 name= "capacity" required> </label>
+           <label> Capacity <input type="number" name= "capacity" min="1" required> </label>
            <input type = "submit" value = "Add"/>
         </form>
        <?php 

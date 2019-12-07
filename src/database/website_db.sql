@@ -106,7 +106,7 @@ VALUES
         'scarletJoe',
         '2019-01-06',
         90,
-        4
+        1
     );
 
 INSERT INTO
@@ -124,7 +124,7 @@ VALUES
         'scarletJoe',
         '2019-01-06',
         80,
-        3
+        4
     );
 
 INSERT INTO

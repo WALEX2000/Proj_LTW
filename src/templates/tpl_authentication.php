@@ -38,7 +38,7 @@ function draw_edit_profile_form($user_info)
       <label> New email <input type="text" name="email" value="<?= $user_info['email'] ?>"> </label>
       <label> Birthday <input type="date" name="birthday" value="<?= $user_info['birthday'] ?>"> </label>
       <label> Nationality <input type="text" name="nationality" value="<?= $user_info['nationality'] ?>"> </label>
-      <label> New Password <input type="text" name="password"> </label>
+      <label> New Password <input type="password" name="new_password"> </label>
       <input type="submit" value="Update" />
    </form>
 <?php

@@ -19,5 +19,5 @@
 
     draw_header("index.css");
     draw_story_info($story_info, $all_story_images, $username);
-    draw_reserve_form($username, $story_info['owner']);
+    draw_reserve_form($username, $story_info['owner'], $story_info['capacity']);
     draw_footer();

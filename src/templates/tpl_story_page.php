@@ -17,6 +17,7 @@ function draw_story_info($story_info, $story_images, $username)
         <h3><?= $story_info['country'] ?></h3>
         <h2><?= $story_info['city'] ?></h2>
         <h2><?= $story_info['address'] ?></h2>
+        <h2><?= $story_info['capacity'] ?></h2>
         <h2><?= $story_info['details'] ?></h2>
         <h2><?= $story_info['average_rating'] ?></h2>
         <h2><?= $story_info['post_date'] ?></h2>
@@ -35,7 +36,7 @@ function draw_story_info($story_info, $story_images, $username)
     <?php
         }
 
-    function draw_reserve_form($username, $owner)
+    function draw_reserve_form($username, $owner, $capacity)
     {
         if ($username != $owner) {
         ?>
@@ -43,7 +44,7 @@ function draw_story_info($story_info, $story_images, $username)
         <form action="../actions/action_reserve.php" method="post">
             <label> Check-in date: <input type="date" name="start_date" required> </label>
             <label> Check-out date: <input type="date" name="end_date" required> </label>
-            <label> Number of guests: <input type="number" name="num_guests" min=1 required> </label>
+            <label> Number of guests: <input type="number" name="num_guests" min=1 max =<?=$capacity?> required> </label>
             <input type="submit" value="Reserve" />
         </form>
         <br></br>
