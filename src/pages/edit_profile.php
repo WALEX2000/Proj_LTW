@@ -5,6 +5,8 @@ include_once('../database/profile_queries.php');
 include_once('../templates/tpl_common.php');
 include_once('../templates/tpl_authentication.php');
 
+if (!isset($_SESSION['username']))
+    die(header('Location: login.php'));
 
 draw_header("index.css");
 $username =$_SESSION['username'];

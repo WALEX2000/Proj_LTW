@@ -52,8 +52,8 @@ function get_user_renting($username)
 
 function insertStory($story_info, $username) {
     global $db;
-    $stmt = $db->prepare('INSERT INTO Story VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
-    $stmt->execute(array(null, $story_info['name'], $story_info['country'], $story_info['city'], $story_info['address'],NULL, $story_info['details'], 0, $username, date("Y/m/d"), $story_info['price_night']));
+    $stmt = $db->prepare('INSERT INTO Story VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+    $stmt->execute(array(null, $story_info['name'], $story_info['country'], $story_info['city'], $story_info['address'],NULL, $story_info['details'], 0, $username, date("Y/m/d"), $story_info['price_night'], $story_info['capacity']));
   }
 
 function insertReservation ($reservation_info){
@@ -61,4 +61,57 @@ function insertReservation ($reservation_info){
     $stmt = $db->prepare('INSERT INTO Rented VALUES(?, ?, ?, ?, ?, ?, ?)');
     $stmt->execute(array(null, $reservation_info['username'], $reservation_info['story_id'], $reservation_info['start_date'], $reservation_info['end_date'],$reservation_info['num_guests'], $reservation_info['total_price']));
 }
+
+function update_story_info($story_data, $new_story_data)
+{
+  if ($new_story_data['name'] != NULL) {
+    $name = $new_story_data['name'];
+  } else {
+    $name = $story_data['name'];
+  }
+
+  if ($new_story_data['country'] != NULL) {
+    $country = $new_story_data['country'];
+  } else {
+    $country = $story_data['country'];
+  }
+
+  if ($new_story_data['city'] != NULL) {
+    $city = $new_story_data['city'];
+  } else {
+    $city = $story_data['city'];
+  }
+
+  if ($new_story_data['address'] != NULL) {
+    $address = $new_story_data['address'];
+  } else {
+    $address = $story_data['address'];
+  }
+
+  if ($new_story_data['details'] != NULL) {
+    $details = $new_story_data['details'];
+  }
+  else{
+    $details = $story_data['details'];
+  }
+
+  if ($new_story_data['price_per_night'] != NULL) {
+    $price_per_night = $new_story_data['price_per_night'];
+  }
+  else{
+    $price_per_night = $story_data['price_per_night'];
+  }
+
+  if ($new_story_data['capacity'] != NULL) {
+    $capacity = $new_story_data['capacity'];
+  }
+  else{
+    $capacity = $story_data['capacity'];
+  }
+
+  global $db;
+  $stmt = $db->prepare('update Story set name = ?, country = ?, city = ?, address = ?, details = ?, price_per_night = ?, capacity = ? where id = ?');
+  $stmt->execute(array( $name, $country, $city,$address, $details, $price_per_night, $capacity,$new_story_data['story_id']));
+}
+
 ?>

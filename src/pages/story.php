@@ -11,9 +11,13 @@
     $story_info = get_story_info($story_id);
     $all_story_images = get_all_url_images_of_story($story_id);
 
+    if (isset($_SESSION['username']))
+        $username = $_SESSION['username'];
+    else{
+        $username = null;
+    }
+
     draw_header("index.css");
-    draw_story_info($story_info, $all_story_images, $_SESSION['username']);
-    draw_reserve_form();
+    draw_story_info($story_info, $all_story_images, $username);
+    draw_reserve_form($username, $story_info['owner']);
     draw_footer();
-    
-?>

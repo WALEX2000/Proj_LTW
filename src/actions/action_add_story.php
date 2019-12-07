@@ -9,11 +9,12 @@
     $address=  $_POST['address'];
     $details=  $_POST['details'];
     $price_night = $_POST['price_night'];
+    $capacity = $_POST['capacity'];
 
   try {
-    $story_info = array('name' => $name, 'country' =>$country, 'city' =>$city, 'address' =>$address, 'details' =>$details, 'price_night' =>$price_night);
+    $story_info = array('name' => $name, 'country' =>$country, 'city' =>$city, 'address' =>$address, 'details' =>$details, 'price_night' =>$price_night, 'capacity' =>$capacity);
     $username = $_SESSION['username'];
-    insertStory($story_info, $username);
+    insert_story($story_info, $username);
     $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Added story successfully!');
     header('Location: ../pages/home.php');
   } catch (PDOException $e) {
