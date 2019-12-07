@@ -63,3 +63,38 @@ body {
     border: none;
     background-color: #BFD5F6;
 }
+
+
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content form {
+    height: 10%;
+    background-color: rgb(228, 235, 245);
+    color: black;
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+  }
+  
+  .dropdown form:hover {
+      background-color: rgb(200, 218, 243);}
+  
+  .show {
+      display: block;
+}

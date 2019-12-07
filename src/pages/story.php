@@ -13,7 +13,7 @@
 
     draw_header("index.css");
     draw_story_info($story_info, $all_story_images, $_SESSION['username']);
-    draw_reserve_form();
+    draw_reserve_form($story_info['capacity']);
     draw_footer();
     
 ?>

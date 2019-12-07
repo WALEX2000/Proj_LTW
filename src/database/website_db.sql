@@ -39,7 +39,8 @@ CREATE TABLE Story(
     average_rating FLOAT NOT NULL,
     owner TEXT REFERENCES User,
     post_date date NOT NULL,
-    price_per_night FLOAT NOT NULL
+    price_per_night FLOAT NOT NULL,
+    capacity INTEGER NOT NULL
 );
 
 CREATE TABLE Comment(
@@ -104,7 +105,8 @@ VALUES
         5.0,
         'scarletJoe',
         '2019-01-06',
-        90
+        90,
+        1
     );
 
 INSERT INTO
@@ -121,7 +123,8 @@ VALUES
         0,
         'scarletJoe',
         '2019-01-06',
-        80
+        80,
+        4
     );
 
 INSERT INTO
