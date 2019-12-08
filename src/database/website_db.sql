@@ -57,11 +57,6 @@ CREATE TABLE Rented(
     story INTEGER REFERENCES Story,
     stay_start date NOT NULL,
     stay_end date NOT NULL,
-    --check if start after end
-   /* rating INTEGER CHECK(
-        rating >= 1
-        and rating <= 5
-    ),*/
     number_of_people INTEGER NOT NULL,
     total_price FLOAT NOT NULL
 );

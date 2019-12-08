@@ -17,6 +17,13 @@ function draw_header($stylesheet)
     <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
     <script src="../javascript/topBar.js" defer></script>
   </head>
+  <?php if (isset($_SESSION['messages'])) {?>
+        <section id="messages">
+          <?php foreach($_SESSION['messages'] as $message) { ?>
+            <div class="<?=$message['type']?>"><?=$message['content']?></div>
+          <?php } ?>
+        </section>
+      <?php unset($_SESSION['messages']); } ?>
 
   <body>
     <div id="all">
@@ -30,21 +37,22 @@ function draw_header($stylesheet)
         </div>
 
         <div class="dropdown">
-            <button onclick="toggle_search_form()" class="dropbtn"><img id="addHouse" src="../../images/addHouse.png" /></button>
-            <div id="search_form" class="dropdown-content">
-                <form id="form" action="../actions/action_search.php" method="post">
-                    <label>Where:<input id="location" type="text" name="location"/></label>
-                    <label>Check in:<input id="stay_begin" type="date" name="check_in"/></label>
-                    <label>Check out:<input id="stay_end" type="date" name="check_out"/></label>
-                    <label>Guests:<input id="guests" type="number" min= "1" name="guests" value="1" required/></label>
-                    <input id="submit_btn" type="submit" name="search"/>
-                </form>
-            </div>
+          <button onclick="toggle_search_form()" class="dropbtn"><i class="fa fa-search fa-2x"></i></button>
+          <div id="search_form" class="dropdown-content">
+            <form id="form" action="../actions/action_search.php" method="post">
+              <label>Where:<input id="location" type="text" name="location" /></label>
+              <label>Check in:<input id="stay_begin" type="date" name="check_in" /></label>
+              <label>Check out:<input id="stay_end" type="date" name="check_out" /></label>
+              <label>Guests:<input id="guests" type="number" min="1" name="guests" value="1" required /></label>
+              <!-- TODO: price range -->
+              <input id="submit_btn" type="submit" name="search" />
+            </form>
+          </div>
         </div>
         <div id="addHouse">
           <a href="add_story.php">
-            <img id="addHouse" src="../../images/addHouse.png" />            
-         </a>
+            <img id="addHouse" src="../../images/addHouse.png" />
+          </a>
         </div>
         <?php
           if (isset($_SESSION['username'])) {

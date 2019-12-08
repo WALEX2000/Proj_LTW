@@ -34,7 +34,7 @@ function get_user_rented($username)
 {
     global $db;
 
-    $stmt = $db->prepare('Select * from Rented JOIN Story where Rented.renter = ? and Rented.story = Story.id');
+    $stmt = $db->prepare('Select distinct * from Story S, Rented R where R.story = S.id and R.renter = ?');
     $stmt->execute(array($username));
     $rented_by_user = $stmt->fetchAll();
     return $rented_by_user;
@@ -50,16 +50,32 @@ function get_user_renting($username)
     return $renting_by_user;
 }
 
+function get_reservations_of_story($story_id)
+{
+  global $db;
+
+    $stmt = $db->prepare('Select * from Story S, Rented R where R.story = ? and S.id = R.story order by date(R.stay_start) asc, date(R.stay_end) asc');
+    $stmt->execute(array($story_id));
+    $reservations = $stmt->fetchAll();
+    return $reservations;
+}
+
 function insert_story($story_info, $username) {
-    global $db;
-    $stmt = $db->prepare('INSERT INTO Story VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
-    $stmt->execute(array(null, $story_info['name'], $story_info['country'], $story_info['city'], $story_info['address'],NULL, $story_info['details'], 0, $username, date("Y/m/d"), $story_info['price_night'], $story_info['capacity']));
+  global $db;
+  $stmt = $db->prepare('INSERT INTO Story VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+  $stmt->execute(array(null, $story_info['name'], $story_info['country'], $story_info['city'], $story_info['address'],NULL, $story_info['details'], 0, $username, date("Y/m/d"), $story_info['price_night'], $story_info['capacity']));
   }
 
 function insert_reservation ($reservation_info){
-    global $db;
-    $stmt = $db->prepare('INSERT INTO Rented VALUES(?, ?, ?, ?, ?, ?, ?)');
-    $stmt->execute(array(null, $reservation_info['username'], $reservation_info['story_id'], $reservation_info['start_date'], $reservation_info['end_date'],$reservation_info['num_guests'], $reservation_info['total_price']));
+  global $db;
+  $stmt = $db->prepare('INSERT INTO Rented VALUES(?, ?, ?, ?, ?, ?, ?)');
+  $stmt->execute(array(null, $reservation_info['username'], $reservation_info['story_id'], $reservation_info['start_date'], $reservation_info['end_date'],$reservation_info['num_guests'], $reservation_info['total_price']));
+}
+
+function delete_reservation($rent_id){
+  global $db;
+  $stmt = $db->prepare('DELETE FROM Rented WHERE id = ?');
+  $stmt->execute(array($rent_id));
 }
 
 function update_story_info($story_data, $new_story_data)
