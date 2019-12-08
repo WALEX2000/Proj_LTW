@@ -61,8 +61,9 @@ function draw_header($stylesheet)
           <a href="register.php">
             <p id="Register">Register| </p>
           </a>
-          <a id="Log In" href="../pages/login.php">Log In</a>
-        <?php
+          <!--<a id="Log In" href="../pages/login.php">Log In</a>-->
+          <button class = "top_bar_btn"onclick="document.getElementById('login_modal').style.display='block'">Login</button>
+          <?php
           }
           if (isset($_SESSION['message'])) {
             print_r($_SESSION['message']);

@@ -1,7 +1,20 @@
 <?php function draw_home($all_stories)
 { ?>
     <div id="body">
-        
+
+        <div id="login_modal" class="modal">
+            <div class="modal-content">
+                <form id="login_form" action="../actions/action_login.php" method="post">
+                    <div id="input-div">
+                        <span onclick="document.getElementById('login_modal').style.display='none'" class="close" title="Close login window ">&times;</span>
+                        <label> Username <input type="text" name="username" required> </label>
+                        <label> Password <input type="password" name="password" required> </label>
+                        <button type="submit">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
         <div id="TopHouseFrame">
             <img id="TopHouse" src="../../images/topHouse.jpg" alt="TopHouse" />
             <div class="BottomText">
