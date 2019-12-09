@@ -3,6 +3,9 @@
     include_once('../database/stories_queries.php');
     include_once('../includes/session.php');
 
+    if (!isset($_SESSION['username']))
+        die(header('Location: ../pages/login.php'));
+
     $rent_id = $_SESSION['rent_id'];
     $username = $_SESSION['username'];
     print_r($rent_id);

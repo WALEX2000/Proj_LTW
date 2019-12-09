@@ -3,6 +3,9 @@
     include_once('../database/stories_queries.php');
     include_once('../includes/session.php');
 
+    if (!isset($_SESSION['username']))
+      die(header('Location: ../pages/login.php'));
+
     $name = $_POST['title'];
     $country =  $_POST['country'];
     $city=  $_POST['city'];

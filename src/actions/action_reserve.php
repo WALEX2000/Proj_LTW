@@ -3,6 +3,9 @@
     include_once('../database/stories_queries.php');
     include_once('../includes/session.php');
 
+    if (!isset($_SESSION['username']))
+      die(header('Location: ../pages/login.php'));
+
     $start_date = $_POST['start_date'];
     $end_date =  $_POST['end_date'];
     $num_guests=  $_POST['num_guests'];

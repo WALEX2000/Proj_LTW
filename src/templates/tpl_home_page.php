@@ -1,7 +1,6 @@
 <?php function draw_home($all_stories)
 { ?>
     <div id="body">
-        
         <div id="TopHouseFrame">
             <img id="TopHouse" src="../../images/topHouse.jpg" alt="TopHouse" />
             <div class="BottomText">
