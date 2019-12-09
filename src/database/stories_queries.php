@@ -52,8 +52,8 @@ function get_user_renting($username)
 
 function insert_story($story_info, $username) {
     global $db;
-    $stmt = $db->prepare('INSERT INTO Story VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
-    $stmt->execute(array(null, $story_info['name'], $story_info['country'], $story_info['city'], $story_info['address'],NULL, $story_info['details'], 0, $username, date("Y/m/d"), $story_info['price_night'], $story_info['capacity']));
+    $stmt = $db->prepare('INSERT INTO Story VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+    $stmt->execute(array(null, $story_info['name'], $story_info['country'], $story_info['city'], $story_info['address'],NULL, $story_info['details'], 0, 0,$username, date("Y/m/d"), $story_info['price_night'], $story_info['capacity']));
   }
 
 function insert_reservation ($reservation_info){
@@ -163,7 +163,7 @@ function check_location($story_id,$location){
 }
 ///////////////////////////
 
-function get_available_stories($location, $check_in, $check_out, $price_min, $price_max, $number_of_guests){
+function get_available_stories($location, $check_in, $check_out, $price_max, $number_of_guests){
     //TODO: check dates
 
     global $db;
@@ -171,10 +171,10 @@ function get_available_stories($location, $check_in, $check_out, $price_min, $pr
         (date(stay_start) < date(?) and date(stay_end) > date(?) 
         or ? = "" and date(?) >= date(stay_start) and date(?) < date(stay_end)
         or ? = "" and date(?) > date(stay_start) and date(?) <= date(stay_end)))
-     and Story.price_per_night >= ? and Story.price_per_night <= ? 
+     and Story.price_per_night <= ? 
      and Story.capacity >= ? 
      and (? = "" or Story.country = ? or Story.city = ?)');
-    $stmt->execute(array($check_out, $check_in, $check_out, $check_in, $check_in, $check_in, $check_out, $check_out, $price_min, $price_max, $number_of_guests, $location,$location,$location));
+    $stmt->execute(array($check_out, $check_in, $check_out, $check_in, $check_in, $check_in, $check_out, $check_out, $price_max, $number_of_guests, $location,$location,$location));
     $available = $stmt->fetchAll();
      
     /*$all_stories = get_all_stories();

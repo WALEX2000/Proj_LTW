@@ -8,7 +8,11 @@ DROP TABLE IF EXISTS Image;
 
 DROP TABLE IF EXISTS Comment;
 
+DROP TABLE IF EXISTS Reply;
+
 DROP TABLE IF EXISTS Rented;
+
+DROP TRIGGER IF EXISTS Rate;
 
 CREATE TABLE User(
     username TEXT PRIMARY KEY,
@@ -36,7 +40,8 @@ CREATE TABLE Story(
     address TEXT NOT NULL,
     main_image INTEGER REFERENCES Image UNIQUE,
     details TEXT NOT NULL,
-    average_rating FLOAT NOT NULL,
+    number_ratings INTEGER NOT NULL,
+    sum_ratings INTEGER NOT NULL,
     owner TEXT REFERENCES User,
     post_date date NOT NULL,
     price_per_night FLOAT NOT NULL,
@@ -48,6 +53,15 @@ CREATE TABLE Comment(
     username TEXT REFERENCES User,
     story INTEGER REFERENCES Story,
     comment_date DATE NOT NULL,
+    content TEXT NOT NULL,
+    rate INTEGER
+);
+
+CREATE TABLE Reply(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    comment INTEGER REFERENCES Comment,
+    username TEXT REFERENCES User,
+    comment_date DATE NOT NULL,
     content TEXT NOT NULL
 );
 
@@ -57,14 +71,20 @@ CREATE TABLE Rented(
     story INTEGER REFERENCES Story,
     stay_start date NOT NULL,
     stay_end date NOT NULL,
-    --check if start after end
-   /* rating INTEGER CHECK(
-        rating >= 1
-        and rating <= 5
-    ),*/
     number_of_people INTEGER NOT NULL,
     total_price FLOAT NOT NULL
 );
+
+CREATE TRIGGER IF NOT EXISTS Rate 
+AFTER INSERT ON Comment
+WHEN (new.rate is not null)
+	BEGIN
+		UPDATE Story
+		SET sum_ratings = sum_ratings + new.rate,
+            number_ratings = number_ratings + 1
+	WHERE id = new.story;
+	END;
+
 
 /*
 INSERT INTO
@@ -103,6 +123,7 @@ VALUES
         'qrom_image',
         'muito botino',
         5.0,
+        1,
         'scarletJoe',
         '2019-01-06',
         90,
@@ -121,21 +142,11 @@ VALUES
         'qamor_image',
         'muito botino',
         0,
+        0,
         'scarletJoe',
         '2019-01-06',
         80,
         4
-    );
-
-INSERT INTO
-    Comment
-VALUES
-    (
-        1,
-        'walex',
-        1,
-        '2019-01-06',
-        'muito botino memo'
     );
 
 INSERT INTO
@@ -146,7 +157,7 @@ VALUES
         'walex',
         1,
         '2019-01-06',
-        '2019-01-16',
+        '2019/01/16',
         1,
         90
     );

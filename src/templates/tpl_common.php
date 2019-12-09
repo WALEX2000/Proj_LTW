@@ -13,9 +13,13 @@ function draw_header($stylesheet)
     <title>Homie</title>
     <link href="../css/<?= $stylesheet ?>" rel="stylesheet" />
     <link href="../css/topBar.css" rel="stylesheet" />
+    <link href="../css/story.css" rel="stylesheet" />
+    <link href="../css/search_results.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
     <script src="../javascript/topBar.js" defer></script>
+    <script src="../javascript/home.js" defer></script>
+
   </head>
 
   <body>
@@ -37,10 +41,41 @@ function draw_header($stylesheet)
                     <label>Check in:<input id="stay_begin" type="date" name="check_in"/></label>
                     <label>Check out:<input id="stay_end" type="date" name="check_out"/></label>
                     <label>Guests:<input id="guests" type="number" min= "1" name="guests" value="1" required/></label>
-                    <input id="submit_btn" type="submit" name="search"/>
+                    <label>Budget: <span id = "budget_value"></span><input type="range" min="1" max="500" value="250" class="budget_slider" id="budget_slider" name="budget"></label>
+                <input id="submit_btn" type="submit" name="search" value="Search"/>
                 </form>
             </div>
         </div>
+
+        <div id="login_modal" class="modal">
+            <div class="modal-content animate">
+                <form id="login_form" action="../actions/action_login.php" method="post">
+                    <div id="input-div">
+                        <label> Username <input type="text" name="username" required> </label>
+                        <label> Password <input type="password" name="password" required> </label>
+                        <button type="submit">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="register_modal" class="modal">
+            <div class="modal-content animate">
+                <form id="register_form" action="../actions/action_register.php" method="post" enctype="multipart/form-data">
+                    <div id="input-div">
+                        <label> Username <input type="text" name="username" required> </label>
+                        <label> Name <input type="text" name="name" required> </label>
+                        <label> Email <input type="text" name="email" required> </label>
+                        <label> Birthday <input type="date" name="birthday" required> </label>
+                        <label> Nationality <input type="text" name="nationality" required> </label>
+                        <label> Password <input type="password" name="password" required> </label>
+                        <label> Profile Image <input type="file" name="profile_img" id="profile_img"> </label>
+                        <button type="submit">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
         <div id="addHouse">
           <a href="add_story.php">
             <img id="addHouse" src="../../images/addHouse.png" />            
@@ -58,9 +93,7 @@ function draw_header($stylesheet)
         <?php
           } else {
             ?>
-          <a href="register.php">
-            <p id="Register">Register| </p>
-          </a>
+          <button class = "top_bar_btn"onclick="document.getElementById('register_modal').style.display='block'">Register| </button>
           <!--<a id="Log In" href="../pages/login.php">Log In</a>-->
           <button class = "top_bar_btn"onclick="document.getElementById('login_modal').style.display='block'">Login</button>
           <?php

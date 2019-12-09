@@ -18,7 +18,7 @@
     $story =get_story_info($story_id);
     $total_price = $num_guests * $story['price_per_night'];
     $reservation_info = array('username' => $_SESSION['username'], 'story_id' =>$story_id, 'start_date' =>$start_date, 'end_date' =>$end_date, 'num_guests' =>$num_guests, 'total_price' =>$total_price);
-    insertReservation($reservation_info);
+    insert_reservation($reservation_info);
     $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Reservation finished with success!');
     header('Location: ../pages/home.php');
   } catch (PDOException $e) {
