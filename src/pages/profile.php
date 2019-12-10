@@ -6,6 +6,9 @@ include_once('../database/profile_queries.php');
 include_once('../database/stories_queries.php');
 include_once('../includes/session.php');
 
+if (!isset($_SESSION['username']))
+    die(header('Location: login.php'));
+
 $user_given = $_SESSION['username'];
 $user_info = get_user_info($user_given);
 $profile_pic = get_image_url($user_info['profile_image']);

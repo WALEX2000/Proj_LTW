@@ -30,7 +30,8 @@ function check_user_password($username, $password)
   return $stored_password !== false && password_verify($password, $stored_password['password']);
 }
 
-function update_user_info($user_data, $new_user_data)
+
+function update_user_info($user_data, $new_user_data,$current_password)
 {
   if ($new_user_data['name'] != NULL) {
     $name = $new_user_data['name'];
@@ -59,11 +60,12 @@ function update_user_info($user_data, $new_user_data)
     $password = $new_user_data['password'];
   }
   else{
-    $password = $user_data['password'];
+    $password = $current_password;
   }
 
   global $db;
   $options = ['cost' => 12];
   $stmt = $db->prepare('update User set name = ?, email = ?, birthday = ?, nationality = ?, password = ? where username = ?');
-  $stmt->execute(array( $name, $email, $birthday,$nationality, password_hash($password, PASSWORD_DEFAULT, $options),$new_user_data['username']));
+  $stmt->execute(array( $name, $email, $birthday,$nationality, password_hash($password, PASSWORD_DEFAULT, $options),$user_data['username']));
+  print_r($nationality);
 }
