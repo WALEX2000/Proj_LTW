@@ -1,5 +1,5 @@
 <?php
-include_once('../database/connection.php');
+include_once('src/database/connection.php');
 
 function get_image_url($name)
 {
