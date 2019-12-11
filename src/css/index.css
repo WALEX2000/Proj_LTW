@@ -79,3 +79,19 @@ body {
     padding-top: 1em;
     margin: 0;
 }
+
+.arrowButton {
+    background: none;
+    outline-width: 0;
+    border: 0;
+    height: 5em;
+    margin-top: auto;
+    margin-bottom: auto;
+    color: #789BD0;
+    margin-right: 2em;
+    margin-left: 2em;
+}
+
+.arrowButton:hover {
+    cursor: pointer;
+}
