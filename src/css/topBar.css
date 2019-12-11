@@ -130,7 +130,7 @@ input{
 }
 
 
-form button[type="submit"] {
+form input[type="submit"] {
     background-color: #789BD0;
     color: white;
     padding: 14px 20px;
@@ -142,7 +142,7 @@ form button[type="submit"] {
     transition: 0.5s;
 
   }
-  form button[type="submit"]:hover {
+  form input[type="submit"]:hover {
     opacity: 0.7;
   }
   .modal {

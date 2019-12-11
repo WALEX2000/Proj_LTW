@@ -13,5 +13,7 @@ if(check_user_password($username,$password)){
 else{
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to login!');
 }
-header('Location: ../pages/home.php');
+$go_to = "Refresh:0;url=../pages/" . $_SESSION['last_page'];
+
+header($go_to);
 

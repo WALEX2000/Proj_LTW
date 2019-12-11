@@ -1,30 +1,40 @@
 <?php
-function draw_register_form()
+function draw_register()
 {
    ?>
-   <h1>Register new user</h1>
-   <form action="../actions/action_register.php" method="post" enctype="multipart/form-data">
-      <label> Username <input type="text" name="username" required> </label>
-      <label> Name <input type="text" name="name" required> </label>
-      <label> Email <input type="text" name="email" required> </label>
-      <label> Birthday <input type="date" name="birthday" required> </label>
-      <label> Nationality <input type="text" name="nationality" required> </label>
-      <label> Password <input type="password" name="password" required> </label>
-      <label> Profile Image <input type="file" name="profile_img" id="profile_img"> </label>
-      <input type="submit" value="Register" />
-   </form>
+   <div id="register_modal" class="modal">
+      <div class="modal-content animate">
+         <h1>Register new user</h1>
+         <form action="../actions/action_register.php" method="post" enctype="multipart/form-data">
+            <label> Username <input type="text" name="username" required> </label>
+            <label> Name <input type="text" name="name" required> </label>
+            <label> Email <input type="text" name="email" required> </label>
+            <label> Birthday <input type="date" name="birthday" required> </label>
+            <label> Nationality <input type="text" name="nationality" required> </label>
+            <label> Password <input type="password" name="password" required> </label>
+            <label> Profile Image <input type="file" name="profile_img" id="profile_img"> </label>
+            <input type="submit" value="Register" />
+         </form>
+      </div>
+   </div>
 <?php
 }
 
 function draw_login()
 {
    ?>
-   <h1>Login</h1>
-   <form action="../actions/action_login.php" method="post">
-      <label> Username <input type="text" name="username" required> </label>
-      <label> Password <input type="password" name="password" required> </label>
-      <input type="submit" value="Login" />
-   </form>
+   <div id="login_modal" class="modal">
+      <div class="modal-content animate">
+         <h1>Login</h1>
+         <form action="../actions/action_login.php" method="post">
+            <label> Username <input type="text" name="username" required> </label>
+            <label> Password <input type="password" name="password" required> </label>
+            <input type="submit" value="Login" />
+         </form>
+         <h2>Don't have an account?</h2><button onclick="document.getElementById('login_modal').style.display='none';
+         document.getElementById('register_modal').style.display='block'">Register</button>
+      </div>
+   </div>
 <?php
 }
 

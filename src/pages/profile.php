@@ -6,6 +6,8 @@ include_once('../database/profile_queries.php');
 include_once('../database/stories_queries.php');
 include_once('../includes/session.php');
 
+$_SESSION['last_page'] = "profile.php";
+
 if (!isset($_SESSION['username']))
     die(header('Location: login.php'));
 

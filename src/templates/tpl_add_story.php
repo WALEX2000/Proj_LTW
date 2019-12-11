@@ -3,7 +3,7 @@
         ?>
         <h1>Add new house</h1>
         <form action ="../actions/action_add_story.php" method= "post">
-           <label> Title <input type="text" name= "title" required> </label>
+           <label>Title<input type="text" name= "title" required> </label>
            <label> Country <input type="text" name= "country" required> </label>
            <label> City <input type="text" name= "city" required> </label>
            <label> Address <input type="text" name= "address" required> </label>

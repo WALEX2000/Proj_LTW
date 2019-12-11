@@ -14,7 +14,7 @@ function draw_story_info($story_info, $story_images, $username)
 
         <?php
             }
-            if ($story_info['number_ratings'] !== 0) {
+            if ($story_info['number_ratings'] != 0) {
                 $average_ratings = (float) $story_info['sum_ratings'] / (float) $story_info['number_ratings'];
             } else {
                 $average_ratings = 0;

@@ -5,6 +5,8 @@ include_once('../database/profile_queries.php');
 include_once('../templates/tpl_common.php');
 include_once('../templates/tpl_authentication.php');
 
+$_SESSION['last_page'] = "edit_profile.php";
+
 if (!isset($_SESSION['username']))
     die(header('Location: login.php'));
 
