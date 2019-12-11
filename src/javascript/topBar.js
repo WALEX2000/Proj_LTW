@@ -42,8 +42,16 @@ let searchText = document.getElementById("searchField");
 function submitSearch() {
     console.log("Submit");
     let location = searchText.value;
-    let checkInDate = filterForm.elements["check_in"].value;
-    //Get all paremeters from search and go to appropriate page with appropriate query
+
+    const hiddenField = document.createElement('input');
+    hiddenField.type = 'hidden';
+    hiddenField.name = "location";
+    hiddenField.value = location;
+    filterForm.appendChild(hiddenField);
+
+    filterForm.submit();
+
+    filterForm.removeChild(hiddenField);
 }
 
 searchButton.addEventListener("click", submitSearch);

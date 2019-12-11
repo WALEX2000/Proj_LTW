@@ -211,6 +211,10 @@ form button[type="submit"] {
       color: #789BD0;
   }
 
+    #closeExtraOption:focus {
+        outline-width: 0;
+    }
+
   .centerLabel {
       text-align: center;
       margin-left: 20%;
