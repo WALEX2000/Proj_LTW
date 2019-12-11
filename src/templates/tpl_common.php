@@ -104,12 +104,12 @@ function draw_header($stylesheet)
                         </div>
                         <div>
                             <br/>
-                            <label> Guests: </label>
+                            <label class="centerLabel"> Guests: </label>
                             <input id="guests" type="number" min= "1" name="guests" value="1" required/>
                         </div>
                         <div>
                             <br/>
-                            <label> Budget: </label><span id = "budget_value"></span><input type="range" min="1" max="500" class="budget_slider" id="budget_slider" name="budget">
+                            <label class="centerLabel"> Budget: </label><span id = "budget_value"></span><input type="range" min="1" max="500" class="budget_slider" id="budget_slider" name="budget">
                         </div>
                         <button id="closeExtraOption" type="button" name="close"><i class="fa fa-times-circle fa-5x"></i></button>
                       </form>

@@ -34,3 +34,16 @@ let closeExtraOptionsBtn = document.getElementById("closeExtraOption");
 searchField.addEventListener("focus", () => {extraOptions.classList.add("show");});
 
 closeExtraOptionsBtn.addEventListener("click", () => {extraOptions.classList.remove("show");});
+
+let searchButton = document.getElementById("searchButton");
+let filterForm = document.getElementById("form");
+let searchText = document.getElementById("searchField");
+
+function submitSearch() {
+    console.log("Submit");
+    let location = searchText.value;
+    let checkInDate = filterForm.elements["check_in"].value;
+    //Get all paremeters from search and go to appropriate page with appropriate query
+}
+
+searchButton.addEventListener("click", submitSearch);
