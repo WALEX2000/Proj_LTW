@@ -10,15 +10,16 @@ a {
 
 #all {
     display: grid;
-    grid-template-rows: 3fr auto;
+    grid-template-rows: 3fr auto auto;
 }
 
 #topBar {
     display: grid;
     background-color: #789BD0;
     align-items: center;
-    grid-template-columns: 5em 20em auto 5em 5em 5em;
+    grid-template-columns: 5em 20em auto 5em 5em;
     grid-template-rows: 4em;
+    z-index: 2;
 }
 
 #profilePic {
@@ -40,7 +41,7 @@ a {
 }
 
 #addHouse {
-    margin-left: 1em;
+    margin-left: auto;
     margin-right: 1em;
 }
 
@@ -61,15 +62,20 @@ a {
     margin-right: 0;
     border: 0;
     background-color: transparent;
+    border-radius: 0;
 
     width: 80%;
     font-size: 20px;
 }
 
+#searchField:focus {
+    outline-width: 0;
+}
+
 #searchButton {
     padding: 0;
     width: 3em;
-    height: 2.9em;
+    height: 100%;
     border: none;
     background-color: #BFD5F6;
 }
@@ -78,37 +84,36 @@ a {
     margin-left:auto;
     margin-right:auto;
 }
-
-
   
   .dropdown {
-    position: relative;
+      width: 100%;
     display: inline-block;
+  }
+
+  #search_form {
+      width: 100%;
   }
 
   
   .dropdown-content {
     display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
+    background-color: #BFD5F6;
     overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
   }
   
   .dropdown-content form {
     height: 10%;
-    background-color: rgb(228, 235, 245);
+    background-color: #BFD5F6;
     color: black;
     padding: 12px 16px;
-    display: flex;
-    flex-direction: column;
-    align-content: space-around;
+    display: grid;
+    grid-template-columns: 15em 10em 10em auto;
   }
   
   .dropdown form:hover {
-      background-color: rgb(200, 218, 243);}
+      background-color: rgb(200, 218, 243);;
+  }
   
   .show {
       display: block;
@@ -135,7 +140,6 @@ a {
 }
 
 input{
-  width: 100%;
   padding: 6px 10px;
   margin: 8px 0;
   display: inline-block;
@@ -162,7 +166,6 @@ form button[type="submit"] {
   }
   .modal {
     display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
     top: 0;
@@ -184,8 +187,6 @@ form button[type="submit"] {
     justify-self: center;
   }
 
-  
-
   .animate {
     -webkit-animation: animatezoom 0.6s;
     animation: animatezoom 0.6s
@@ -199,5 +200,13 @@ form button[type="submit"] {
   @keyframes animatezoom {
     from {transform: scale(0)} 
     to {transform: scale(1)}
+  }
+
+  #closeExtraOption {
+      padding: 0;
+      border: none;
+      background-color: transparent;
+      float: right;
+      margin-left: 80%;
   }
   

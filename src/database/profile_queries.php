@@ -1,7 +1,7 @@
 <?php
 
-include_once('src/database/connection.php');
-include_once('src/database/image_queries.php');
+include_once('../database/connection.php');
+include_once('../database/image_queries.php');
 
 function get_user_info($username)
 {
