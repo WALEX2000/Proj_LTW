@@ -14,7 +14,7 @@ function draw_story_info($story_info, $story_images, $username)
 
         <?php
             }
-            if ($story_info['number_ratings'] !== 0) {
+            if ($story_info['number_ratings'] != 0) {
                 $average_ratings = (float) $story_info['sum_ratings'] / (float) $story_info['number_ratings'];
             } else {
                 $average_ratings = 0;
@@ -255,6 +255,20 @@ function draw_story_info($story_info, $story_images, $username)
                     ?>
         </div>
 <?php
+    }
+
+    function draw_reserve_form(){
+        ?>
+        <div>
+        <form action ="../actions/action_reserve.php" method= "post">
+           <label> Check-in date: <input type="date" name= "start_date" required> </label>
+           <label> Check-out date: <input type="date" name= "end_date" required> </label>
+           <label> Number of guests: <input type="number" name= "num_guests" min = 1 required> </label>
+           <input type = "submit" value = "Reserve"/>
+        </form>
+        <br></br>
+    </div>
+    <?php
     }
 }
 

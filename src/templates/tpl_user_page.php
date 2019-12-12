@@ -69,4 +69,22 @@ function draw_rented_stories($rented)
 
     }
 }
+
+    function draw_renting_stories($renting)
+    {
+        ?>
+        <h1> Places you're renting </h1>
+        <?php
+        foreach ($renting as $story) {
+            $image_url = get_image_url($story['main_image']);
+            ?>
+            <a href="story.php?story_id=<?= $story['id'] ?>">
+                <img src="../../images/<?= $image_url ?>" alt="Photo of <?= $story['name'] ?> story">
+                <h1><?= $story['name'] ?></h1>
+            </a>
+        <br></br>
+<?php
+
+        }
+    }
 ?>

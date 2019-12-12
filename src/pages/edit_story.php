@@ -5,6 +5,8 @@ include_once('../database/stories_queries.php');
 include_once('../templates/tpl_common.php');
 include_once('../templates/tpl_story_page.php');
 
+$_SESSION['last_page'] = "edit_story.php";
+
 if (!isset($_SESSION['username']))
     die(header('Location: login.php'));
 
