@@ -18,8 +18,8 @@ a {
     background-color: #789BD0;
     align-items: center;
     grid-template-columns: 5em 20em auto 5em 5em;
-    grid-template-rows: 4em;
-    z-index: 2;
+    grid-template-rows: 5em;
+    z-index: 1;
 }
 
 #profilePic {
@@ -43,6 +43,14 @@ a {
 #addHouse {
     margin-left: auto;
     margin-right: 1em;
+}
+
+#addHouseLink{
+  display: none;
+}
+
+#addHouseImg {
+  display: inherit;
 }
 
 #searchBar {
@@ -94,12 +102,11 @@ a {
       width: 100%;
   }
 
-  
   .dropdown-content {
     display: none;
     background-color: #BFD5F6;
     overflow: auto;
-    z-index: 1;
+    z-index: 0;
   }
   
   .dropdown-content form {
@@ -113,6 +120,36 @@ a {
   
   .dropdown form:hover {
       background-color: rgb(200, 218, 243);;
+  }
+
+  .dropdownAnimation {
+    -webkit-animation: translate 0.6s;
+    animation: translate 0.6s
+  }
+
+  .dropUpAnimation {
+    -webkit-animation: translateUp 0.6s;
+    animation: translateUp 0.6s
+  }
+
+  @-webkit-keyframes translateUp {
+    from {-webkit-transform: translate(0, 0)} 
+    to {-webkit-transform: translate(0,-7.2em)}
+  }
+    
+  @keyframes translate {
+    from {transform: translate(0, 0)} 
+    to {transform: translate(0, -7.2em)}
+  }
+
+  @-webkit-keyframes translate {
+    from {-webkit-transform: translate(0, -7.2em)} 
+    to {-webkit-transform: translate(0,0)}
+  }
+    
+  @keyframes translate {
+    from {transform: translate(0, -7.2em)} 
+    to {transform: translate(0, 0)}
   }
   
   .show {
@@ -164,27 +201,45 @@ form input[type="submit"] {
   form input[type="submit"]:hover {
     opacity: 0.7;
   }
+  
   .modal {
+    position: absolute;
     display: none; /* Hidden by default */
-    z-index: 1; /* Sit on top */
+    z-index: 2; /* Sit on top */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
-    height: 100%; /* Full height */
+    height: 200%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0, 0, 0); /* Fallback color */
     background-color: rgba(0, 0, 0, 0.719); /* Black w/ opacity */
-    padding-top: 60px;
   }
 
   .modal-content {
+    position: fixed;
+    top: 20em;
+    left: calc(50% - 10em);
     background-color: #fefefe;
-    margin: 5% auto 15% auto; 
     border: 1px solid #888;
-    width: 20%; 
+    width: 25em; 
     height: auto;
-    align-self: fixed;
-    justify-self: center;
+    padding: 1em;
+    border-radius: 20px;
+  }
+
+  .input-div label {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    margin-bottom: 1em;
+  }
+
+  .input-div label input {
+    width: 100%;
+    margin: 0;
+  }
+
+  input:focus {
+    outline-width: 0;
   }
 
   .animate {
@@ -207,6 +262,25 @@ form input[type="submit"] {
       border: none;
       background-color: transparent;
       float: right;
-      margin-left: 80%;
+      margin-left: auto;
+      margin-right: 4em;
+      color: #789BD0;
+      width: 5em;
+      height: 5em;
+      margin-top: auto;
+      margin-bottom: auto;
+  }
+
+#closeExtraOption:hover {
+    cursor: pointer;
+}
+
+    #closeExtraOption:focus {
+        outline-width: 0;
+    }
+
+  .centerLabel {
+      text-align: center;
+      margin-left: 20%;
   }
   

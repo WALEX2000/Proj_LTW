@@ -32,6 +32,34 @@ function draw_header($stylesheet)
       <?php unset($_SESSION['messages']); } ?>
 
   <body>
+      <div id="login_modal" class="modal">
+            <div class="modal-content animate">
+                <form id="login_form" action="../actions/action_login.php" method="post">
+                    <div class="input-div">
+                        <label> Username <input type="text" name="username" required> </label>
+                        <label> Password <input type="password" name="password" required> </label>
+                        <button type="submit">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="register_modal" class="modal">
+            <div class="modal-content animate">
+                <form id="register_form" action="../actions/action_register.php" method="post" enctype="multipart/form-data">
+                    <div class="input-div">
+                        <label> Username <input type="text" name="username" required> </label>
+                        <label> Name <input type="text" name="name" required> </label>
+                        <label> Email <input type="text" name="email" required> </label>
+                        <label> Birthday <input type="date" name="birthday" required> </label>
+                        <label> Nationality <input type="text" name="nationality" required> </label>
+                        <label> Password <input type="password" name="password" required> </label>
+                        <label> Profile Image <input type="file" name="profile_img" id="profile_img"> </label>
+                        <button type="submit">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     <div id="all">
       <div id="topBar">
         <a href="home.php">
@@ -41,33 +69,16 @@ function draw_header($stylesheet)
           <input id="searchField" type="text" placeholder="Enter a location..">
           <button id="searchButton" type="submit" onclick=""><i class="fa fa-search fa-2x"></i></button>
         </div>
-        <div id="login_modal" class="modal">
-            <div class="modal-content animate">
-                <form id="login_form" action="../actions/action_login.php" method="post">
-                    <div id="input-div">
-                        <label> Username <input type="text" name="username" required> </label>
-                        <label> Password <input type="password" name="password" required> </label>
-                        <button type="submit">Login</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-
-        <?php
-          draw_login();
-          draw_register();
-          unset($_SESSION['messages']);
-          ?>
         <div id="addHouse">
-          <a href="add_story.php">
-            <img id="addHouse" src="../../images/addHouse.png" />
+          <a id="addHouseLink" href="add_story.php">
+            <img id="addHouseImg" src="../../images/addHouse.png" />
           </a>
         </div>
         <?php
           if (isset($_SESSION['username'])) {
             $user = get_user_info($_SESSION['username']);
             $image_url = get_image_url($user['profile_image']);
+            echo '<script type="text/javascript">','document.getElementById("addHouseLink").style.display="block"','</script>';
             ?>
           <a href="profile.php?username=<?= $_SESSION['username'] ?>">
             <img id="profilePic" src="../../images/<?= $image_url ?>" />
@@ -86,7 +97,7 @@ function draw_header($stylesheet)
           }*/
           ?>
       </div>
-            <div class="dropdown dropdownAnimation">
+            <div class="dropdown">
                   <div id="search_form" class="dropdown-content">
                       <form id="form" action="../actions/action_search.php" method="post">
                         <div>
@@ -95,12 +106,12 @@ function draw_header($stylesheet)
                         </div>
                         <div>
                             <br/>
-                            <label> Guests: </label>
+                            <label class="centerLabel"> Guests: </label>
                             <input id="guests" type="number" min= "1" name="guests" value="1" required/>
                         </div>
                         <div>
                             <br/>
-                            <label> Budget: </label><span id = "budget_value"></span><input type="range" min="1" max="500" class="budget_slider" id="budget_slider" name="budget">
+                            <label class="centerLabel"> Budget: </label><span id = "budget_value"></span><input type="range" min="1" max="500" class="budget_slider" id="budget_slider" name="budget">
                         </div>
                         <button id="closeExtraOption" type="button" name="close"><i class="fa fa-times-circle fa-5x"></i></button>
                       </form>

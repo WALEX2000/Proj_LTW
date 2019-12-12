@@ -39,7 +39,7 @@ body {
     display: flex;
     background-color: #BFD5F6;
     margin: 3em auto auto;
-    width: 70em;
+    width: 80%;
     height: 15em;
     border-radius: 40px;
 }
@@ -55,7 +55,7 @@ body {
     margin-left:auto;
     margin-right:auto;
     height: 100%;
-    width: 80%;
+    width: 20em;
     border-radius: 25px;
 }
 
@@ -64,7 +64,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     bottom: 25%;
-    width: 80%;
+    width: 24.6em;
     height: 25%;
     background-color: rgba(240, 248, 255, 0.85);
     border-bottom-left-radius: 25px;
@@ -78,4 +78,20 @@ body {
 .BottomTextPreview p {
     padding-top: 1em;
     margin: 0;
+}
+
+.arrowButton {
+    background: none;
+    outline-width: 0;
+    border: 0;
+    height: 5em;
+    margin-top: auto;
+    margin-bottom: auto;
+    color: #789BD0;
+    margin-right: 2em;
+    margin-left: 2em;
+}
+
+.arrowButton:hover {
+    cursor: pointer;
 }
