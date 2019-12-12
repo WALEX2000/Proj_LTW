@@ -11,6 +11,7 @@
     $_SESSION['story_id'] = $story_id;
     $story_info = get_story_info($story_id);
     $all_story_images = get_all_url_images_of_story($story_id);
+    $reservations = get_reservations_of_story($story_id);
     $comments = get_all_comments($story_id);
     $owner = $story_info['owner'];
     $capacity = $story_info['capacity'];
@@ -23,7 +24,8 @@
 
     draw_header("index.css");
     draw_story_info($story_info, $all_story_images, $username);
-    draw_reserve_form($username, $owner, $capacity);
+    draw_reserve_form($username, $owner, $story_info['capacity']);
+    draw_reservations($username, $owner, $reservations);
     draw_comment_form($username,$owner);
     draw_all_comments($comments, $owner, $username);
     draw_footer();

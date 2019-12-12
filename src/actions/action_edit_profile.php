@@ -3,6 +3,9 @@
   include_once('../database/profile_queries.php');
   include_once('../database/connection.php');
 
+  if (!isset($_SESSION['username']))
+    die(header('Location: ../pages/login.php'));
+
 $username = $_SESSION['username'];
 $name =  $_POST['name'];
 $email=  $_POST['email'];

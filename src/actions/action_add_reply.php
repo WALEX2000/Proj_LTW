@@ -4,6 +4,9 @@ include_once('../database/connection.php');
 include_once('../database/comment_queries.php');
 include_once('../includes/session.php');
 
+if (!isset($_SESSION['username']))
+    die(header('Location: ../pages/login.php'));
+
 
 $username = $_SESSION['username'];
 $content = $_POST['reply_content'];

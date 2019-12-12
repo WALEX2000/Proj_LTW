@@ -71,7 +71,7 @@ function draw_story_info($story_info, $story_images, $username)
                 <form action="../actions/action_reserve.php" method="post">
                     <label> Check-in date: <input type="date" name="start_date" required> </label>
                     <label> Check-out date: <input type="date" name="end_date" required> </label>
-                    <label> Number of guests: <input type="number" name="num_guests" min=1 max=<?= $capacity ?> required> </label>
+                    <label> Number of guests: <input type="number" name="num_guests" min=1 max=<?= $capacity ?> value=1 required> </label>
                     <input type="submit" value="Reserve" />
                 </form>
                 <br></br>
@@ -80,6 +80,33 @@ function draw_story_info($story_info, $story_images, $username)
             }
         }
     }
+
+    function draw_reservations($username, $owner, $reservations){
+        //TODO: possibly only the reservations happening now or in the future???
+        if ($username == $owner) {
+            ?><h1>Reservations</h1> <?php
+            foreach($reservations as $reservation){           
+            ?>
+        <div>
+            
+            <h2><?= $reservation['renter'] ?></h2>
+            <h3><?= $reservation['stay_start'] ?></h3>
+            <h2><?= $reservation['stay_end'] ?></h2>
+            <h2><?= $reservation['number_of_people'] ?></h2>
+            <h2><?= $reservation['total_price'] ?> €</h2>
+            
+        </div>
+        <?php
+                if ($reservation['stay_start'] >= date('Y-m-d', strtotime("+5 days"))){
+                    $_SESSION['rent_id'] = $reservation['id'];
+                    ?>
+                    <a href="../actions/action_cancel_reservation.php"><button id="cancelReservation" type="submit" onclick="">Cancel</button></a>
+                    <?php
+                }
+            }
+        }
+    }
+    
     function draw_edit_story_form($story_info)
     {
         ?>
@@ -225,6 +252,20 @@ function draw_story_info($story_info, $story_images, $username)
                     ?>
         </div>
 <?php
+    }
+
+    function draw_reserve_form(){
+        ?>
+        <div>
+        <form action ="../actions/action_reserve.php" method= "post">
+           <label> Check-in date: <input type="date" name= "start_date" required> </label>
+           <label> Check-out date: <input type="date" name= "end_date" required> </label>
+           <label> Number of guests: <input type="number" name= "num_guests" min = 1 required> </label>
+           <input type = "submit" value = "Reserve"/>
+        </form>
+        <br></br>
+    </div>
+    <?php
     }
 }
 

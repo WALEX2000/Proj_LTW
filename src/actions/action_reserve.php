@@ -3,15 +3,24 @@
     include_once('../database/stories_queries.php');
     include_once('../includes/session.php');
 
+    if (!isset($_SESSION['username']))
+      die(header('Location: ../pages/login.php'));
+
     $start_date = $_POST['start_date'];
     $end_date =  $_POST['end_date'];
     $num_guests=  $_POST['num_guests'];
     $story_id = $_SESSION['story_id'];
 
+
+    if ($start_date > $end_date){
+      $_SESSION['messages'][] = array('type' => 'error', 'content' => 'The start date should be before the end date!');
+      die(header("Location: ../pages/story.php?story_id=$story_id"));
+    }
+    
     $already_existing_res = get_rented_stories_by_dates($story_id, $start_date, $end_date);
     if (count($already_existing_res) != 0){
-        $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Those dates are already occupied!');
-        die(header("Location: ../pages/story.php?story_id=$story_id"));
+      $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Those dates are already occupied!');
+      die(header("Location: ../pages/story.php?story_id=$story_id"));
     }
 
   try {

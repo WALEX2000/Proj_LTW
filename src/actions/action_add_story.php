@@ -5,6 +5,9 @@
     include_once('../templates/tpl_common.php');
 
 
+    if (!isset($_SESSION['username']))
+      die(header('Location: ../pages/login.php'));
+
     $name = $_POST['title'];
     $country =  $_POST['country'];
     $city=  $_POST['city'];

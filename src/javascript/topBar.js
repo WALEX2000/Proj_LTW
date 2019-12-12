@@ -24,4 +24,13 @@ output.innerHTML = slider.value;
 
 slider.oninput = function() {
   output.innerHTML = this.value;
-}
+};
+
+//Search bar add options
+let searchField = document.getElementById("searchField");
+let extraOptions = document.getElementById("search_form");
+let closeExtraOptionsBtn = document.getElementById("closeExtraOption");
+
+searchField.addEventListener("focus", () => {extraOptions.classList.add("show");});
+
+closeExtraOptionsBtn.addEventListener("click", () => {extraOptions.classList.remove("show");});

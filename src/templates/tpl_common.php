@@ -23,6 +23,13 @@ function draw_header($stylesheet)
     <script src="../javascript/home.js" defer></script>
 
   </head>
+  <?php if (isset($_SESSION['messages'])) {?>
+        <section id="messages">
+          <?php foreach($_SESSION['messages'] as $message) { ?>
+            <div class="<?=$message['type']?>"><?=$message['content']?></div>
+          <?php } ?>
+        </section>
+      <?php unset($_SESSION['messages']); } ?>
 
   <body>
     <div id="all">
@@ -31,22 +38,19 @@ function draw_header($stylesheet)
           <img id="logo" src="../../images/houseLogo.png" />
         </a>
         <div id="searchBar">
-          <input id="searchField" type="text" placeholder="Search..">
+          <input id="searchField" type="text" placeholder="Enter a location..">
           <button id="searchButton" type="submit" onclick=""><i class="fa fa-search fa-2x"></i></button>
         </div>
-
-        <div class="dropdown">
-          <button onclick="toggle_search_form()" class="dropbtn"><img id="addHouse" src="../../images/addHouse.png" /></button>
-          <div id="search_form" class="dropdown-content">
-            <form id="form" action="../actions/action_search.php" method="post">
-              <label>Where:<input id="location" type="text" name="location" /></label>
-              <label>Check in:<input id="stay_begin" type="date" name="check_in" /></label>
-              <label>Check out:<input id="stay_end" type="date" name="check_out" /></label>
-              <label>Guests:<input id="guests" type="number" min="1" name="guests" value="1" required /></label>
-              <label>Budget: <span id="budget_value"></span><input type="range" min="1" max="500" value="250" class="budget_slider" id="budget_slider" name="budget"></label>
-              <input id="submit_btn" type="submit" name="search" value="Search" />
-            </form>
-          </div>
+        <div id="login_modal" class="modal">
+            <div class="modal-content animate">
+                <form id="login_form" action="../actions/action_login.php" method="post">
+                    <div id="input-div">
+                        <label> Username <input type="text" name="username" required> </label>
+                        <label> Password <input type="password" name="password" required> </label>
+                        <button type="submit">Login</button>
+                    </div>
+                </form>
+            </div>
         </div>
 
 
@@ -72,18 +76,38 @@ function draw_header($stylesheet)
         <?php
           } else {
             ?>
-          <button class="top_bar_btn" onclick="document.getElementById('register_modal').style.display='block'">Register| </button>
+          <button class = "top_bar_btn"onclick="document.getElementById('register_modal').style.display='block'">Register</button>
           <!--<a id="Log In" href="../pages/login.php">Log In</a>-->
           <button class="top_bar_btn" onclick="document.getElementById('login_modal').style.display='block'">Login</button>
         <?php
           }
-          if (isset($_SESSION['message'])) {
+          /*if (isset($_SESSION['message'])) {
             print_r($_SESSION['message']);
-          }
+          }*/
           ?>
       </div>
-    <?php }
+            <div class="dropdown dropdownAnimation">
+                  <div id="search_form" class="dropdown-content">
+                      <form id="form" action="../actions/action_search.php" method="post">
+                        <div>
+                            <label> Check-In: </label><input id="stay_begin" type="date" name="check_in"/>
+                            <label> Check-Out: </label><input id="stay_end" type="date" name="check_out"/>
+                        </div>
+                        <div>
+                            <br/>
+                            <label> Guests: </label>
+                            <input id="guests" type="number" min= "1" name="guests" value="1" required/>
+                        </div>
+                        <div>
+                            <br/>
+                            <label> Budget: </label><span id = "budget_value"></span><input type="range" min="1" max="500" class="budget_slider" id="budget_slider" name="budget">
+                        </div>
+                        <button id="closeExtraOption" type="button" name="close"><i class="fa fa-times-circle fa-5x"></i></button>
+                      </form>
+                  </div>
+            </div>
 
+    <?php } ?>
 
     function draw_message($message)//TODO: Good or bad
     {
