@@ -19,6 +19,7 @@ a {
     align-items: center;
     grid-template-columns: 5em 20em auto 5em 5em;
     grid-template-rows: 5em;
+    z-index: 1;
 }
 
 #profilePic {
@@ -101,12 +102,11 @@ a {
       width: 100%;
   }
 
-  
   .dropdown-content {
     display: none;
     background-color: #BFD5F6;
     overflow: auto;
-    z-index: 1;
+    z-index: 0;
   }
   
   .dropdown-content form {
@@ -120,6 +120,36 @@ a {
   
   .dropdown form:hover {
       background-color: rgb(200, 218, 243);;
+  }
+
+  .dropdownAnimation {
+    -webkit-animation: translate 0.6s;
+    animation: translate 0.6s
+  }
+
+  .dropUpAnimation {
+    -webkit-animation: translateUp 0.6s;
+    animation: translateUp 0.6s
+  }
+
+  @-webkit-keyframes translateUp {
+    from {-webkit-transform: translate(0, 0)} 
+    to {-webkit-transform: translate(0,-7.2em)}
+  }
+    
+  @keyframes translate {
+    from {transform: translate(0, 0)} 
+    to {transform: translate(0, -7.2em)}
+  }
+
+  @-webkit-keyframes translate {
+    from {-webkit-transform: translate(0, -7.2em)} 
+    to {-webkit-transform: translate(0,0)}
+  }
+    
+  @keyframes translate {
+    from {transform: translate(0, -7.2em)} 
+    to {transform: translate(0, 0)}
   }
   
   .show {
@@ -175,7 +205,7 @@ form button[type="submit"] {
   .modal {
     position: absolute;
     display: none; /* Hidden by default */
-    z-index: 1; /* Sit on top */
+    z-index: 2; /* Sit on top */
     left: 0;
     top: 0;
     width: 100%; /* Full width */

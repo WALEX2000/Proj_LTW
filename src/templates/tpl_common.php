@@ -95,7 +95,7 @@ function draw_header($stylesheet)
           }*/
           ?>
       </div>
-            <div class="dropdown dropdownAnimation">
+            <div class="dropdown">
                   <div id="search_form" class="dropdown-content">
                       <form id="form" action="../actions/action_search.php" method="post">
                         <div>
