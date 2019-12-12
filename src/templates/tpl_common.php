@@ -30,19 +30,10 @@ function draw_header($stylesheet)
       <?php unset($_SESSION['messages']); } ?>
 
   <body>
-    <div id="all">
-      <div id="topBar">
-        <a href="home.php">
-          <img id="logo" src="../../images/houseLogo.png" />
-        </a>
-        <div id="searchBar">
-          <input id="searchField" type="text" placeholder="Enter a location..">
-          <button id="searchButton" type="submit" onclick=""><i class="fa fa-search fa-2x"></i></button>
-        </div>
-        <div id="login_modal" class="modal">
+      <div id="login_modal" class="modal">
             <div class="modal-content animate">
                 <form id="login_form" action="../actions/action_login.php" method="post">
-                    <div id="input-div">
+                    <div class="input-div">
                         <label> Username <input type="text" name="username" required> </label>
                         <label> Password <input type="password" name="password" required> </label>
                         <button type="submit">Login</button>
@@ -54,7 +45,7 @@ function draw_header($stylesheet)
         <div id="register_modal" class="modal">
             <div class="modal-content animate">
                 <form id="register_form" action="../actions/action_register.php" method="post" enctype="multipart/form-data">
-                    <div id="input-div">
+                    <div class="input-div">
                         <label> Username <input type="text" name="username" required> </label>
                         <label> Name <input type="text" name="name" required> </label>
                         <label> Email <input type="text" name="email" required> </label>
@@ -67,7 +58,15 @@ function draw_header($stylesheet)
                 </form>
             </div>
         </div>
-
+    <div id="all">
+      <div id="topBar">
+        <a href="home.php">
+          <img id="logo" src="../../images/houseLogo.png" />
+        </a>
+        <div id="searchBar">
+          <input id="searchField" type="text" placeholder="Enter a location..">
+          <button id="searchButton" type="submit" onclick=""><i class="fa fa-search fa-2x"></i></button>
+        </div>
         <div id="addHouse">
           <a href="add_story.php">
             <img id="addHouse" src="../../images/addHouse.png" />

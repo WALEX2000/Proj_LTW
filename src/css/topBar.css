@@ -19,7 +19,6 @@ a {
     align-items: center;
     grid-template-columns: 5em 20em auto 5em 5em;
     grid-template-rows: 4em;
-    z-index: 2;
 }
 
 #profilePic {
@@ -43,6 +42,10 @@ a {
 #addHouse {
     margin-left: auto;
     margin-right: 1em;
+}
+
+#addHouse *{
+  display: none;
 }
 
 #searchBar {
@@ -164,27 +167,45 @@ form button[type="submit"] {
   form button[type="submit"]:hover {
     opacity: 0.7;
   }
+  
   .modal {
+    position: absolute;
     display: none; /* Hidden by default */
     z-index: 1; /* Sit on top */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
-    height: 100%; /* Full height */
+    height: 200%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0, 0, 0); /* Fallback color */
     background-color: rgba(0, 0, 0, 0.719); /* Black w/ opacity */
-    padding-top: 60px;
   }
 
   .modal-content {
+    position: fixed;
+    top: 20em;
+    left: calc(50% - 10em);
     background-color: #fefefe;
-    margin: 5% auto 15% auto; 
     border: 1px solid #888;
-    width: 20%; 
+    width: 25em; 
     height: auto;
-    align-self: fixed;
-    justify-self: center;
+    padding: 1em;
+    border-radius: 20px;
+  }
+
+  .input-div label {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    margin-bottom: 1em;
+  }
+
+  .input-div label input {
+    width: 100%;
+    margin: 0;
+  }
+
+  input:focus {
+    outline-width: 0;
   }
 
   .animate {
@@ -207,9 +228,18 @@ form button[type="submit"] {
       border: none;
       background-color: transparent;
       float: right;
-      margin-left: 80%;
+      margin-left: auto;
+      margin-right: 4em;
       color: #789BD0;
+      width: 5em;
+      height: 5em;
+      margin-top: auto;
+      margin-bottom: auto;
   }
+
+#closeExtraOption:hover {
+    cursor: pointer;
+}
 
     #closeExtraOption:focus {
         outline-width: 0;

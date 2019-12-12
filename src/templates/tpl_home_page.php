@@ -10,8 +10,10 @@
 
             //$log = "<script> console.log(" . json_encode($story, JSON_HEX_TAG) . "); </script>";
             //echo $log;
-        ?>    
-            <img id="TopHouse" src="../../images/<?= $image_url ?>" alt="TopHouse" />
+        ?>
+            <a href="story.php?story_id=<?= $story['id'] ?>">
+                <img id="TopHouse" src="../../images/<?= $image_url ?>" alt="TopHouse" />
+            </a>
             <div class="BottomText">
                 <p><?=$story['name']?> - <?=$story['city']?></p>
             </div>
