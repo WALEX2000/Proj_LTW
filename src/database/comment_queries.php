@@ -21,6 +21,14 @@ function get_all_comments($story_id){
     return $comments;
 }
 
+function has_commented($story_id, $username){
+    global $db;
+    $stmt = $db->prepare('select * from Comment where story = ? and username = ?');
+    $stmt->execute(array($story_id, $username));
+    $comment = $stmt->fetch();
+    return $comment;
+}
+
 function get_reply($comment_id){
     global $db;
     $stmt = $db->prepare('select * from Reply where comment = ?');

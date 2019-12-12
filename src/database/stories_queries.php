@@ -62,20 +62,28 @@ function get_reservations_of_story($story_id)
 
 function insert_story($story_info, $username) {
     global $db;
-    $stmt = $db->prepare('INSERT INTO Story VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+    $stmt = $db->prepare('insert into Story values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
     $stmt->execute(array(null, $story_info['name'], $story_info['country'], $story_info['city'], $story_info['address'],NULL, $story_info['details'], 0, 0,$username, date("Y/m/d"), $story_info['price_night'], $story_info['capacity']));
   }
 
 function insert_reservation ($reservation_info){
   global $db;
-  $stmt = $db->prepare('INSERT INTO Rented VALUES(?, ?, ?, ?, ?, ?, ?)');
+  $stmt = $db->prepare('insert into Rented values(?, ?, ?, ?, ?, ?, ?)');
   $stmt->execute(array(null, $reservation_info['username'], $reservation_info['story_id'], $reservation_info['start_date'], $reservation_info['end_date'],$reservation_info['num_guests'], $reservation_info['total_price']));
 }
 
 function delete_reservation($rent_id){
   global $db;
-  $stmt = $db->prepare('DELETE FROM Rented WHERE id = ?');
+  $stmt = $db->prepare('delete from Rented where id = ?');
   $stmt->execute(array($rent_id));
+}
+
+function has_reserved($story_id, $username){
+  global $db;
+  $stmt = $db->prepare('select * from Rented where story = ? and renter = ?');
+  $stmt->execute(array($story_id, $username));
+  $reservation = $stmt->fetch();
+  return $reservation;
 }
 
 function update_story_info($story_data, $new_story_data)
@@ -180,7 +188,6 @@ function check_location($story_id,$location){
 ///////////////////////////
 
 function get_available_stories($location, $check_in, $check_out, $price_max, $number_of_guests){
-    //TODO: check dates
 
     global $db;
     $stmt = $db->prepare('select Story.id from Story where not exists (select * from Rented where Rented.story = Story.id and 

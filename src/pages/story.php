@@ -16,16 +16,21 @@
     $owner = $story_info['owner'];
     $capacity = $story_info['capacity'];
 
-    if (isset($_SESSION['username']))
+    if (isset($_SESSION['username'])){
         $username = $_SESSION['username'];
-    else{
+        $commented = has_commented($story_id, $username);
+        $reserved = has_reserved($story_id, $username);
+    }else{
         $username = null;
+        $commented = null;
+        $reserved = null;
     }
 
     draw_header("index.css");
     draw_story_info($story_info, $all_story_images, $username);
     draw_reserve_form($username, $owner, $story_info['capacity']);
     draw_reservations($username, $owner, $reservations);
-    draw_comment_form($username,$owner);
+    if ($username != null && $reserved != FALSE && $commented == FALSE)
+        draw_comment_form($username,$owner);
     draw_all_comments($comments, $owner, $username);
     draw_footer();

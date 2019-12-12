@@ -48,7 +48,7 @@ function draw_story_info($story_info, $story_images, $username)
                 ?>
         </div>
 
-        <h2>Average is <?= $average_ratings ?> of <?= $story_info['number_ratings'] ?> ratings</h2>
+        <h2>Average is <?= number_format($average_ratings,1) ?> of <?= $story_info['number_ratings'] ?> ratings</h2>
 
     </div>
     <?php
@@ -137,18 +137,21 @@ function draw_story_info($story_info, $story_images, $username)
             $city = $info['city'];
 
             ?>
-        <!--TODO: ADICIONAR LINK PARA CADA STORY-->
         <div class="search_result_container">
             <div class="result_image_container">
+            <a href="story.php?story_id=<?= $result['id'] ?>">
                 <img class="result_image" src="../../images/Room1.jpg" alt="Awesome Photo of this house ->" />
+            </a>
             </div>
             <div class="info_container">
+            <a href="story.php?story_id=<?= $result['id'] ?>">
                 <h2><?= $name ?></h2>
                 <p><?= $address ?></p>
                 <p><?= $country ?></p>
                 <p><?= $city ?></p>
                 <p><?= $guests ?></p>
                 <p><?= $details ?></p>
+            </a>
             </div>
         </div>
     <?php
