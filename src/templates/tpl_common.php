@@ -118,7 +118,7 @@ function draw_header($stylesheet)
                   </div>
             </div>
 
-    <?php } ?>
+    <?php }
 
     function draw_message($message)//TODO: Good or bad
     {
