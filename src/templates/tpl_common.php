@@ -68,14 +68,15 @@ function draw_header($stylesheet)
           <button id="searchButton" type="submit" onclick=""><i class="fa fa-search fa-2x"></i></button>
         </div>
         <div id="addHouse">
-          <a href="add_story.php">
-            <img id="addHouse" src="../../images/addHouse.png" />
+          <a id="addHouseLink" href="add_story.php">
+            <img id="addHouseImg" src="../../images/addHouse.png" />
           </a>
         </div>
         <?php
           if (isset($_SESSION['username'])) {
             $user = get_user_info($_SESSION['username']);
             $image_url = get_image_url($user['profile_image']);
+            echo '<script type="text/javascript">','document.getElementById("addHouseLink").style.display="block"','</script>';
             ?>
           <a href="profile.php?username=<?= $_SESSION['username'] ?>">
             <img id="profilePic" src="../../images/<?= $image_url ?>" />

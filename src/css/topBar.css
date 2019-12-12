@@ -18,7 +18,7 @@ a {
     background-color: #789BD0;
     align-items: center;
     grid-template-columns: 5em 20em auto 5em 5em;
-    grid-template-rows: 4em;
+    grid-template-rows: 5em;
 }
 
 #profilePic {
@@ -44,8 +44,12 @@ a {
     margin-right: 1em;
 }
 
-#addHouse *{
+#addHouseLink{
   display: none;
+}
+
+#addHouseImg {
+  display: inherit;
 }
 
 #searchBar {
