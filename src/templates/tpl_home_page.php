@@ -20,13 +20,13 @@
         </div>
         <div id="SpotlightFrame">
             <div id="Recommendations" class="HousePreviewer">
-                <button type="button" class="arrowButton"><i class="fa fa-chevron-left fa-5x"></i></button>
+                <button type="button" class = "arrowButton" id="recommendedBack"><i class="fa fa-chevron-left fa-5x"></i></button>
                 <?php
                     //TODO change query for each preview
                     foreach ($top_stories as $story) {
                         $image_url = get_image_url($story['main_image']);
-                        ?>
-                    <div class="PreviewedHouse">
+                ?>
+                    <div class="PreviewedHouse RecommendedHouse">
                         <a href="story.php?story_id=<?= $story['id'] ?>">
                             <img src="../../images/<?= $image_url ?>" alt="Photo of <?= $story['name'] ?> story" class="PreviewedHouseImage" />
                         </a>
@@ -36,16 +36,16 @@
                     </div>
                 <?php
                     }
-                    ?>
-                <button type="button" class="arrowButton"><i class="fa fa-chevron-right fa-5x"></i></button>
+                ?>
+                <button type="button" class = "arrowButton" id="recommendedFront"><i class="fa fa-chevron-right fa-5x"></i></button>
             </div>
             <div id="Trending" class="HousePreviewer">
-                <button type="button" class="arrowButton"><i class="fa fa-chevron-left fa-5x"></i></button>
+                <button type="button" class = "arrowButton" id="trendingBack"><i class="fa fa-chevron-left fa-5x"></i></button>
                 <?php
                     foreach ($most_rented as $story) {
                         $image_url = get_image_url($story['main_image']);
-                        ?>
-                    <div class="PreviewedHouse">
+                ?>
+                    <div class="PreviewedHouse TrendingHouse">
                         <a href="story.php?story_id=<?= $story['id'] ?>">
                             <img src="../../images/<?= $image_url ?>" alt="Photo of <?= $story['name'] ?> story" class="PreviewedHouseImage" />
                         </a>
@@ -55,16 +55,16 @@
                     </div>
                 <?php
                     }
-                    ?>
-                <button type="button" class="arrowButton"><i class="fa fa-chevron-right fa-5x"></i></button>
+                ?>
+                <button type="button" class = "arrowButton" id="trendingFront"><i class="fa fa-chevron-right fa-5x"></i></button>
             </div>
             <div id="NewAdditions" class="HousePreviewer">
-                <button type="button" class="arrowButton"><i class="fa fa-chevron-left fa-5x"></i></button>
+                <button type="button" class = "arrowButton" id="newBack"><i class="fa fa-chevron-left fa-5x"></i></button>
                 <?php
                     foreach ($most_recent_stories as $story) {
                         $image_url = get_image_url($story['main_image']);
-                        ?>
-                    <div class="PreviewedHouse">
+                ?>
+                    <div class="PreviewedHouse NewHouse">
                         <a href="story.php?story_id=<?= $story['id'] ?>">
                             <img src="../../images/<?= $image_url ?>" alt="Photo of <?= $story['name'] ?> story" class="PreviewedHouseImage" />
                         </a>
@@ -74,8 +74,8 @@
                     </div>
                 <?php
                     }
-                    ?>
-                <button type="button" class="arrowButton"><i class="fa fa-chevron-right fa-5x"></i></button>
+                ?>
+                <button type="button" class = "arrowButton" id="newFront"><i class="fa fa-chevron-right fa-5x"></i></button>
             </div>
         </div>
     </div>

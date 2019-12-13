@@ -45,6 +45,7 @@ body {
 }
 
 .PreviewedHouse {
+    display: none;
     flex: 1 1 0;
     margin-top: 1em;
     margin-bottom: 1em;
