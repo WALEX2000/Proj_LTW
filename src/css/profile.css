@@ -2,6 +2,15 @@
     display: grid;
     grid-template-columns: 18em auto;
     font-family: Righteous, sans-serif;
+    height: 100%;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
 }
 
 #profilePicture {
@@ -29,13 +38,26 @@
     width: 6em;
     height: 6em;
     clip-path: circle(2.5em at center);
-    position: absolute;
-    top: 28em;
-    left: 16em;
+}
+
+#editButtonTotal{
+    position: relative;
+    top: -11em;
+    left: 4em;
 }
 
 #editButton:hover {
     cursor: pointer;
+}
+
+.userInfoText {
+    margin-bottom: 0;
+    margin-top: 0.5em;
+    overflow: hidden;
+}
+
+.editUserInfo {
+    display: none;
 }
 
 #userPanel {
@@ -48,6 +70,7 @@
     width: 250px;
     height: 80px;
     margin: 20px;
+    margin-top: 0;
     margin-left: auto;
     margin-right: auto;
     border-radius: 15px;
@@ -57,4 +80,9 @@
 
 .panelButton:focus {
     outline-width: 0;
+}
+
+#housesPanel {
+    overflow: scroll;
+    height: 100%;
 }

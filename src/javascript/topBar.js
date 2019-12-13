@@ -10,7 +10,7 @@ slider.oninput = function() {
 
 //Search bar add options
 let searchField = document.getElementById("searchField");
-let extraOptions = document.getElementById("search_form");
+let extraOptions = document.getElementById("dropdown");
 let closeExtraOptionsBtn = document.getElementById("closeExtraOption");
 let body = document.getElementById("body");
 

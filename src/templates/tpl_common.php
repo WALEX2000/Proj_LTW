@@ -42,12 +42,12 @@ function draw_header($stylesheet)
                     <div class="input-div">
                         <label> Username <input type="text" name="username" required> </label>
                         <label> Name <input type="text" name="name" required> </label>
-                        <tlabel> Email <input type="text" name="email" required> </label>
+                        <label> Email <input type="text" name="email" required> </label>
                         <label> Birthday <input type="date" name="birthday" required> </label>
                         <label> Nationality <input type="text" name="nationality" required> </label>
                         <label> Password <input type="password" name="password" required> </label>
                         <label> Profile Image <input type="file" name="profile_img" id="profile_img">  </label>
-                        <buton type="submit">Register</button>
+                        <button type="submit">Register</button>
                     </div>
                 </form>
             </div>
@@ -89,7 +89,7 @@ function draw_header($stylesheet)
           }*/
           ?>
       </div>
-            <div class="dropdown">
+            <div id="dropdown" class="noShow">
                   <div id="search_form" class="dropdown-content">
                       <form id="form" action="../actions/action_search.php" method="post">
                         <div>

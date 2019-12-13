@@ -10,7 +10,8 @@ a {
 
 #all {
     display: grid;
-    grid-template-rows: 3fr auto auto;
+    grid-template-rows: 5em auto max-content;
+    min-height: 100vh;
 }
 
 #topBar {
@@ -93,9 +94,13 @@ a {
     margin-right:auto;
 }
   
-  .dropdown {
-      width: 100%;
-    display: inline-block;
+  #dropdown {
+    width: 100%;
+  }
+
+  .noShow {
+    display: none;
+    height: 0;
   }
 
   #search_form {
@@ -103,7 +108,7 @@ a {
   }
 
   .dropdown-content {
-    display: none;
+    display: inherit;
     background-color: #BFD5F6;
     overflow: auto;
     z-index: 0;
@@ -154,6 +159,7 @@ a {
   
   .show {
       display: block;
+      height: auto;
 }
 
 .top_bar_btn{
@@ -185,8 +191,7 @@ input{
   border-radius: 15px 50px; 
 }
 
-
-form input[type="submit"] {
+form button[type="submit"] {
     background-color: #789BD0;
     color: white;
     padding: 14px 20px;
@@ -198,7 +203,7 @@ form input[type="submit"] {
     transition: 0.5s;
 
   }
-  form input[type="submit"]:hover {
+  form button[type="submit"]:hover {
     opacity: 0.7;
   }
   
