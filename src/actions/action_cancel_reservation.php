@@ -12,7 +12,6 @@
 
     try {
         delete_reservation($rent_id);
-        $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Canceled reservation successfully!');
         header('Location: ../pages/profile.php?username=username=$username');
     } catch (PDOException $e) {
         die($e->getMessage());

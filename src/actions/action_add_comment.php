@@ -21,12 +21,11 @@ $current_date = date("Y-m-d");
 
 try {
     insert_comment($story_id, $username, $content, $current_date, $rating);
-    $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Added story successfully!');
     $location = 'Location: ../pages/story.php?story_id=' . $story_id;
     header($location);
   } catch (PDOException $e) {
     die($e->getMessage());
-    $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to add story!');
+    $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to add comment!');
     $location = 'Location: ../pages/story.php?story_id=' . $story_id;
     header($location);
   }

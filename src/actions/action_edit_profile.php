@@ -20,7 +20,6 @@ try{
     $old_user_info = get_user_info($username);
     update_user_info($old_user_info, $new_user_info, $current_password);
     $_SESSION['username'] = $username;
-    $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Profile updated with success');
     header('Location: ../pages/home.php');
   }
   else{

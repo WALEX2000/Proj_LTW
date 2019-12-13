@@ -96,3 +96,8 @@ body {
 .arrowButton:hover {
     cursor: pointer;
 }
+
+#messages{
+    color: red;
+
+}
