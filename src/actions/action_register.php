@@ -36,7 +36,7 @@ if (empty($_FILES["profile_img"]["tmp_name"]) == true) {
   $fileActualExt = strtolower(end($fileExt));
   print_r($fileActualExt);
 
-$allowed = array('jpg', 'jpeg', 'png');
+  $allowed = array('jpg', 'jpeg', 'png');
 
   if (in_array($fileActualExt, $allowed)) {
     if ($fileError === 0) {
@@ -64,16 +64,18 @@ $allowed = array('jpg', 'jpeg', 'png');
 
 try {
   if ($fileName !== NULL){
-    insert_image($fileName, $fileNameNew);
+    insert_image($fileName, $fileNameNew, NULL);
+    $image_id = get_image_id($fileNameNew);
   }else{
-    $fileName = "default_avatar";
+    $image_id = 1;
   }
   
-  $user_info = array('username' => $username, 'name' => $name, 'email' => $email, 'birthday' => $birthday, 'nationality' => $nationality, 'password' => $password, 'image' => $fileName);
+  $user_info = array('username' => $username, 'name' => $name, 'email' => $email, 'birthday' => $birthday, 'nationality' => $nationality, 'password' => $password, 'image' => $image_id);
   insert_user($user_info);
   $_SESSION['username'] = $username;
   $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Signed up and logged in!');
-  header('Location: ../pages/home.php');
+  $go_to = "Refresh:0;url=../pages/" . $_SESSION['last_page'];
+  header($go_to);
 } catch (PDOException $e) {
   die($e->getMessage());
   $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to signup!');

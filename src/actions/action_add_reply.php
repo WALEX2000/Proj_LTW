@@ -15,11 +15,10 @@ $comment = $_POST['comment'];
 
 try {
     insert_reply($username, $content, $current_date, $comment);
-    $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Added story successfully!');
     header('Location: ../pages/home.php');
   } catch (PDOException $e) {
     die($e->getMessage());
-    $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to add story!');
+    $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to add reply!');
     header('Location: ../pages/home.php');
   }
 

@@ -22,15 +22,7 @@ function draw_header($stylesheet)
     <script src="../javascript/topBar.js" defer></script>
     <script src="../javascript/home.js" defer></script>
 
-  </head>
-  <?php if (isset($_SESSION['messages'])) {?>
-        <section id="messages">
-          <?php foreach($_SESSION['messages'] as $message) { ?>
-            <div class="<?=$message['type']?>"><?=$message['content']?></div>
-          <?php } ?>
-        </section>
-      <?php unset($_SESSION['messages']); } ?>
-
+</head>
   <body>
       <div id="login_modal" class="modal">
             <div class="modal-content animate">
@@ -50,12 +42,12 @@ function draw_header($stylesheet)
                     <div class="input-div">
                         <label> Username <input type="text" name="username" required> </label>
                         <label> Name <input type="text" name="name" required> </label>
-                        <label> Email <input type="text" name="email" required> </label>
+                        <tlabel> Email <input type="text" name="email" required> </label>
                         <label> Birthday <input type="date" name="birthday" required> </label>
                         <label> Nationality <input type="text" name="nationality" required> </label>
                         <label> Password <input type="password" name="password" required> </label>
-                        <label> Profile Image <input type="file" name="profile_img" id="profile_img"> </label>
-                        <button type="submit">Register</button>
+                        <label> Profile Image <input type="file" name="profile_img" id="profile_img">  </label>
+                        <buton type="submit">Register</button>
                     </div>
                 </form>
             </div>
@@ -120,16 +112,16 @@ function draw_header($stylesheet)
 
     <?php }
 
-    function draw_message($message)//TODO: Good or bad
+    function draw_messages()
     {
-      ?>
-      <div id="message_modal" class="modal">
-        <div class="modal-content animate">
-          <h1><?=$message?></h1>
-          <a href="../pages/<?=$_SESSION['last_page']?>" onclick="document.getElementById('message_modal').style.display='none'">Ok</a>
-        </div>
-      </div>
-    <?php
+      if (isset($_SESSION['messages'])) { ?>
+        <section id="messages">
+           <?php foreach ($_SESSION['messages'] as $message) { ?>
+              <div class="<?= $message['type'] ?>"><?= $message['content'] ?></div>
+           <?php } ?>
+        </section>
+     <?php unset($_SESSION['messages']);
+        }
     }
     function draw_footer()
     { ?>

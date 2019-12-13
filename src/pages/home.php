@@ -7,6 +7,9 @@
 
     draw_header("index.css");
     $all_stories = get_all_stories();
-    draw_home($all_stories);
+    $top_story = get_top_stories();
+    $most_rented = get_most_rented_stories();
+    $most_recent_stories = get_most_recent_stories();
+    draw_home($top_story,$most_recent_stories,$most_rented);
     draw_footer();
 ?>

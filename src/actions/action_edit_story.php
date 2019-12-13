@@ -20,7 +20,6 @@ try {
   $old_story_info = get_story_info($story_id);
   update_story_info($old_story_info,$new_story_info);
   $_SESSION['story_id'] = $story_id;
-  $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Your place was updated with success');
   header('Location: ../pages/home.php');
 } catch (PDOException $e) {
   die($e->getMessage());

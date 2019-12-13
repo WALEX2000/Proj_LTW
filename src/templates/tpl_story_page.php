@@ -1,12 +1,12 @@
 <?php
 include_once('../database/comment_queries.php');
 
-function draw_story_info($story_info, $story_images, $username)
+function draw_story_info($story_info, $story_images, $story_main_image, $username)
 {
     ?>
     <div id="story_info">
+        <img src="../../images/<?= $story_main_image ?>" alt="Photo of  <?= $story_info['name'] ?>">
         <?php
-
             display_all_images($story_images);
             if ($username == $story_info['owner']) {
                 ?>
@@ -31,7 +31,7 @@ function draw_story_info($story_info, $story_images, $username)
         <h2><?= $story_info['capacity'] ?></h2>
         <div class="rating_display">
             <?php
-                for ($x = 0; $x <round($average_ratings); $x++) {
+                for ($x = 0; $x < round($average_ratings); $x++) {
                     ?>
                 <div class="rating_given_display">
                     ★
@@ -48,7 +48,7 @@ function draw_story_info($story_info, $story_images, $username)
                 ?>
         </div>
 
-        <h2>Average is <?= number_format($average_ratings,1) ?> of <?= $story_info['number_ratings'] ?> ratings</h2>
+        <h2>Average is <?= number_format($average_ratings, 1) ?> of <?= $story_info['number_ratings'] ?> ratings</h2>
 
     </div>
     <?php
@@ -60,8 +60,8 @@ function draw_story_info($story_info, $story_images, $username)
         foreach ($images as $image) {
             ?>
         <img src="../../images/<?= $image['url'] ?>" alt="Photo with url = <?= $image['url'] ?>">
-        <?php
-            
+    <?php
+
 
         }
     }
@@ -70,49 +70,56 @@ function draw_story_info($story_info, $story_images, $username)
     {
         if ($username != $owner) {
             ?>
-    <div>
-        <form action="../actions/action_reserve.php" method="post">
-            <label> Check-in date: <input type="date" name="start_date" required> </label>
-            <label> Check-out date: <input type="date" name="end_date" required> </label>
-            <label> Number of guests: <input type="number" name="num_guests" min=1 max=<?= $capacity ?> value=1 required> </label>
-            <input type="submit" value="Reserve" />
-        </form>
-        <br></br>
-    </div>
+        <div>
+            <?php
+                    draw_messages();
+                    ?>
+            <form action="../actions/action_reserve.php" method="post">
+                <label> Check-in date: <input type="date" name="start_date" required> </label>
+                <label> Check-out date: <input type="date" name="end_date" required> </label>
+                <label> Number of guests: <input type="number" name="num_guests" min=1 max=<?= $capacity ?> value=1 required> </label>
+                <input type="submit" value="Reserve" />
+            </form>
+            <br></br>
+        </div>
     <?php
         }
     }
 
-    function draw_reservations($username, $owner, $reservations){
+    function draw_reservations($username, $owner, $reservations)
+    {
         //TODO: possibly only the reservations happening now or in the future???
         if ($username == $owner) {
             ?><h1>Reservations</h1> <?php
-            foreach($reservations as $reservation){           
-            ?>
-        <div>
-            
-            <h2><?= $reservation['renter'] ?></h2>
-            <h3><?= $reservation['stay_start'] ?></h3>
-            <h2><?= $reservation['stay_end'] ?></h2>
-            <h2><?= $reservation['number_of_people'] ?></h2>
-            <h2><?= $reservation['total_price'] ?> €</h2>
-            
-        </div>
-        <?php
-                if ($reservation['stay_start'] >= date('Y-m-d', strtotime("+5 days"))){
-                    $_SESSION['rent_id'] = $reservation['id'];
-                    ?>
-                    <a href="../actions/action_cancel_reservation.php"><button id="cancelReservation" type="submit" onclick="">Cancel</button></a>
-                    <?php
+                                            foreach ($reservations as $reservation) {
+                                                ?>
+            <div>
+
+                <h2><?= $reservation['renter'] ?></h2>
+                <h3><?= $reservation['stay_start'] ?></h3>
+                <h2><?= $reservation['stay_end'] ?></h2>
+                <h2><?= $reservation['number_of_people'] ?></h2>
+                <h2><?= $reservation['total_price'] ?> €</h2>
+
+            </div>
+            <?php
+                        if ($reservation['stay_start'] >= date('Y-m-d', strtotime("+5 days"))) {
+                            $_SESSION['rent_id'] = $reservation['id'];
+                            ?>
+                <a href="../actions/action_cancel_reservation.php"><button id="cancelReservation" type="submit" onclick="">Cancel</button></a>
+    <?php
                 }
             }
         }
     }
-    
+
     function draw_edit_story_form($story_info)
     {
         ?>
     <h1>Edit Story</h1>
+    <?php
+        draw_messages();
+        ?>
     <form action="../actions/action_edit_story.php" method="post">
         <label> Name <input type="text" name="name" value="<?= $story_info['name'] ?>"> </label>
         <label> Country <input type="text" name="country" value="<?= $story_info['country'] ?>"> </label>
@@ -141,19 +148,19 @@ function draw_story_info($story_info, $story_images, $username)
             ?>
         <div class="search_result_container">
             <div class="result_image_container">
-            <a href="story.php?story_id=<?= $result['id'] ?>">
-                <img class="result_image" src="../../images/Room1.jpg" alt="Awesome Photo of this house ->" />
-            </a>
+                <a href="story.php?story_id=<?= $result['id'] ?>">
+                    <img class="result_image" src="../../images/Room1.jpg" alt="Awesome Photo of this house ->" />
+                </a>
             </div>
             <div class="info_container">
-            <a href="story.php?story_id=<?= $result['id'] ?>">
-                <h2><?= $name ?></h2>
-                <p><?= $address ?></p>
-                <p><?= $country ?></p>
-                <p><?= $city ?></p>
-                <p><?= $guests ?></p>
-                <p><?= $details ?></p>
-            </a>
+                <a href="story.php?story_id=<?= $result['id'] ?>">
+                    <h2><?= $name ?></h2>
+                    <p><?= $address ?></p>
+                    <p><?= $country ?></p>
+                    <p><?= $city ?></p>
+                    <p><?= $guests ?></p>
+                    <p><?= $details ?></p>
+                </a>
             </div>
         </div>
     <?php
@@ -256,9 +263,8 @@ function draw_story_info($story_info, $story_images, $username)
                     }
                     ?>
         </div>
-        <?php
-        }
-
+<?php
     }
+}
 
 ?>
