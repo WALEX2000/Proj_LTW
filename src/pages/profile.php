@@ -14,7 +14,10 @@ if (!isset($_SESSION['username']))
 $user_given = $_SESSION['username'];
 $user_info = get_user_info($user_given);
 $profile_pic = get_image_url($user_info['profile_image']);
-draw_header("index.css");
+draw_header("profile.css");
+?>
+<div id="body">
+<?php
 draw_user_info($user_info,$profile_pic);
 
 /* put button to choose one or another */

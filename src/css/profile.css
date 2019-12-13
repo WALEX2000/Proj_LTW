@@ -1,0 +1,60 @@
+#body {
+    display: grid;
+    grid-template-columns: 18em auto;
+    font-family: Righteous, sans-serif;
+}
+
+#profilePicture {
+    height: 16em;
+    width: 13em;
+    border-radius: 2em;
+    object-fit: cover;
+}
+
+#profileContainer {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3em;
+    width: 13em;
+    height: 16em;
+}
+
+#user_info {
+    text-align: center;
+}
+
+#editButton {
+    background-color: rgba(255,255,255,0.95);
+    border: none;
+    width: 6em;
+    height: 6em;
+    clip-path: circle(2.5em at center);
+    position: absolute;
+    top: 28em;
+    left: 16em;
+}
+
+#editButton:hover {
+    cursor: pointer;
+}
+
+#userPanel {
+    background-color: #BFD5F6;
+}
+
+.panelButton {
+    background-color: #789BD0;
+    display: block;
+    width: 250px;
+    height: 80px;
+    margin: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+    font-family: Righteous, sans-serif;
+    font-size: 2em;
+}
+
+.panelButton:focus {
+    outline-width: 0;
+}
