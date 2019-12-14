@@ -3,6 +3,13 @@
     grid-template-columns: 18em auto;
     font-family: Righteous, sans-serif;
     height: 100%;
+    overflow: scroll;
+}
+
+#all {
+    display: grid;
+    grid-template-rows: 5em min-content min-content;
+    height: 100vh;
 }
 
 html {
@@ -203,5 +210,62 @@ body {
     margin-left: auto;
     margin-right: auto;
     width: max-content;
+}
+
+.ownedHouse {
+    position: relative;
+    width: 70em;
+    height: 40em;
+    border-radius: 25px;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2em;
+}
+
+.ownedHouseImg {
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.houseInfo {
+    position: absolute;
+    width: 100%;
+    height: 10%;
+    background-color: rgba(240, 248, 255, 0.95);
+    bottom: 0;
+    font-family: Righteous, sans-serif;
+}
+
+.houseInfo p{
+    display: inline-block;
+    width: max-content;
+    margin-left: 1em;
+    margin-top: 1em;
+    font-size: larger;
+}
+
+.rating {
+    width: max-content;
+    height: 1em;
+    float: right;
+
+    margin-top: 0.2em;
+    margin-right: 1em;
+
+    font-size: xx-large;
+}
+
+.yellowStar {
+    color: #ffc700;
+}
+
+.greyStar {
+    color: #cccccc;
+}
+
+.star {
+    float: left;
+    padding: 0.1em;
 }
 

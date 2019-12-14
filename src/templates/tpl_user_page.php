@@ -68,15 +68,35 @@ function draw_rented_stories($rented)
     {
         ?>
         <div id="ownedHouses" class="hiddenPanel">
-        <h1> Places you own </h1>
         <?php
         foreach ($renting as $story) {
             $image_url = get_image_url($story['main_image']);
+            if ($story['number_ratings'] != 0) {
+                $average_ratings = (float) $story['sum_ratings'] / (float) $story_storyinfo['number_ratings'];
+            } else {
+                $average_ratings = 0;
+            }
             ?>
-            <a href="story.php?story_id=<?= $story['id'] ?>">
-                <img src="../../images/<?= $image_url ?>" alt="Photo of <?= $story['name'] ?> story">
-                <h1><?= $story['name'] ?></h1>
-            </a>
+            <div class="ownedHouse">
+                <a href="story.php?story_id=<?= $story['id'] ?>">
+                    <img src="../../images/<?= $image_url ?>" class="ownedHouseImg" alt="Photo of <?= $story['name'] ?> house">
+                    <div class="houseInfo">
+                        <p><?= $story['name'] ?> - <?= $story['country'] ?>(<?= $story['city'] ?>)</p>
+                        <div class="rating">
+                        <?php
+                        for ($x = 0; $x < round($average_ratings); $x++) {
+                            ?>
+                            <div class="yellowStar star">★</div>
+                        <?php } ?>
+                        <?php
+                        for ($x = 0; $x < 5 - round($average_ratings); $x++) {
+                            ?>
+                            <div class="greyStar star">★</div>
+                        <?php } ?>
+                        </div>
+                    </div>
+                </a>
+            </div>
         <br></br>
 <?php
         }
