@@ -47,6 +47,7 @@ function draw_login()
 function draw_edit_profile_form($user_info)
 {
    ?>
+   <div id="editProfilePanel" class="hiddenPanel">
    <div id="editProfileDiv">
    <h1>Edit Profile</h1>
    <?php
@@ -61,6 +62,7 @@ function draw_edit_profile_form($user_info)
       <label> <p>Nationality</p> <input type="text" name="nationality" value="<?= $user_info['nationality'] ?>"> </label>
       <input type="submit" value="Update" />
    </form>
+   </div>
    </div>
 <?php
 }

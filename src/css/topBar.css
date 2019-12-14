@@ -10,7 +10,7 @@ a {
 
 #all {
     display: grid;
-    grid-template-rows: 5em auto max-content;
+    grid-template-rows: 5em min-content auto;
     min-height: 100vh;
 }
 
@@ -142,7 +142,7 @@ a {
     to {-webkit-transform: translate(0,-7.2em)}
   }
     
-  @keyframes translate {
+  @keyframes translateUp {
     from {transform: translate(0, 0)} 
     to {transform: translate(0, -7.2em)}
   }
@@ -159,7 +159,7 @@ a {
   
   .show {
       display: block;
-      height: auto;
+      height: min-content;
 }
 
 .top_bar_btn{

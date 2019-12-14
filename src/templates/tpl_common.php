@@ -90,8 +90,8 @@ function draw_header($stylesheet)
           }*/
           ?>
       </div>
-            <div id="dropdown" class="noShow">
-                  <div id="search_form" class="dropdown-content">
+            <div id="dropdown">
+                  <div id="search_form" class="dropdown-content noShow">
                       <form id="form" action="../actions/action_search.php" method="post">
                         <div>
                             <label> Check-In: </label><input id="stay_begin" type="date" name="check_in"/>

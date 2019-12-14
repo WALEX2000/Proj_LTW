@@ -14,7 +14,7 @@ function draw_user_info($user_info, $image_url)
     ?>
     <div id="userPanel">
         <div id="user_info">
-        <a href="edit_profile.php" id="editButtonTotal"><button id="editButton" type="submit" onclick=""><i class="fa fa-pencil fa-4x" aria-hidden="true"></i></button></a>
+        <div id="editButtonTotal"><button id="editButton" type="button"><i class="fa fa-pencil fa-4x" aria-hidden="true"></i></button></div>
             <div id="profileContainer">
                 <img src="../../images/<?= $image_url ?>" id="profilePicture" alt="Photo of <?= $user_info['name'] ?>">
             </div>
@@ -22,8 +22,7 @@ function draw_user_info($user_info, $image_url)
             <h3 class="userInfoText"><?= $user_info['nationality'] ?> | <?= $age ?> years old</h3>
         </div>
         <div>
-            <button id="pastTripsButton" class="panelButton">Past Trips</button>
-            <button id="upcomingTripsButton" class="panelButton">Upcoming Trips</button>
+            <button id="tripsButton" class="panelButton">Your Trips</button>
             <button id="ownedHousesButton" class="panelButton">Owned Houses</button>
         </div>
     </div>
@@ -33,8 +32,8 @@ function draw_user_info($user_info, $image_url)
 function draw_rented_stories($rented)
 {
     ?>
-    <div id="housesPanel">
-        <h1> Places you have rented </h1>
+        <div id="userTrips" class="currentPanel">
+        <h1> Your Trips </h1>
         <?php
             foreach ($rented as $story) {
                 $image_url = get_image_url($story['main_image']);
@@ -59,18 +58,17 @@ function draw_rented_stories($rented)
                     //else
                     //your rate is ...
                 }
-                ?>
-                <br></br>
-    </div>
-    <?php
-
         }
-    }
+        ?>
+        </div>
+<?php
+}
 
     function draw_renting_stories($renting)
     {
         ?>
-        <h1> Places you're renting </h1>
+        <div id="ownedHouses" class="hiddenPanel">
+        <h1> Places you own </h1>
         <?php
         foreach ($renting as $story) {
             $image_url = get_image_url($story['main_image']);
@@ -81,8 +79,10 @@ function draw_rented_stories($rented)
             </a>
         <br></br>
 <?php
-
         }
+        ?>
+        </div>
+        <?php
     }
 ?>
 
