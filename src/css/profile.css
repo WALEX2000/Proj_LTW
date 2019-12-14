@@ -215,7 +215,7 @@ body {
 .ownedHouse {
     position: relative;
     width: 70em;
-    height: 40em;
+    height: 30em;
     border-radius: 25px;
     overflow: hidden;
     margin-left: auto;
@@ -224,8 +224,11 @@ body {
 }
 
 .ownedHouseImg {
+    position: relative;
     min-width: 100%;
     min-height: 100%;
+    bottom: 25%;
+    right: 10%;
 }
 
 .houseInfo {
@@ -241,7 +244,7 @@ body {
     display: inline-block;
     width: max-content;
     margin-left: 1em;
-    margin-top: 1em;
+    margin-top: 0.5em;
     font-size: larger;
 }
 
@@ -250,7 +253,7 @@ body {
     height: 1em;
     float: right;
 
-    margin-top: 0.2em;
+    margin-top: 0em;
     margin-right: 1em;
 
     font-size: xx-large;
