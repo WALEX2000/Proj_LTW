@@ -4,14 +4,16 @@ let editPanel = document.getElementById("editProfilePanel");
 
 let currentPanel = tripsPanel;
 let prevPanel;
+let moving = false;
 
 let editButton = document.getElementById("editButton");
 let tripsButton = document.getElementById("tripsButton");
 let ownedHousesButton = document.getElementById("ownedHousesButton");
 
 function changePanel(newPanel) {
-    if(newPanel == currentPanel) return;
+    if(newPanel == currentPanel || moving) return;
     prevPanel = currentPanel;
+    moving = true;
 
     void currentPanel.offsetWidth;
     currentPanel.classList.add("slideLeftAnimation");
@@ -34,6 +36,8 @@ function removePrevPanel() {
 
     prevPanel.classList.remove("slideLeftAnimation");
     currentPanel.classList.remove("slideLeftEnterAnimation");
+
+    moving = false;
 }
 
 editPanel.addEventListener("webkitAnimationEnd", (event) => {if(event.animationName == "translateLeft") removePrevPanel();});
