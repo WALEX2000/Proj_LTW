@@ -47,19 +47,21 @@ function draw_login()
 function draw_edit_profile_form($user_info)
 {
    ?>
+   <div id="editProfileDiv">
    <h1>Edit Profile</h1>
    <?php
       draw_messages();
       ?>
    <form action="../actions/action_edit_profile.php" method="post">
-      <label> Your Password <input type="password" name="current_password" required> </label>
-      <label> New name <input type="text" name="name" value="<?= $user_info['name'] ?>"> </label>
-      <label> New email <input type="text" name="email" value="<?= $user_info['email'] ?>"> </label>
-      <label> Birthday <input type="date" name="birthday" value="<?= $user_info['birthday'] ?>"> </label>
-      <label> Nationality <input type="text" name="nationality" value="<?= $user_info['nationality'] ?>"> </label>
-      <label> New Password <input type="password" name="new_password"> </label>
+      <label> <p>Account Password</p> <input type="password" name="current_password" required> </label>
+      <label> <p>New Password</p> <input type="password" name="new_password" placeholder="Leave empty if you don't want to change"> </label>
+      <label> <p>New name</p> <input type="text" name="name" value="<?= $user_info['name'] ?>"> </label>
+      <label> <p>New email</p> <input type="text" name="email" value="<?= $user_info['email'] ?>"> </label>
+      <label> <p>Birthday</p> <input type="date" name="birthday" value="<?= $user_info['birthday'] ?>"> </label>
+      <label> <p>Nationality</p> <input type="text" name="nationality" value="<?= $user_info['nationality'] ?>"> </label>
       <input type="submit" value="Update" />
    </form>
+   </div>
 <?php
 }
 ?>

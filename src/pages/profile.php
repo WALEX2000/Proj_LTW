@@ -25,6 +25,7 @@ $rented_by_user = get_user_rented($user_info['username']);
 draw_rented_stories($rented_by_user);
 $renting_by_user = get_user_renting($user_info['username']);
 draw_renting_stories($renting_by_user);
+draw_edit_profile_form($user_info);
 
 draw_footer();
 ?>

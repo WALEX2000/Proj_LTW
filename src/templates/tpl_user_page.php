@@ -14,14 +14,12 @@ function draw_user_info($user_info, $image_url)
     ?>
     <div id="userPanel">
         <div id="user_info">
+        <a href="edit_profile.php" id="editButtonTotal"><button id="editButton" type="submit" onclick=""><i class="fa fa-pencil fa-4x" aria-hidden="true"></i></button></a>
             <div id="profileContainer">
                 <img src="../../images/<?= $image_url ?>" id="profilePicture" alt="Photo of <?= $user_info['name'] ?>">
             </div>
-            <h2 class="userInfoText"><?= $user_info['name'] ?></21>
-            <h3 class="editUserInfo"><?= $user_info['username'] ?></h3>
-            <h3 class="editUserInfo"><?= $user_info['email'] ?></h3>
+            <h2 class="userInfoText"><?= $user_info['name'] ?></h2>
             <h3 class="userInfoText"><?= $user_info['nationality'] ?> | <?= $age ?> years old</h3>
-            <a href="edit_profile.php" id="editButtonTotal"><button id="editButton" type="submit" onclick=""><i class="fa fa-pencil fa-4x" aria-hidden="true"></i></button></a>
         </div>
         <div>
             <button id="pastTripsButton" class="panelButton">Past Trips</button>
@@ -87,3 +85,4 @@ function draw_rented_stories($rented)
         }
     }
 ?>
+

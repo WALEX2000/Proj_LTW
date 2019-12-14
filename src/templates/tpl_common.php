@@ -21,6 +21,7 @@ function draw_header($stylesheet)
     <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
     <script src="../javascript/topBar.js" defer></script>
     <script src="../javascript/home.js" defer></script>
+    <script src="../javascript/profile.js" defer></script>
 
 </head>
   <body>

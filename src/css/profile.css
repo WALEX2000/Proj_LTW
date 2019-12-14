@@ -23,13 +23,13 @@ body {
 #profileContainer {
     margin-left: auto;
     margin-right: auto;
-    margin-top: 3em;
     width: 13em;
     height: 16em;
 }
 
 #user_info {
     text-align: center;
+    margin-bottom: 3em;
 }
 
 #editButton {
@@ -42,7 +42,7 @@ body {
 
 #editButtonTotal{
     position: relative;
-    top: -11em;
+    top: 15.5em;
     left: 4em;
 }
 
@@ -51,9 +51,12 @@ body {
 }
 
 .userInfoText {
-    margin-bottom: 0;
+    margin-bottom: 0.5em;
     margin-top: 0.5em;
-    overflow: hidden;
+    overflow: scroll;
+    max-width: 10em;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .editUserInfo {
@@ -85,4 +88,49 @@ body {
 #housesPanel {
     overflow: scroll;
     height: 100%;
+}
+
+#editProfileDiv {
+    background-color: #789BD0;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+    padding: 1em;
+}
+
+#editProfileDiv h1 {
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    width: max-content;
+}
+
+#editProfileDiv label {
+    display: block;
+}
+
+#editProfileDiv label input{
+    margin-left: auto;
+    width: 30em;
+}
+
+#editProfileDiv label p{
+    display: inline-block;
+    width: 10em;
+    margin: 0;
+}
+
+#editProfileDiv label input[type="date"]{
+    width: 15em;
+}
+
+#editProfileDiv input[type="submit"]{
+    border: none;
+    background-color:  #BFD5F6;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
 }
