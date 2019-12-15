@@ -94,30 +94,41 @@ function draw_story_info($story_info, $story_images, $story_main_image, $usernam
 
     function draw_reservations($username, $owner, $reservations)
     {
-        //TODO: possibly only the reservations happening now or in the future???
+        //TODO: order from most recent to oldest
         if ($username == $owner) {
         ?>
             <div id="reservations">
-            <h1>Reservations</h1>
+            <div id="reservationsHeader">
+                <h1>Reservations</h1>
+            </div>
+            <div id="reservationsList">
         <?php
             foreach ($reservations as $reservation) {
+                $user_info = get_user_info($reservation['renter']);
+                $profile_image_url = get_image_url($user_info['profile_image']);
+                //TODO Foto de perfil do renter
         ?>
-            <div>
-                <h2><?= $reservation['renter'] ?></h2>
-                <h3><?= $reservation['stay_start'] ?></h3>
-                <h2><?= $reservation['stay_end'] ?></h2>
-                <h2><?= $reservation['number_of_people'] ?></h2>
-                <h2><?= $reservation['total_price'] ?> €</h2>
-            </div>
+            <div class="reservationBlock">
+                <div class="cropper">
+                    <img class="profileImg" src="../../images/<?= $profile_image_url ?>" />
+                </div>
+                <h1 class="renterName"><?= $reservation['renter'] ?></h2>
+                <p><b>Dates: </b><?= $reservation['stay_start'] ?> - <?= $reservation['stay_end'] ?></p>
+                <p><b>Number of guests: </b><?= $reservation['number_of_people'] ?></p>
+                <h2>Total amount: <?= $reservation['total_price'] ?>€</h2>
             <?php
                 if ($reservation['stay_start'] >= date('Y-m-d', strtotime("+5 days"))) {
                     $_SESSION['rent_id'] = $reservation['id'];
             ?>
-                    <a href="../actions/action_cancel_reservation.php"><button id="cancelReservation" type="submit" onclick="">Cancel</button></a>
+                    <a href="../actions/action_cancel_reservation.php" class="cancelButtonLink"><button class="cancelReservation" type="submit" onclick="">Cancel</button></a>
     <?php
                 }
+    ?>
+                </div>
+    <?php
             }
     ?>
+            </div>
             </div>
     <?php
         }
