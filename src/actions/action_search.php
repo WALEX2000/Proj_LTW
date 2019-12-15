@@ -14,7 +14,7 @@ $price_max = $_POST['budget'];
 if ( $check_in !== "" && $check_out !== "" && $check_in > $check_out){
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'The check-in date should be before the check-out date!');
     die(header("Location: ../pages/home.php"));
-  }
+}
 
 try {
     $results = get_available_stories($location, $check_in, $check_out, $price_max, $guests);

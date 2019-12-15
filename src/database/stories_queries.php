@@ -185,9 +185,9 @@ function get_available_stories($location, $check_in, $check_out, $price_max, $nu
         (date(stay_start) < date(?) and date(stay_end) > date(?) 
         or ? = "" and date(?) >= date(stay_start) and date(?) < date(stay_end)
         or ? = "" and date(?) > date(stay_start) and date(?) <= date(stay_end)))
-     and Story.price_per_night <= ? 
-     and Story.capacity >= ? 
-     and (? = "" or Story.country = ? or Story.city = ?)');
+      and Story.price_per_night <= ? 
+      and Story.capacity >= ? 
+      and (? = "" or Story.country = ? or Story.city = ?)');
   $stmt->execute(array($check_out, $check_in, $check_out, $check_in, $check_in, $check_in, $check_out, $check_out, $price_max, $number_of_guests, $location, $location, $location));
   $available = $stmt->fetchAll();
 
