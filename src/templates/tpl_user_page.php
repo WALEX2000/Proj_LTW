@@ -32,30 +32,6 @@ function draw_user_info($user_info, $image_url)
 function draw_rented_stories($rented)
 {
     ?>
-<<<<<<< HEAD
-    <h1> Places you have rented </h1>
-    <?php
-        foreach ($rented as $story) {
-            $image_url = get_image_url($story['main_image']);
-            ?>
-            <a href="story.php?story_id=<?= $story['story'] ?>">
-                <img src="../../images/<?= $image_url ?>" alt="Photo of <?= $story['name'] ?> story">
-                <h1><?= $story['name'] ?></h1>
-                <h1><?= $story['stay_start'] ?></h1>
-                <h1><?= $story['stay_end'] ?></h1>
-            </a>
-            <?php
-            if ($story['stay_start'] >= date('Y-m-d', strtotime("+5 days"))){
-                $_SESSION['rent_id'] = $story['id'];
-                ?>
-                <a href="../actions/action_cancel_reservation.php"><button id="cancelReservation" type="submit" onclick="">Cancel</button></a>
-                <?php
-            }
-            ?>
-            <br></br>
-    <?php
-
-=======
         <div id="userTrips" class="currentPanel">
         <h1> Your Trips </h1>
         <?php
@@ -82,7 +58,6 @@ function draw_rented_stories($rented)
                     //else
                     //your rate is ...
                 }
->>>>>>> 0f5363d7c96d18f754a0d128fface7f69ea548ee
         }
         ?>
         </div>
