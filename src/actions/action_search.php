@@ -24,6 +24,8 @@ try {
     }
     else{
         $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Search with no results!');
+        $_SESSION['search_results'] = null;
+        header("Location: ../pages/search_results.php?"); 
     }
 }catch (PDOException $e) {
     die($e->getMessage());

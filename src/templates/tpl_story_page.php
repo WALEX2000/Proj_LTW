@@ -136,41 +136,46 @@ function draw_story_info($story_info, $story_images, $story_main_image, $usernam
     function draw_search_results()
     {
         $results = $_SESSION['search_results'];
-        foreach ($results as $result) {
-            $info = get_story_info($result['id']);
-            $name = $info['name'];
-            $address = $info['address'];
-            $guests = $info['capacity'];
-            $details = $info['details'];
-            $country = $info['country'];
-            $city = $info['city'];
+        if ($results === null) {
+            ?> <h2>No results found</h2> <?php
+        } else {
 
-            ?>
-        <div class="search_result_container">
-            <div class="result_image_container">
-                <a href="story.php?story_id=<?= $result['id'] ?>">
-                    <img class="result_image" src="../../images/Room1.jpg" alt="Awesome Photo of this house ->" />
-                </a>
+            foreach ($results as $result) {
+                $info = get_story_info($result['id']);
+                $name = $info['name'];
+                $address = $info['address'];
+                $guests = $info['capacity'];
+                $details = $info['details'];
+                $country = $info['country'];
+                $city = $info['city'];
+
+                ?>
+            <div class="search_result_container">
+                <div class="result_image_container">
+                    <a href="story.php?story_id=<?= $result['id'] ?>">
+                        <img class="result_image" src="../../images/Room1.jpg" alt="Awesome Photo of this house ->" />
+                    </a>
+                </div>
+                <div class="info_container">
+                    <a href="story.php?story_id=<?= $result['id'] ?>">
+                        <h2><?= $name ?></h2>
+                        <p><?= $address ?></p>
+                        <p><?= $country ?></p>
+                        <p><?= $city ?></p>
+                        <p><?= $guests ?></p>
+                        <p><?= $details ?></p>
+                    </a>
+                </div>
             </div>
-            <div class="info_container">
-                <a href="story.php?story_id=<?= $result['id'] ?>">
-                    <h2><?= $name ?></h2>
-                    <p><?= $address ?></p>
-                    <p><?= $country ?></p>
-                    <p><?= $city ?></p>
-                    <p><?= $guests ?></p>
-                    <p><?= $details ?></p>
-                </a>
-            </div>
-        </div>
-    <?php
+        <?php
+                }
+            }
         }
-    }
 
-    function draw_comment_form($username, $owner)
-    {
-        if ($username != $owner) {
-            ?>
+        function draw_comment_form($username, $owner)
+        {
+            if ($username != $owner) {
+                ?>
 
         <h1>Leave a comment</h1>
         <textarea name="comment" form="comment_form" placeholder="Enter your comment here..." required></textarea>

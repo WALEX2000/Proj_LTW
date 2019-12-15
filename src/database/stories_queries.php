@@ -23,7 +23,7 @@ function get_all_stories()
 function get_most_recent_stories()
 {
   global $db;
-  $stmt = $db->prepare('select * from Story order by date(post_date) desc limit 10');
+  $stmt = $db->prepare('select * from Story order by date(post_date) desc, id desc limit 10');
   $stmt->execute();
   $stories = $stmt->fetchAll();
   return $stories;
@@ -32,7 +32,7 @@ function get_most_recent_stories()
 function get_most_rented_stories()
 {
   global $db;
-  $stmt = $db->prepare('select * from Story S, Rented R where R.story = S.id group by S.id order by count(*) desc limit 10');
+  $stmt = $db->prepare('select * from Rented R, Story S where S.id = R.story group by S.id order by count(*) desc limit 10');
   $stmt->execute();
   $stories = $stmt->fetchAll();
   return $stories;
@@ -91,7 +91,7 @@ function insert_story($story_info, $username)
 {
   global $db;
   $stmt = $db->prepare('Insert into Story values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
-  $stmt->execute(array(null, $story_info['name'], $story_info['country'], $story_info['city'], $story_info['address'], $story_info['main_image'], $story_info['details'], 0, 0, $username, date("Y/m/d"), $story_info['price_night'], $story_info['capacity']));
+  $stmt->execute(array(null, $story_info['name'], $story_info['country'], $story_info['city'], $story_info['address'], $story_info['main_image'], $story_info['details'], 0, 0, $username, date("Y-m-d"), $story_info['price_night'], $story_info['capacity']));
 }
 
 function get_story_id()

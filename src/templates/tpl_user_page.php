@@ -37,13 +37,6 @@ function draw_rented_stories($rented)
                 ?>
                 <a href="../actions/action_cancel_reservation.php"><button id="cancelReservation" type="submit" onclick="">Cancel</button></a>
                 <?php
-            }else if ($story['stay_end'] < date('Y-m-d')){
-                //if not rated
-                ?>
-                <h2> Rate! </h2>
-                <?php
-                //else
-                //your rate is ...
             }
             ?>
             <br></br>
