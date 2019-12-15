@@ -4,13 +4,18 @@ include_once('../database/comment_queries.php');
 function draw_story_info($story_info, $story_images, $story_main_image, $username)
 {
     ?>
-    <div id="story_info">
-        <img src="../../images/<?= $story_main_image ?>" alt="Photo of  <?= $story_info['name'] ?>">
-        <?php
-            display_all_images($story_images);
+        <button type="button" class = "arrowButton" id="houseBack"><i class="fa fa-chevron-left fa-5x"></i></button>
+        <button type="button" class = "arrowButton" id="houseFront"><i class="fa fa-chevron-right fa-5x"></i></button>
+        <div id="imageViewer">
+            <img src="../../images/<?= $story_main_image ?>" class="houseImage" alt="Photo of  <?= $story_info['name'] ?>">
+            <?php
+            display_all_images($story_images, $story_main_image);
+            ?>
+        </div>
+            <?php
             if ($username == $story_info['owner']) {
                 ?>
-            <a href="edit_story.php"><button id="editStory" type="submit" onclick=""><i class="fa fa-home"></i></button></a>
+            <a href="edit_story.php" id="editStoryLink"><button id="editStory" type="submit" onclick=""><i class="fa fa-pencil fa-4x" aria-hidden="true"></i></button></a>
 
         <?php
             }
@@ -20,46 +25,47 @@ function draw_story_info($story_info, $story_images, $story_main_image, $usernam
                 $average_ratings = 0;
             }
             ?>
-        <h1><?= $story_info['name'] ?></h1>
-        <h3><?= $story_info['country'] ?></h3>
-        <h2><?= $story_info['city'] ?></h2>
-        <h2><?= $story_info['address'] ?></h2>
-        <h2><?= $story_info['capacity'] ?></h2>
-        <h2><?= $story_info['details'] ?></h2>
-        <h2><?= $story_info['post_date'] ?></h2>
-        <h2><?= $story_info['price_per_night'] ?> €</h2>
-        <h2><?= $story_info['capacity'] ?></h2>
-        <div class="rating_display">
-            <?php
-                for ($x = 0; $x < round($average_ratings); $x++) {
-                    ?>
-                <div class="rating_given_display">
-                    ★
-                </div>
-            <?php
-                }
-                for ($x = 0; $x < 5 - round($average_ratings); $x++) {
-                    ?>
-                <div class="rating_left_display">
-                    ★
-                </div>
-            <?php
-                }
-                ?>
+        <div id="nameBox">
+            <h1><?= $story_info['name'] ?></h1>
+            <p><?= $story_info['country'] ?> (<?= $story_info['city'] ?>)</p>
         </div>
-
-        <h2>Average is <?= number_format($average_ratings, 1) ?> of <?= $story_info['number_ratings'] ?> ratings</h2>
-
-    </div>
+        <div id="bottomDiv">
+            <div id="descriptionBox">
+                <p><b>Description:</b> <?= $story_info['details'] ?></p>
+                <p><b>Max Capacity:</b> <?= $story_info['capacity'] ?> people</p>
+                <p><b>Available Since:</b> <?= $story_info['post_date'] ?></p>
+                <p><b>Price Per Night:</b> <?= $story_info['price_per_night'] ?>€</p>
+                <p><b>Address:</b> <?= $story_info['address'] ?></p>
+                <p id="ratingText"><b>Rating:</b> <?= number_format($average_ratings, 1) ?> from <?= $story_info['number_ratings'] ?> ratings</p>
+                <div class="rating_display">
+                    <?php
+                        for ($x = 0; $x < round($average_ratings); $x++) {
+                            ?>
+                        <div class="rating_given_display">
+                            ★
+                        </div>
+                    <?php
+                        }
+                        for ($x = 0; $x < 5 - round($average_ratings); $x++) {
+                            ?>
+                        <div class="rating_left_display">
+                            ★
+                        </div>
+                    <?php
+                        }
+                        ?>
+                </div>
+            </div>
     <?php
 
     }
 
-    function display_all_images($images)
+    function display_all_images($images, $story_main_image)
     {
         foreach ($images as $image) {
+            if($image['url'] == $story_main_image) continue;
             ?>
-        <img src="../../images/<?= $image['url'] ?>" alt="Photo with url = <?= $image['url'] ?>">
+        <img src="../../images/<?= $image['url'] ?>" class="houseImage" alt="Photo with url = <?= $image['url'] ?>">
     <?php
 
 
@@ -90,26 +96,30 @@ function draw_story_info($story_info, $story_images, $story_main_image, $usernam
     {
         //TODO: possibly only the reservations happening now or in the future???
         if ($username == $owner) {
-            ?><h1>Reservations</h1> <?php
-                                            foreach ($reservations as $reservation) {
-                                                ?>
+        ?>
+            <div id="reservations">
+            <h1>Reservations</h1>
+        <?php
+            foreach ($reservations as $reservation) {
+        ?>
             <div>
-
                 <h2><?= $reservation['renter'] ?></h2>
                 <h3><?= $reservation['stay_start'] ?></h3>
                 <h2><?= $reservation['stay_end'] ?></h2>
                 <h2><?= $reservation['number_of_people'] ?></h2>
                 <h2><?= $reservation['total_price'] ?> €</h2>
-
             </div>
             <?php
-                        if ($reservation['stay_start'] >= date('Y-m-d', strtotime("+5 days"))) {
-                            $_SESSION['rent_id'] = $reservation['id'];
-                            ?>
-                <a href="../actions/action_cancel_reservation.php"><button id="cancelReservation" type="submit" onclick="">Cancel</button></a>
+                if ($reservation['stay_start'] >= date('Y-m-d', strtotime("+5 days"))) {
+                    $_SESSION['rent_id'] = $reservation['id'];
+            ?>
+                    <a href="../actions/action_cancel_reservation.php"><button id="cancelReservation" type="submit" onclick="">Cancel</button></a>
     <?php
                 }
             }
+    ?>
+            </div>
+    <?php
         }
     }
 

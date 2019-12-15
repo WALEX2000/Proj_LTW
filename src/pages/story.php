@@ -31,11 +31,21 @@ if (isset($_SESSION['username'])) {
     $reserved = null;
 }
 
-draw_header("index.css");
+draw_header("story.css");
+?>
+<div id="body">
+    <div id="story_info">
+<?php
 draw_story_info($story_info, $all_story_images, $story_main_image, $username);
 draw_reserve_form($username, $owner, $story_info['capacity']);
 draw_reservations($username, $owner, $reservations);
+?>
+    </div>
+</div>
+<?php
 if ($username != null && $reserved != FALSE && $commented == FALSE)
     draw_comment_form($username, $owner);
 draw_all_comments($comments, $owner, $username);
 draw_footer();
+?>
+</div>

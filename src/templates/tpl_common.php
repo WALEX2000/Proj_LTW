@@ -15,13 +15,13 @@ function draw_header($stylesheet)
     <title>Homie</title>
     <link href="../css/<?= $stylesheet ?>" rel="stylesheet" />
     <link href="../css/topBar.css" rel="stylesheet" />
-    <link href="../css/story.css" rel="stylesheet" />
     <link href="../css/search_results.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
     <script src="../javascript/topBar.js" defer></script>
     <script src="../javascript/home.js" defer></script>
     <script src="../javascript/profile.js" defer></script>
+    <script src="../javascript/house.js" defer></script>
 
 </head>
   <body>
