@@ -1,0 +1,46 @@
+#body {
+    background: #789BD0;
+    width: 70%;
+    height: max-content;
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 8em;
+    min-width: 40em;
+}
+
+#body * {
+    font-family: Righteous, sans-serif;
+}
+
+#body h1 {
+    color: white;
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#body label {
+    display: grid;
+    grid-template-columns: 10em auto;
+}
+
+#body p {
+    display: inline-block;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 1em;
+}
+
+#body input {
+    width: 95%;
+}
+
+#body #addButton {
+    display: block;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.5em;
+    background: #BFD5F6;
+}
