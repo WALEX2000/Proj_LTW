@@ -75,6 +75,7 @@ CREATE TABLE Rented(
     total_price FLOAT NOT NULL
 );
 
+--Rating Trigger
 CREATE TRIGGER IF NOT EXISTS Rate 
 AFTER INSERT ON Comment
 WHEN (new.rate is not null)
@@ -85,124 +86,8 @@ WHEN (new.rate is not null)
 	WHERE id = new.story;
 	END;
 
-
-/*
-INSERT INTO
-    User
-VALUES
-    (
-        'scarletJoe',
-        'Scarlett Johansson',
-        'scarletJoe@gmail.com',
-        'scarlet_pic',
-        '1980-09-10',
-        'American'
-    );
-
-INSERT INTO
-    User
-VALUES
-    (
-        'walex',
-        'Lafao',
-        'walex@gmail.com',
-        'alex_pic',
-        '2000-01-06',
-        'American'
-    );*/
-
-INSERT INTO
-    Story
-VALUES
-    (
-        1,
-        'Quarto romantico',
-        'Austria',
-        'Vienna',
-        'Vultkestein, 420',
-        'qrom_image',
-        'muito botino',
-        5.0,
-        1,
-        'scarletJoe',
-        '2019-01-06',
-        90,
-        1
-    );
-
-INSERT INTO
-    Story
-VALUES
-    (
-        2,
-        'Quarto do amorrr',
-        'Slovakia',
-        'Bratislava',
-        'Rua do Leitao, 101',
-        'qamor_image',
-        'muito botino',
-        0,
-        0,
-        'scarletJoe',
-        '2019-01-06',
-        80,
-        4
-    );
-
-INSERT INTO
-    Rented
-VALUES
-    (
-        1,
-        'walex',
-        1,
-        '2019-01-06',
-        '2019/01/16',
-        1,
-        90
-    );
-
-INSERT INTO
-    Rented
-VALUES
-    (
-        2,
-        'walex',
-        2,
-        '2019-02-06',
-        '2019-02-16',
-        1,
-        90
-    );
-
+--Defaul Avatar Image
 INSERT INTO
     Image
 VALUES
     (1, 'default_avatar', 'avatar_male.png', NULL);
-
-INSERT INTO
-    Image
-VALUES
-    (2, 'scarlet_pic', 'profilePic.jpg', NULL);
-
-
-INSERT INTO
-    Image
-VALUES
-    (3, 'alex_pic', 'url1', NULL);
-
-INSERT INTO
-    Image
-VALUES
-    (4, 'qrom_image', 'Room2.jpg', 1);
-
-    
-INSERT INTO
-    Image
-VALUES
-    (5, 'qamor_image', 'Room1.jpg', 1);
-
-INSERT INTO
-    Image
-VALUES
-    (6, 'main_image', 'topHouse.jpg', 1);
