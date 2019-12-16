@@ -91,7 +91,7 @@ function get_reservations_of_story($story_id)
 {
   global $db;
 
-  $stmt = $db->prepare('Select * from Story S, Rented R where R.story = ? and S.id = R.story order by date(R.stay_start) asc, date(R.stay_end) asc');
+  $stmt = $db->prepare('Select * from Story S, Rented R where R.story = ? and S.id = R.story order by date(R.stay_start) desc, date(R.stay_end) desc');
   $stmt->execute(array($story_id));
   $reservations = $stmt->fetchAll();
   return $reservations;

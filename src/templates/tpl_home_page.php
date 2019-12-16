@@ -25,7 +25,6 @@
             <div id="Recommendations" class="HousePreviewer">
                 <button type="button" class="arrowButton" id="recommendedBack"><i class="fa fa-chevron-left fa-5x"></i></button>
                 <?php
-                    //TODO change query for each preview
                     foreach ($top_stories as $story) {
                         $image_url = get_image_url($story['main_image']);
                         ?>
