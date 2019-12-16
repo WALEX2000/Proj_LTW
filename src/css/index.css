@@ -102,3 +102,33 @@ body {
     color: red;
 
 }
+
+.slideLeftAnimation {
+    -webkit-animation: translateLeft 0.5s;
+    animation: translateLeft 0.5s
+}
+
+.slideRightAnimation {
+    -webkit-animation: translateRight 0.5s;
+    animation: translateRight 0.5s
+}
+
+@-webkit-keyframes translateLeft {
+    from {-webkit-transform: translate(0, 0)} 
+    to {-webkit-transform: translate(-100%, 0)}
+}
+    
+@keyframes translateLeft {
+    from {transform: translate(0, 0)} 
+    to {transform: translate(-100%, 0)}
+}
+
+@-webkit-keyframes translateRight {
+    from {-webkit-transform: translate(0, 0)} 
+    to {-webkit-transform: translate(100%, 0)}
+}
+    
+@keyframes translateRight {
+    from {transform: translate(0, 0)} 
+    to {transform: translate(100%, 0)}
+}

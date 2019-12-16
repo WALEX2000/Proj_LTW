@@ -97,7 +97,6 @@ function draw_story_info($story_info, $story_images, $story_main_image, $usernam
 
     function draw_reservations($username, $owner, $reservations)
     {
-        //TODO: order from most recent to oldest
         if ($username == $owner) {
         ?>
             <div id="reservations">
@@ -109,7 +108,6 @@ function draw_story_info($story_info, $story_images, $story_main_image, $usernam
             foreach ($reservations as $reservation) {
                 $user_info = get_user_info($reservation['renter']);
                 $profile_image_url = get_image_url($user_info['profile_image']);
-                //TODO Foto de perfil do renter
         ?>
             <div class="reservationBlock">
                 <div class="cropper">
