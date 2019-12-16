@@ -33,32 +33,49 @@ function draw_rented_stories($rented)
 {
     ?>
     <div id="userTrips" class="currentPanel">
-        <h1> Your Trips </h1>
         <?php
             if ($rented != FALSE) {
                 foreach ($rented as $story) {
                     $image_url = get_image_url($story['main_image']);
                     ?>
-                <a href="story.php?story_id=<?= $story['story'] ?>">
-                    <img src="../../images/<?= $image_url ?>" alt="Photo of <?= $story['name'] ?> story">
-                    <h1><?= $story['name'] ?></h1>
-                    <h1><?= $story['stay_start'] ?></h1>
-                    <h1><?= $story['stay_end'] ?></h1>
-                </a>
+                <div class="trip">
+                    <a href="story.php?story_id=<?= $story['story'] ?>">
+                        <img src="../../images/<?= $image_url ?>" class="tripImg" alt="Photo of <?= $story['name'] ?> story">
+                        <div class="houseInfo">
+                            <p><?= $story['name'] ?> - <?= $story['country'] ?>(<?= $story['city'] ?>)</p>
+                            <?php
+                            if ($story['stay_start'] >= date('Y-m-d', strtotime("+5 days"))) {
+                                $_SESSION['rent_id'] = $story['id'];
+                                ?>
+                            <a href="../actions/action_cancel_reservation.php"><button class="cancelReservation" type="submit" onclick="">Cancel</button></a>
+                            <?php
+                                } else if ($story['stay_end'] < date('Y-m-d')) { //TODO check if already rated
+                            ?>
+                                <a href="story.php?story_id=<?= $story['story'] ?>"><button class="rateTrip" type="submit" onclick="">Rate this Trip!</button></a>
+                            <?php
+                                } else { //TODO need to have the correct rating here
+                                    $your_rating = 2;
+                            ?>
+                                <div class="ratingCenter">
+                                    <?php
+                                                for ($x = 0; $x < round($your_rating); $x++) {
+                                                    ?>
+                                        <div class="yellowStar star">★</div>
+                                    <?php } ?>
+                                    <?php
+                                                for ($x = 0; $x < 5 - round($your_rating); $x++) {
+                                                    ?>
+                                        <div class="greyStar star">★</div>
+                                    <?php } ?>
+                                </div>
+                            <?php
+                                }
+                            ?>                            
+                            <p class="tripDates"><?= $story['stay_start'] ?> - <?= $story['stay_end'] ?></p>
+                        </div>
+                    </a>
+                </div>
                 <?php
-                    if ($story['stay_start'] >= date('Y-m-d', strtotime("+5 days"))) {
-                        $_SESSION['rent_id'] = $story['id'];
-                        ?>
-                    <a href="../actions/action_cancel_reservation.php"><button id="cancelReservation" type="submit" onclick="">Cancel</button></a>
-                <?php
-                    } else if ($story['stay_end'] < date('Y-m-d')) {
-                        //if not rated
-                        ?>
-            <h2> Rate! </h2>
-                    <?php
-                    //else
-                    //your rate is ...
-                    }
                 }
             } else {
                 ?> <h2> No houses rented yet </h2><?php

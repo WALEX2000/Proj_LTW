@@ -1,0 +1,52 @@
+.search_result_container {
+    border-radius: 25px;
+    background: #789BD0;
+    padding: 1em;
+    margin-top: 1em;
+    width: max-content;
+    margin-left: 1em;
+}
+
+.topInfo_container {
+    border-radius: 25px;
+    background: #BFD5F6;
+    padding: 1em;
+    margin-bottom: 0.5em;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Righteous, sans-serif;
+    font-size: larger;
+}
+
+.topInfo_container p {
+    display: inline;
+}
+
+.searchLocation {
+    float: right;
+    margin: 0;
+}
+
+.result_image {
+    width: 100%;
+}
+
+.result_image_container {
+    width: 40em;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+.bottomInfo_container {
+    border-radius: 25px;
+    background: #BFD5F6;
+    padding: 1em;
+    width: 30em;
+    margin-left: 1em;
+    font-family: Righteous, sans-serif;
+}
+
+.flex {
+    display: flex;
+}

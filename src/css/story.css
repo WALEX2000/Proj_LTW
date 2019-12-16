@@ -1,7 +1,9 @@
 .rate {
-    float: left;
+    position: absolute;
     height: 46px;
     padding: 0 10px;
+    top: 1em;
+    right: 1em;
 }
 .rate input{
     display:none;
@@ -37,13 +39,361 @@
     color: #c59b08;
 }
 
+.rating_display {
+    float: right;
+}
+
 .rating_display *{
     float: left;
+    font-size: x-large;
 }
 .rating_given_display{
     color: #ffc700;
 }
 
 .rating_left_display{
-    color: #cccccc;
+    color: #9f9f9f;
+}
+
+#story_info {
+    background: #789BD0;
+    margin-top: 2em;
+    padding: 2em;
+    border-radius: 25px;
+    width: 70em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#imageViewer {
+    display: flex;
+    flex-direction: row;
+
+    width: 60em;
+    min-width: 0;
+
+    height: 40em;
+
+    border-radius: 25px;
+    overflow: hidden;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.houseImage {
+    min-width: 100%;
+    min-height: 100%;
+
+    position: relative;
+}
+
+#houseBack {
+    position: absolute;
+    top: 32em;
+    left: calc(50vw - 45em);
+}
+
+#houseFront {
+    position: absolute;
+    top: 32em;
+    right: calc(50vw - 45em);
+}
+
+.arrowButton {
+    background: none;
+    outline-width: 0;
+    border: 0;
+    height: 5em;
+    margin-top: auto;
+    margin-bottom: auto;
+    color: #BFD5F6;
+    margin-right: 2em;
+    margin-left: 2em;
+    z-index: 1;
+}
+
+.arrowButton:hover {
+    cursor: pointer;
+}
+
+#editStoryLink {
+    position: absolute;
+    top: 3em;
+    right: calc(50vw - 35.5em);
+}
+
+#editStory {
+    background-color: rgba(255,255,255,0.90);
+    border: none;
+    width: 6em;
+    height: 6em;
+    clip-path: circle(2.5em at center);
+}
+
+#editStory:hover {
+    cursor: pointer;
+}
+
+#body {
+    position: relative;
+}
+
+#nameBox {
+    border-radius: 25px;
+    background: #BFD5F6;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    margin-top: 1em;
+}
+
+#nameBox h1, #nameBox p{
+    display: inline-block;
+    width: max-content;
+    margin: auto;
+    vertical-align: middle;
+    font-family: Righteous, sans-serif;
+}
+
+#nameBox p {
+    float: right;
+    font-size: xx-large;
+}
+
+#descriptionBox {
+    border-radius: 25px;
+    background: #BFD5F6;
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font-family: sans-serif;
+    height: max-content;
+
+    flex-grow: 1;
+    margin-right: 1em;
+}
+
+#descriptionBox b {
+    font-size: large;
+    font-family: Righteous;
+}
+
+#bottomDiv {
+    margin-top: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+}
+
+#ratingText {
+    margin-top: 0;
+    margin-bottom: 0;
+    float: left;
+    width: max-content;
+    margin-right: 0;
+}
+
+#reservations {
+    border-radius: 25px;
+    background: #BFD5F6;
+    padding-bottom: 0.5em;
+    font-family: sans-serif;
+
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+#reservationsHeader {
+    background: rgba(255, 255, 255, 0.70);
+    width: 100%;
+    padding: 0.5em;
+    text-align: center;
+}
+
+#reservationsHeader h1{
+    display: inline-block;
+    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#reservationsList {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.reservationBlock {
+    border-radius: 25px;
+    background: #789BD0;
+    padding: 0.5em;
+    margin-top: 1em;
+}
+
+.profileImg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+     -moz-transform: translate(-50%, -50%);
+     -webkit-transform: translate(-50%, -50%);
+     transform: translate(-50%, -50%);
+     height: 100%;
+     min-width: 100%;
+     min-height: 100%;
+}
+
+.cropper {
+    position: relative;
+    float: left;
+    clip-path: circle(30px at center);
+    height: 60px;
+    width: 60px;
+    overflow: hidden;
+    background: white;
+}
+
+.renterName {
+    display: inline-block;
+    font-family: Righteous, sans-serif;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 15px;
+}
+
+.reservationBlock h2{
+    display: inline;
+}
+
+.cancelButtonLink {
+    width: 30%;
+    height: 2em;
+    float: right;
+    margin-right: 1em;
+}
+
+.cancelReservation {
+    border: none;
+    background: rgb(228, 66, 66);
+    border-radius: 25px;
+    width: 100%;
+    height: 100%;
+    font-family: Righteous, sans-serif;
+    font-size: larger;
+}
+
+#reservationsList {
+    max-height: 15em;
+    overflow: scroll;
+}
+
+#reservationForm {
+    border-radius: 25px;
+    background: #BFD5F6;
+    padding: 0.5em;
+    font-family: Righteous, sans-serif;
+
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+#reservationForm label {
+    display: block;
+}
+
+#reservationForm label p{
+    display: inline;
+}
+
+#reserveButton {
+    width: 100%;
+    height: 3em;
+    background: green;
+    border: none;
+    font-family: Righteous, sans-serif;
+    font-size: x-large;
+    padding: 0;
+    border-radius: 25px;
+}
+
+#allComments {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    width: 74em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.comment_container {
+    position: relative;
+    border-radius: 25px;
+    background: #789BD0;
+    padding: 0.5em;
+    margin-top: 1em;
+    max-width: 30em;
+}
+
+.comment_container .name{
+    display: inline-block;
+    font-family: Righteous, sans-serif;
+    font-size: x-large;
+    margin-top: 0.5em;
+    margin-left: 0.3em;
+    margin-bottom: 0;
+    width: 12em;
+
+}
+
+.commentDate {
+    display: inline;
+    margin-left: 0.3em;
+}
+
+.comment_content_container {
+    margin-top: 0.5em;
+    background: white;
+    border-radius: 25px;
+    padding: 0.5em;
+}
+
+.reply_container {
+    background: #BFD5F6;
+    border-radius: 25px;
+    padding: 0.5em;
+    margin-left: 5%;
+    margin-top: 0.5em;
+}
+
+.reply_container .extraWidth {
+    width: 14em;
+}
+
+#postComment {
+    background: #BFD5F6;
+}
+
+#postReply {
+    background: #789BD0;
+}
+
+.postCommentTop {
+    height: 60px;
+    margin-right: 0;
+}
+
+#commentTextArea {
+    border: none;
+    width: 98%;
+    height: 100%;
+    resize: none;
+}
+
+#commentTextArea:focus {
+    outline-width: 0;
 }
