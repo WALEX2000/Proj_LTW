@@ -6,36 +6,76 @@ let houseImages = document.getElementsByClassName("houseImage");
 let nHouses = houseImages.length;
 let pos = 0;
 let animating = false;
+let moving = false;
+
+function greyOutButton() {
+    if(pos == 0) {
+        backButton.style.color = "#75757588";
+    } 
+    else {
+        backButton.style.color = "#789BD0FF";
+    }
+    if(pos == nHouses - 1) {
+        frontButton.style.color = "#75757588";
+    }
+    else {
+        frontButton.style.color = "#789BD0FF";
+    }
+}
+
+greyOutButton();
 
 function goBack() {
-    if(pos <= 0) return;
+    if(pos <= 0 || moving) return;
 
     pos--;
     animating = true;
     //add animation to all houses
-
-    updateHousePositions();
+    for(let i = 0; i < nHouses; i++) {
+        let house = houseImages[i];
+        void house.offsetWidth;
+        house.classList.add("slideRightAnimation");
+    }
+    greyOutButton();
+    moving = true;
 }
 
 function goFoward() {
-    if(pos >= nHouses - 1) return;
+    if(pos >= nHouses - 1 || moving) return;
 
     pos++;
     animating = true;
     //add animation to all houses
-
-    updateHousePositions();
+    for(let i = 0; i < nHouses; i++) {
+        let house = houseImages[i];
+        void house.offsetWidth;
+        house.classList.add("slideLeftAnimation");
+    }
+    greyOutButton();
+    moving = true;
 }
 
 function updateHousePositions() {
     for(let i = 0; i < nHouses; i++) {
         let house = houseImages[i];
+        void house.offsetWidth;
+        house.classList.remove("slideLeftAnimation");
+        house.classList.remove("slideRightAnimation");
         house.style.right = (pos*100 + '%');
     }
+    moving = false;
 }
 
 backButton.addEventListener("click", goBack);
 frontButton.addEventListener("click", goFoward);
+
+for(let i = 0; i < nHouses; i++) {
+    let house = houseImages[i];
+    house.addEventListener("webkitAnimationEnd", (event) => {if(event.animationName == "translateLeft") updateHousePositions();});
+    house.addEventListener("animationend", (event) => {if(event.animationName == "translateLeft") updateHousePositions();});
+    house.addEventListener("webkitAnimationEnd", (event) => {if(event.animationName == "translateRight") updateHousePositions();});
+    house.addEventListener("animationend", (event) => {if(event.animationName == "translateRight") updateHousePositions();});
+}
 
 let reservationCheckIn = document.getElementById("checkInRes");
 let reservationCheckOut = document.getElementById("checkOutRes");

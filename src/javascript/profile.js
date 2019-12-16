@@ -28,9 +28,20 @@ function changePanel(newPanel) {
     currentPanel = newPanel;
 }
 
-editButton.addEventListener("click", ()=>{changePanel(editPanel)});
-tripsButton.addEventListener("click", ()=>{changePanel(tripsPanel)});
-ownedHousesButton.addEventListener("click", ()=>{changePanel(ownedPanel)});
+function highlightButton(button) {
+    if(moving) return;
+    editButton.style.background = "rgba(255,255,255,0.95)";
+    tripsButton.style.background = "#789BD0";
+    ownedHousesButton.style.background = "#789BD0";
+
+    button.style.background = "#e6e227";
+}
+
+highlightButton(tripsButton);
+
+editButton.addEventListener("click", ()=>{highlightButton(editButton); changePanel(editPanel);});
+tripsButton.addEventListener("click", ()=>{highlightButton(tripsButton); changePanel(tripsPanel);});
+ownedHousesButton.addEventListener("click", ()=>{highlightButton(ownedHousesButton); changePanel(ownedPanel);});
 
 function removePrevPanel() {
     prevPanel.classList.remove("currentPanel");

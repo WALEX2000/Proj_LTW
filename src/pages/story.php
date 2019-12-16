@@ -31,7 +31,7 @@ if (isset($_SESSION['username'])) {
     $reserved = null;
 }
 
-draw_header("story.css", ['topBar.js']);
+draw_header("story.css", ['topBar.js', 'house.js']);
 ?>
 <div id="body">
     <div id="story_info">

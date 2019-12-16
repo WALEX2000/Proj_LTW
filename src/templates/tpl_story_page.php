@@ -4,13 +4,15 @@ include_once('../database/comment_queries.php');
 function draw_story_info($story_info, $story_images, $story_main_image, $username)
 {
     ?>
-        <button type="button" class = "arrowButton" id="houseBack"><i class="fa fa-chevron-left fa-5x"></i></button>
-        <button type="button" class = "arrowButton" id="houseFront"><i class="fa fa-chevron-right fa-5x"></i></button>
-        <div id="imageViewer">
-            <img src="../../images/<?= $story_main_image ?>" class="houseImage" alt="Photo of  <?= $story_info['name'] ?>">
-            <?php
-            display_all_images($story_images, $story_main_image);
-            ?>
+        <div id="imageViewerCropper">
+            <button type="button" class = "arrowButton" id="houseBack"><i class="fa fa-chevron-left fa-5x"></i></button>
+            <button type="button" class = "arrowButton" id="houseFront"><i class="fa fa-chevron-right fa-5x"></i></button>
+            <div id="imageViewer">
+                <img src="../../images/<?= $story_main_image ?>" class="houseImage" alt="Photo of  <?= $story_info['name'] ?>">
+                <?php
+                display_all_images($story_images, $story_main_image);
+                ?>
+            </div>
         </div>
             <?php
             if ($username == $story_info['owner']) {
@@ -159,11 +161,14 @@ function draw_story_info($story_info, $story_images, $story_main_image, $usernam
 
     function draw_search_results()
     {
+        ?>
+        <div id="body">
+        <?php
         $results = $_SESSION['search_results'];
         if ($results === null) {
             ?> <h2>No results found</h2> <?php
-        } else {
-
+        } else 
+        {
             foreach ($results as $result) {
                 $info = get_story_info($result['id']);
                 $name = $info['name'];
@@ -193,9 +198,12 @@ function draw_story_info($story_info, $story_images, $story_main_image, $usernam
                 </div>
             </a>
         <?php
-                }
             }
+        ?>
+        </div>
+        <?php
         }
+     }
 
         function draw_comment_form($username, $owner)
         {

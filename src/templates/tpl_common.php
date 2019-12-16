@@ -2,6 +2,7 @@
 include_once('../includes/session.php');
 include_once('../database/profile_queries.php');
 include_once('../database/image_queries.php');
+include_once('../database/stories_queries.php');
 include_once('../templates/tpl_authentication.php');
 
 
