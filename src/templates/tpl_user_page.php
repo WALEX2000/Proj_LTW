@@ -1,5 +1,6 @@
 <?php
 include_once('../database/image_queries.php');
+include_once('../database/comment_queries.php');
 include_once('../includes/session.php');
 
 function draw_user_info($user_info, $image_url)
@@ -44,17 +45,20 @@ function draw_rented_stories($rented)
                         <div class="houseInfo">
                             <p><?= $story['name'] ?> - <?= $story['country'] ?>(<?= $story['city'] ?>)</p>
                             <?php
+                            $commented = has_commented($story['story'], $rented['renter']);
+                            print_r($commented);
+
                             if ($story['stay_start'] >= date('Y-m-d', strtotime("+5 days"))) {
                                 $_SESSION['rent_id'] = $story['id'];
                                 ?>
                             <a href="../actions/action_cancel_reservation.php"><button class="cancelReservation" type="submit" onclick="">Cancel</button></a>
                             <?php
-                                } else if ($story['stay_end'] < date('Y-m-d')) { //TODO check if already rated
+                                } else if (count($commented) === 0) {
                             ?>
                                 <a href="story.php?story_id=<?= $story['story'] ?>"><button class="rateTrip" type="submit" onclick="">Rate this Trip!</button></a>
                             <?php
-                                } else { //TODO need to have the correct rating here
-                                    $your_rating = 2;
+                                } else if (count($commented) !== 0){
+                                    $your_rating = $commented['rate'];
                             ?>
                                 <div class="ratingCenter">
                                     <?php
