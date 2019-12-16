@@ -6,6 +6,7 @@ let houseImages = document.getElementsByClassName("houseImage");
 let nHouses = houseImages.length;
 let pos = 0;
 let animating = false;
+let moving = false;
 
 function greyOutButton() {
     if(pos == 0) {
@@ -25,7 +26,7 @@ function greyOutButton() {
 greyOutButton();
 
 function goBack() {
-    if(pos <= 0) return;
+    if(pos <= 0 || moving) return;
 
     pos--;
     animating = true;
@@ -36,10 +37,11 @@ function goBack() {
         house.classList.add("slideRightAnimation");
     }
     greyOutButton();
+    moving = true;
 }
 
 function goFoward() {
-    if(pos >= nHouses - 1) return;
+    if(pos >= nHouses - 1 || moving) return;
 
     pos++;
     animating = true;
@@ -50,10 +52,10 @@ function goFoward() {
         house.classList.add("slideLeftAnimation");
     }
     greyOutButton();
+    moving = true;
 }
 
 function updateHousePositions() {
-    console.log("GOTTEM");
     for(let i = 0; i < nHouses; i++) {
         let house = houseImages[i];
         void house.offsetWidth;
@@ -61,6 +63,7 @@ function updateHousePositions() {
         house.classList.remove("slideRightAnimation");
         house.style.right = (pos*100 + '%');
     }
+    moving = false;
 }
 
 backButton.addEventListener("click", goBack);
