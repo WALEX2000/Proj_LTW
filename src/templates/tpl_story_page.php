@@ -201,9 +201,9 @@ function draw_story_info($story_info, $story_images, $story_main_image, $usernam
         </div>
         <?php
         }
-     }
+    }
 
-        function draw_comment_form($username, $owner)
+    function draw_comment_form($username, $owner)
         {
             if ($username != $owner) {
                 $user_info = get_user_info($username);
@@ -216,9 +216,9 @@ function draw_story_info($story_info, $story_images, $story_main_image, $usernam
                         </div>
                         <p class="name"><?= $user_info['name'] ?></p>
                     </div>
-                    <form action="../actions/action_add_comment.php" id="comment_form" method="post">
+                    <form action="../actions/action_add_comment.php" id="comment_form" method="post"><!-- action="../actions/action_add_comment.php"-->
                             <div class="rate">
-                                <input type="radio" id="star5" name="rate" value="5" />
+                                <input type="radio" id="star5" name="rate" value="5" required/>
                                 <label for="star5" title="text">5 stars</label>
                                 <input type="radio" id="star4" name="rate" value="4" />
                                 <label for="star4" title="text">4 stars</label>
@@ -230,7 +230,7 @@ function draw_story_info($story_info, $story_images, $story_main_image, $usernam
                                 <label for="star1" title="text">1 star</label>
                             </div>
                             <div class="comment_content_container">
-                                <textarea id="commentTextArea" name="comment" form="comment_form" placeholder="Enter your comment here..." required></textarea>
+                                <textarea id= "commentTextArea" name="comment" form="comment_form" placeholder="Enter your comment here..." required></textarea>
                             </div>
                             <button id="postComment"type="submit" value="Send comment">Post Comment</button>
                         </form>
