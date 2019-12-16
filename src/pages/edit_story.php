@@ -10,7 +10,7 @@ $_SESSION['last_page'] = "edit_story.php";
 if (!isset($_SESSION['username']))
     die(header('Location: login.php'));
 
-draw_header("index.css");
+draw_header("index.css", ['topBar.js']);
 $story_id =$_SESSION['story_id'];
 $story_info = get_story_info($story_id);
 
@@ -21,4 +21,3 @@ if ($_SESSION['username'] != $story_info['owner']){
 
 draw_edit_story_form($story_info);
 draw_footer();
-?>

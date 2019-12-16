@@ -5,7 +5,7 @@ include_once('../database/image_queries.php');
 include_once('../templates/tpl_authentication.php');
 
 
-function draw_header($stylesheet)
+function draw_header($stylesheet, $scripts_defer)
 { ?>
   <!DOCTYPE html>
   <html lang="en-US">
@@ -19,9 +19,13 @@ function draw_header($stylesheet)
     <link href="../css/search_results.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
-    <script src="../javascript/topBar.js" defer></script>
-    <script src="../javascript/home.js" defer></script>
-    <script src="../javascript/profile.js" defer></script>
+    <?php
+    foreach($scripts_defer as $defer){
+      ?>
+      <script src="../javascript/<?=$defer?>" defer></script>
+    <?php
+    }
+    ?>
 
 </head>
   <body>
@@ -56,7 +60,7 @@ function draw_header($stylesheet)
     <div id="all">
       <div id="topBar">
         <a href="home.php">
-          <img id="logo" src="../../images/houseLogo.png" />
+          <img id="logo" src="../../images/homie_logo.png" />
         </a>
         <div id="searchBar">
           <input id="searchField" type="text" placeholder="Enter a location..">
@@ -80,9 +84,9 @@ function draw_header($stylesheet)
         <?php
           } else {
             ?>
-          <button class = "top_bar_btn"onclick="document.getElementById('register_modal').style.display='block'">Register</button>
+          <button class = "top_bar_btn" onclick="document.getElementById('register_modal').style.display='block'">Register</button>
           <!--<a id="Log In" href="../pages/login.php">Log In</a>-->
-          <button class="top_bar_btn" onclick="document.getElementById('login_modal').style.display='block'">Login</button>
+          <button class= "top_bar_btn" onclick="document.getElementById('login_modal').style.display='block'">Login</button>
         <?php
           }
           /*if (isset($_SESSION['message'])) {
@@ -104,7 +108,7 @@ function draw_header($stylesheet)
                         </div>
                         <div>
                             <br/>
-                            <label class="centerLabel"> Budget: </label><span id = "budget_value"></span><input type="range" min="1" max="500" class="budget_slider" id="budget_slider" name="budget">
+                            <label class="centerLabel"> Budget: </label><span id = "budget_value"></span><input type="range" min="1" max="100000000" class="budget_slider" id="budget_slider" name="budget">
                         </div>
                         <button id="closeExtraOption" type="button" name="close"><i class="fa fa-times-circle fa-5x"></i></button>
                       </form>

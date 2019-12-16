@@ -91,7 +91,7 @@ function draw_story_info($story_info, $story_images, $story_main_image, $usernam
         //TODO: possibly only the reservations happening now or in the future???
         if ($username == $owner) {
             ?><h1>Reservations</h1> <?php
-                                            foreach ($reservations as $reservation) {
+            foreach ($reservations as $reservation) {
                                                 ?>
             <div>
 
@@ -128,6 +128,7 @@ function draw_story_info($story_info, $story_images, $story_main_image, $usernam
         <label> Details <input type="text" name="details" value="<?= $story_info['details'] ?>"> </label>
         <label> Price Per Night <input type="double" name="price_per_night" value="<?= $story_info['price_per_night'] ?>"> </label>
         <label> Capacity <input type="number" name="capacity" min=1 value="<?= $story_info['capacity'] ?>"> </label>
+        <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
         <input type="submit" value="Update" />
     </form>
     <?php
@@ -178,21 +179,21 @@ function draw_story_info($story_info, $story_images, $story_main_image, $usernam
                 ?>
 
         <h1>Leave a comment</h1>
-        <textarea name="comment" form="comment_form" placeholder="Enter your comment here..." required></textarea>
-        <form action="../actions/action_add_comment.php" id="comment_form" method="post">
+        <textarea id = "comment_content" name="comment" form="comment_form" placeholder="Enter your comment here..." required></textarea>
+        <form id="comment_form" action="../actions/action_add_comment.php" method="post">
             <div class="rate">
-                <input type="radio" id="star5" name="rate" value="5" />
+                <input class ="star_rating" type="radio" id="star5" name="rate" value="5" />
                 <label for="star5" title="text">5 stars</label>
-                <input type="radio" id="star4" name="rate" value="4" />
+                <input class ="star_rating"  type="radio" id="star4" name="rate" value="4" />
                 <label for="star4" title="text">4 stars</label>
-                <input type="radio" id="star3" name="rate" value="3" />
+                <input class ="star_rating"  type="radio" id="star3" name="rate" value="3" />
                 <label for="star3" title="text">3 stars</label>
-                <input type="radio" id="star2" name="rate" value="2" />
+                <input class ="star_rating"  type="radio" id="star2" name="rate" value="2" />
                 <label for="star2" title="text">2 stars</label>
-                <input type="radio" id="star1" name="rate" value="1" />
+                <input class ="star_rating" type="radio" id="star1" name="rate" value="1" />
                 <label for="star1" title="text">1 star</label>
             </div>
-            <input type="submit" value="Send comment">
+            <input type="submit" value="Send comment"/>
         </form>
     <?php
         }
@@ -200,6 +201,10 @@ function draw_story_info($story_info, $story_images, $story_main_image, $usernam
 
     function draw_all_comments($comments, $owner, $username)
     {
+        ?>
+        <div class = "all_comments">
+        
+    <?php
         foreach ($comments as $comment) {
             $user_info = get_user_info($comment['username']);
             $image_url = get_image_url($user_info['profile_image']);
@@ -270,6 +275,7 @@ function draw_story_info($story_info, $story_images, $story_main_image, $usernam
         </div>
 <?php
     }
+    ?></div> <?php
 }
 
 ?>

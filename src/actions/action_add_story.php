@@ -8,13 +8,18 @@
     if (!isset($_SESSION['username']))
       die(header('Location: ../pages/login.php'));
 
-    $name = $_POST['title'];
-    $country =  $_POST['country'];
-    $city=  $_POST['city'];
-    $address=  $_POST['address'];
-    $details=  $_POST['details'];
-    $price_night = $_POST['price_night'];
-    $capacity = $_POST['capacity'];
+    $name = dust_off($_POST['title']);
+    $country =  dust_off($_POST['country']);
+    $city=  dust_off($_POST['city']);
+    $address=  dust_off($_POST['address']);
+    $details=  dust_off($_POST['details']);
+    $price_night = dust_off($_POST['price_night']);
+    $capacity = dust_off($_POST['capacity']);
+
+    if (!preg_match("/^([0-9]*[.])?[0-9]+$/", $price_night)) {
+      $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Price can only contain numbers and a dot!');
+      die(header('Location: ../pages/add_story.php'));
+    }
 
     //Main image
     if (empty($_FILES["main_image"]["tmp_name"]) == true) { 

@@ -8,8 +8,6 @@
     
     $_SESSION['last_page'] = "search_results.php";
 
-    draw_header("index.css");
+    draw_header("index.css", ['topBar.js']);
     draw_search_results();
     draw_footer();
-    
-?>

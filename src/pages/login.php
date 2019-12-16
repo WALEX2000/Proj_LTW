@@ -6,7 +6,7 @@
     if (isset($_SESSION['username']))
         die(header('Location: profile.php'));
 
-    draw_header("index.css");
+    draw_header("index.css", ['topBar.js']);
     draw_login();
     draw_footer();
 

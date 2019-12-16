@@ -5,7 +5,7 @@
 
     $_SESSION['last_page'] = "home.php";
 
-    draw_header("index.css");
+    draw_header("index.css", ['topBar.js', 'home.js']);
     $all_stories = get_all_stories();
     $top_story = get_top_stories();
     $most_rented = get_most_rented_stories();

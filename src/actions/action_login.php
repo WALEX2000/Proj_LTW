@@ -3,8 +3,8 @@ include_once('../database/connection.php');
 include_once('../database/profile_queries.php');
 include_once('../includes/session.php');
 
-$username = $_POST['username'];
-$password = $_POST['password'];
+$username = dust_off($_POST['username']);
+$password = dust_off($_POST['password']);
 
 if(check_user_password($username,$password)){
         $_SESSION['username'] = $username;

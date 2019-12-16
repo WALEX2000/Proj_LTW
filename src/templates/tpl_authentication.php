@@ -60,6 +60,7 @@ function draw_edit_profile_form($user_info)
       <label> <p>New email</p> <input type="text" name="email" value="<?= $user_info['email'] ?>"> </label>
       <label> <p>Birthday</p> <input type="date" name="birthday" value="<?= $user_info['birthday'] ?>"> </label>
       <label> <p>Nationality</p> <input type="text" name="nationality" value="<?= $user_info['nationality'] ?>"> </label>
+      <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
       <input type="submit" value="Update" />
    </form>
    </div>

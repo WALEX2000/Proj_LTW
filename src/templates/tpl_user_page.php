@@ -36,7 +36,6 @@ function draw_rented_stories($rented)
         <h1> Your Trips </h1>
         <?php
             if ($rented != FALSE) {
-                print("Entre");
                 foreach ($rented as $story) {
                     $image_url = get_image_url($story['main_image']);
                     ?>

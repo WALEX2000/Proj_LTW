@@ -6,13 +6,18 @@
   if (!isset($_SESSION['username']))
     die(header('Location: ../pages/login.php'));
 
+    if ($_SESSION['csrf'] !== $_POST['csrf']) {
+      $go_to = "Refresh:0;url=../pages/" . $_SESSION['last_page'];
+      die(header($go_to));
+    }
+
 $username = $_SESSION['username'];
-$name =  $_POST['name'];
-$email=  $_POST['email'];
-$birthday=  $_POST['birthday'];
-$nationality=  $_POST['nationality'];
-$current_password = $_POST['current_password'];
-$new_password = $_POST['new_password'];
+$name = dust_off( $_POST['name']);
+$email= dust_off( $_POST['email']);
+$birthday= dust_off( $_POST['birthday']);
+$nationality= dust_off( $_POST['nationality']);
+$current_password = dust_off($_POST['current_password']);
+$new_password = dust_off($_POST['new_password']);
 
 try{
   if(check_user_password($username,$current_password)){

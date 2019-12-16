@@ -9,9 +9,9 @@ if (!isset($_SESSION['username']))
 
 
 $username = $_SESSION['username'];
-$content = $_POST['reply_content'];
+$content = dust_off($_POST['reply_content']);
 $current_date = date("Y-m-d");
-$comment = $_POST['comment'];
+$comment =dust_off( $_POST['comment']);
 
 try {
     insert_reply($username, $content, $current_date, $comment);

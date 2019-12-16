@@ -5,11 +5,11 @@ include_once('../includes/session.php');
 include_once('../templates/tpl_story_page.php');
 
 
-$location = $_POST['location'];
-$check_in = $_POST['check_in'];
-$check_out = $_POST['check_out'];
-$guests = $_POST['guests'];
-$price_max = $_POST['budget'];
+$location = dust_off($_POST['location']);
+$check_in = dust_off($_POST['check_in']);
+$check_out = dust_off($_POST['check_out']);
+$guests = dust_off($_POST['guests']);
+$price_max = dust_off($_POST['budget']);
 
 if ( $check_in !== "" && $check_out !== "" && $check_in > $check_out){
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'The check-in date should be before the check-out date!');

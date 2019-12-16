@@ -1,3 +1,5 @@
+'use strict'
+
 let tripsPanel = document.getElementById("userTrips");
 let ownedPanel = document.getElementById("ownedHouses");
 let editPanel = document.getElementById("editProfilePanel");

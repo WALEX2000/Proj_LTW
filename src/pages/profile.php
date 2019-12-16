@@ -14,7 +14,7 @@ if (!isset($_SESSION['username']))
 $user_given = $_SESSION['username'];
 $user_info = get_user_info($user_given);
 $profile_pic = get_image_url($user_info['profile_image']);
-draw_header("profile.css");
+draw_header("profile.css", ['topBar.js', 'profile.js']);
 ?>
 <div id="body">
 <?php

@@ -16,7 +16,7 @@ if (!isset($_SESSION['username'])) {
 <?php
 }
 
-draw_header("addStory.css");
+draw_header("addStory.css", ['topBar.js']);
 draw_add_story_form();
 draw_footer();
 ?>

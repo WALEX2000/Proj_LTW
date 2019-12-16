@@ -6,9 +6,9 @@
     if (!isset($_SESSION['username']))
       die(header('Location: ../pages/login.php'));
 
-    $start_date = $_POST['start_date'];
-    $end_date =  $_POST['end_date'];
-    $num_guests=  $_POST['num_guests'];
+    $start_date = dust_off($_POST['start_date']);
+    $end_date =  dust_off($_POST['end_date']);
+    $num_guests=  dust_off($_POST['num_guests']);
     $story_id = $_SESSION['story_id'];
 
 

@@ -31,7 +31,7 @@ if (isset($_SESSION['username'])) {
     $reserved = null;
 }
 
-draw_header("index.css");
+draw_header("index.css",['topBar.js']);
 draw_story_info($story_info, $all_story_images, $story_main_image, $username);
 draw_reserve_form($username, $owner, $story_info['capacity']);
 draw_reservations($username, $owner, $reservations);

@@ -5,7 +5,7 @@ var output = document.getElementById("budget_value");
 output.innerHTML = slider.value;
 
 slider.oninput = function() {
-  output.innerHTML = this.value;
+    output.innerHTML = this.value;
 };
 
 //Search bar add options
