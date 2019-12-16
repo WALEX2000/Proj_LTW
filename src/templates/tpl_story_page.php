@@ -171,6 +171,7 @@ function draw_story_info($story_info, $story_images, $story_main_image, $usernam
                 $details = $info['details'];
                 $country = $info['country'];
                 $city = $info['city'];
+                $main_image = get_image_url($info['main_image'])
 
                 ?>
             <a href="story.php?story_id=<?= $result['id'] ?>">
@@ -181,7 +182,7 @@ function draw_story_info($story_info, $story_images, $story_main_image, $usernam
                     </div>
                     <div class="flex">
                         <div class="result_image_container">
-                                <img class="result_image" src="../../images/Room1.jpg" alt="Awesome Photo of this house ->" />
+                                <img class="result_image" src="../../images/<?=$main_image?>" alt="Awesome Photo of this house ->" />
                         </div>
                         <div class="bottomInfo_container">
                             <p>Max Capacity: <?= $guests ?></p>

@@ -103,8 +103,10 @@ function draw_header($stylesheet)
                             <input id="guests" type="number" min= "1" name="guests" value="1" required/>
                         </div>
                         <div>
-                            <br/>
-                            <label class="centerLabel"> Budget: </label><span id = "budget_value"></span><input type="range" min="1" max="500" class="budget_slider" id="budget_slider" name="budget">
+                            <br/><?php
+                            $max_budget = get_most_expensive_house();
+                            ?>
+                            <label class="centerLabel"> Budget: </label><span id = "budget_value"></span><input type="range" min="1" max="<?=$max_budget['max_budget']?>" class="budget_slider" id="budget_slider" name="budget">
                         </div>
                         <button id="closeExtraOption" type="button" name="close"><i class="fa fa-times-circle fa-5x"></i></button>
                       </form>
