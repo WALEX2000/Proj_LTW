@@ -161,11 +161,14 @@ function draw_story_info($story_info, $story_images, $story_main_image, $usernam
 
     function draw_search_results()
     {
+        ?>
+        <div id="body">
+        <?php
         $results = $_SESSION['search_results'];
         if ($results === null) {
             ?> <h2>No results found</h2> <?php
-        } else {
-
+        } else 
+        {
             foreach ($results as $result) {
                 $info = get_story_info($result['id']);
                 $name = $info['name'];
@@ -195,9 +198,12 @@ function draw_story_info($story_info, $story_images, $story_main_image, $usernam
                 </div>
             </a>
         <?php
-                }
             }
+        ?>
+        </div>
+        <?php
         }
+     }
 
         function draw_comment_form($username, $owner)
         {
