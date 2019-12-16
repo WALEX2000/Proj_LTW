@@ -72,21 +72,22 @@ function draw_story_info($story_info, $story_images, $story_main_image, $usernam
         }
     }
 
-    function draw_reserve_form($username, $owner, $capacity)
+    function draw_reserve_form($username, $owner, $capacity, $ppn)
     {
         if ($username != $owner) {
             ?>
-        <div>
+        <div id="reservationForm">
             <?php
                     draw_messages();
                     ?>
+            <input id="ppn" value="<?= $ppn ?>" style="display:none"/>
             <form action="../actions/action_reserve.php" method="post">
-                <label> Check-in date: <input type="date" name="start_date" required> </label>
-                <label> Check-out date: <input type="date" name="end_date" required> </label>
+                <label> Check-in date: <input id="checkInRes" type="date" name="start_date" required> </label>
+                <label> Check-out date: <input id="checkOutRes" type="date" name="end_date" required> </label>
+                <label id="ppn"> Total Price: <p id="totalPriceRes"> 0€</p></label>
                 <label> Number of guests: <input type="number" name="num_guests" min=1 max=<?= $capacity ?> value=1 required> </label>
-                <input type="submit" value="Reserve" />
+                <button id="reserveButton" type="submit" value="Reserve">Book Stay</button>
             </form>
-            <br></br>
         </div>
     <?php
         }
@@ -137,19 +138,20 @@ function draw_story_info($story_info, $story_images, $story_main_image, $usernam
     function draw_edit_story_form($story_info)
     {
         ?>
+    <div id="body">
     <h1>Edit Story</h1>
     <?php
         draw_messages();
         ?>
     <form action="../actions/action_edit_story.php" method="post">
-        <label> Name <input type="text" name="name" value="<?= $story_info['name'] ?>"> </label>
-        <label> Country <input type="text" name="country" value="<?= $story_info['country'] ?>"> </label>
-        <label> City <input type="text" name="city" value="<?= $story_info['city'] ?>"> </label>
-        <label> Address <input type="text" name="address" value="<?= $story_info['address'] ?>"> </label>
-        <label> Details <input type="text" name="details" value="<?= $story_info['details'] ?>"> </label>
-        <label> Price Per Night <input type="double" name="price_per_night" value="<?= $story_info['price_per_night'] ?>"> </label>
-        <label> Capacity <input type="number" name="capacity" min=1 value="<?= $story_info['capacity'] ?>"> </label>
-        <input type="submit" value="Update" />
+        <label> <p>Name</p> <input type="text" name="name" value="<?= $story_info['name'] ?>"> </label>
+        <label> <p>Country</p> <input type="text" name="country" value="<?= $story_info['country'] ?>"> </label>
+        <label> <p>City</p> <input type="text" name="city" value="<?= $story_info['city'] ?>"> </label>
+        <label> <p>Address</p> <input type="text" name="address" value="<?= $story_info['address'] ?>"> </label>
+        <label> <p>Details</p> <input type="text" name="details" value="<?= $story_info['details'] ?>"> </label>
+        <label> <p>Price Per Night</p> <input type="double" name="price_per_night" value="<?= $story_info['price_per_night'] ?>"> </label>
+        <label> <p>Capacity</p> <input type="number" name="capacity" min=1 value="<?= $story_info['capacity'] ?>"> </label>
+        <input id="addButton" type="submit" value="Update" />
     </form>
     <?php
     }
@@ -171,23 +173,23 @@ function draw_story_info($story_info, $story_images, $story_main_image, $usernam
                 $city = $info['city'];
 
                 ?>
-            <div class="search_result_container">
-                <div class="result_image_container">
-                    <a href="story.php?story_id=<?= $result['id'] ?>">
-                        <img class="result_image" src="../../images/Room1.jpg" alt="Awesome Photo of this house ->" />
-                    </a>
+            <a href="story.php?story_id=<?= $result['id'] ?>">
+                <div class="search_result_container">
+                    <div class="topInfo_container">
+                        <p><?= $name ?></p>
+                        <p class="searchLocation"><?= $country ?>(<?= $city ?>)</p>
+                    </div>
+                    <div class="flex">
+                        <div class="result_image_container">
+                                <img class="result_image" src="../../images/Room1.jpg" alt="Awesome Photo of this house ->" />
+                        </div>
+                        <div class="bottomInfo_container">
+                            <p>Max Capacity: <?= $guests ?></p>
+                            <p>Details: <?= $details ?></p>
+                        </div>
+                    </div>
                 </div>
-                <div class="info_container">
-                    <a href="story.php?story_id=<?= $result['id'] ?>">
-                        <h2><?= $name ?></h2>
-                        <p><?= $address ?></p>
-                        <p><?= $country ?></p>
-                        <p><?= $city ?></p>
-                        <p><?= $guests ?></p>
-                        <p><?= $details ?></p>
-                    </a>
-                </div>
-            </div>
+            </a>
         <?php
                 }
             }
@@ -196,28 +198,38 @@ function draw_story_info($story_info, $story_images, $story_main_image, $usernam
         function draw_comment_form($username, $owner)
         {
             if ($username != $owner) {
+                $user_info = get_user_info($username);
+                $image_url = get_image_url($user_info['profile_image']);
                 ?>
-
-        <h1>Leave a comment</h1>
-        <textarea name="comment" form="comment_form" placeholder="Enter your comment here..." required></textarea>
-        <form action="../actions/action_add_comment.php" id="comment_form" method="post">
-            <div class="rate">
-                <input type="radio" id="star5" name="rate" value="5" />
-                <label for="star5" title="text">5 stars</label>
-                <input type="radio" id="star4" name="rate" value="4" />
-                <label for="star4" title="text">4 stars</label>
-                <input type="radio" id="star3" name="rate" value="3" />
-                <label for="star3" title="text">3 stars</label>
-                <input type="radio" id="star2" name="rate" value="2" />
-                <label for="star2" title="text">2 stars</label>
-                <input type="radio" id="star1" name="rate" value="1" />
-                <label for="star1" title="text">1 star</label>
-            </div>
-            <input type="submit" value="Send comment">
-        </form>
-    <?php
+                <div class="comment_container">
+                    <div class="postCommentTop">
+                        <div class="cropper">
+                            <img class="profileImg" src="../../images/<?= $image_url ?>" alt="Commenter's profile image" />
+                        </div>
+                        <p class="name"><?= $user_info['name'] ?></p>
+                    </div>
+                    <form action="../actions/action_add_comment.php" id="comment_form" method="post">
+                            <div class="rate">
+                                <input type="radio" id="star5" name="rate" value="5" />
+                                <label for="star5" title="text">5 stars</label>
+                                <input type="radio" id="star4" name="rate" value="4" />
+                                <label for="star4" title="text">4 stars</label>
+                                <input type="radio" id="star3" name="rate" value="3" />
+                                <label for="star3" title="text">3 stars</label>
+                                <input type="radio" id="star2" name="rate" value="2" />
+                                <label for="star2" title="text">2 stars</label>
+                                <input type="radio" id="star1" name="rate" value="1" />
+                                <label for="star1" title="text">1 star</label>
+                            </div>
+                            <div class="comment_content_container">
+                                <textarea id="commentTextArea" name="comment" form="comment_form" placeholder="Enter your comment here..." required></textarea>
+                            </div>
+                            <button id="postComment"type="submit" value="Send comment">Post Comment</button>
+                        </form>
+                </div>
+        <?php
+            }
         }
-    }
 
     function draw_all_comments($comments, $owner, $username)
     {
@@ -227,8 +239,6 @@ function draw_story_info($story_info, $story_images, $story_main_image, $usernam
             ?>
         <div class="comment_container">
             <div class="comment_header">
-                <img class="commenters_profile_image" src="../../images/<?= $image_url ?>" alt="Commenter's profile image" />
-                <p><?= $user_info['name'] ?></p>
                 <?php
                         if ($comment['rate'] != null) {
 
@@ -254,7 +264,11 @@ function draw_story_info($story_info, $story_images, $story_main_image, $usernam
                 <?php
                         }
                         ?>
-                <?= $comment['comment_date'] ?>
+                <div class="cropper">
+                    <img class="profileImg" src="../../images/<?= $image_url ?>" alt="Commenter's profile image" />
+                </div>
+                <p class="name"><?= $user_info['name'] ?></p>
+                <p class="commentDate"><?= $comment['comment_date'] ?></p>
             </div>
             <div class="comment_content_container">
                 <?= $comment['content'] ?>
@@ -265,32 +279,43 @@ function draw_story_info($story_info, $story_images, $story_main_image, $usernam
                         $replyer_info = get_user_info($reply['username']);
                         $replyer_image_url = get_image_url($replyer_info['profile_image']);
                         ?>
-                <div class="reply_container">
-                    <div class="comment_header">
-                        <img class="commenters_profile_image" src="../../images/<?= $replyer_image_url ?>" alt="Commenter's profile image" />
-                        <p><?= $replyer_info['name'] ?></p>
-                        <?= $reply['comment_date'] ?>
-                    </div>
-                    <div class="comment_content_container">
-                        <?= $reply['content'] ?>
-                    </div>
-                </div>
-                <?php
-                        } else {
-                            if ($username == $owner) {
-                                ?>
-                    <form action="../actions/action_add_reply.php" id="reply_form" method="post">
-                        <textarea name="reply_content" placeholder="Enter your reply here..." required></textarea>
-                        <input type="hidden" name="comment" value=<?= $comment['id'] ?>>
-                        <input type="submit" value="Send reply">
-                    </form>
-            <?php
-                        }
+                        <div class="reply_container">
+                            <div class="comment_header">
+                                <div class="cropper">
+                                    <img class="profileImg" src="../../images/<?= $replyer_image_url ?>" alt="Commenter's profile image" />
+                                </div>
+                                <p class="name extraWidth"><?= $replyer_info['name'] ?></p>
+                                <?= $reply['comment_date'] ?>
+                            </div>
+                            <div class="comment_content_container">
+                                <?= $reply['content'] ?>
+                            </div>
+                        </div>
+                        <?php
+                    } else if ($username == $owner) {
+                        $user_info = get_user_info($username);
+                        $user_image_url = get_image_url($user_info['profile_image']);
+                    ?>
+                        <div class="reply_container">
+                            <div class="comment_header">
+                                <div class="cropper">
+                                    <img class="profileImg" src="../../images/<?= $user_image_url  ?>" alt="Commenter's profile image" />
+                                </div>
+                                <p class="name extraWidth"><?= $user_info['name'] ?></p> <br></br>
+                            </div>
+                            <form action="../actions/action_add_reply.php" id="reply_form" method="post">
+                                <div class="comment_content_container">
+                                    <textarea id="commentTextArea" name="reply_content" placeholder="Enter your reply here..." required></textarea>
+                                </div>
+                                <input type="hidden" name="comment" value=<?= $comment['id'] ?>>
+                                <button id="postReply" type="submit" value="Send reply">Post Reply</button>
+                            </form>
+                        </div>
+                    <?php
                     }
                     ?>
         </div>
-<?php
+    <?php
+        }
     }
-}
-
-?>
+    ?>

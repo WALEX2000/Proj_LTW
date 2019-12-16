@@ -37,15 +37,19 @@ draw_header("story.css");
     <div id="story_info">
 <?php
 draw_story_info($story_info, $all_story_images, $story_main_image, $username);
-draw_reserve_form($username, $owner, $story_info['capacity']);
+draw_reserve_form($username, $owner, $story_info['capacity'], $story_info['price_per_night']);
 draw_reservations($username, $owner, $reservations);
 ?>
     </div>
 </div>
+<div id="allComments">
 <?php
 if ($username != null && $reserved != FALSE && $commented == FALSE)
     draw_comment_form($username, $owner);
 draw_all_comments($comments, $owner, $username);
+?>
+</div>
+<?php
 draw_footer();
 ?>
 </div>

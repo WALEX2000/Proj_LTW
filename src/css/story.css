@@ -1,7 +1,9 @@
 .rate {
-    float: left;
+    position: absolute;
     height: 46px;
     padding: 0 10px;
+    top: 1em;
+    right: 1em;
 }
 .rate:not(:checked) > input {
     position:absolute;
@@ -34,8 +36,12 @@
     color: #c59b08;
 }
 
-.rating_display *{
+.rating_display {
     float: right;
+}
+
+.rating_display *{
+    float: left;
     font-size: x-large;
 }
 .rating_given_display{
@@ -229,16 +235,25 @@
 }
 
 .profileImg {
-    height: 60px;
-    position: relative;
-    left: -50%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+     -moz-transform: translate(-50%, -50%);
+     -webkit-transform: translate(-50%, -50%);
+     transform: translate(-50%, -50%);
+     height: 100%;
+     min-width: 100%;
+     min-height: 100%;
 }
 
 .cropper {
+    position: relative;
     float: left;
     clip-path: circle(30px at center);
+    height: 60px;
     width: 60px;
     overflow: hidden;
+    background: white;
 }
 
 .renterName {
@@ -273,4 +288,109 @@
 #reservationsList {
     max-height: 15em;
     overflow: scroll;
+}
+
+#reservationForm {
+    border-radius: 25px;
+    background: #BFD5F6;
+    padding: 0.5em;
+    font-family: Righteous, sans-serif;
+
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+#reservationForm label {
+    display: block;
+}
+
+#reservationForm label p{
+    display: inline;
+}
+
+#reserveButton {
+    width: 100%;
+    height: 3em;
+    background: green;
+    border: none;
+    font-family: Righteous, sans-serif;
+    font-size: x-large;
+    padding: 0;
+    border-radius: 25px;
+}
+
+#allComments {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    width: 74em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.comment_container {
+    position: relative;
+    border-radius: 25px;
+    background: #789BD0;
+    padding: 0.5em;
+    margin-top: 1em;
+    max-width: 30em;
+}
+
+.comment_container .name{
+    display: inline-block;
+    font-family: Righteous, sans-serif;
+    font-size: x-large;
+    margin-top: 0.5em;
+    margin-left: 0.3em;
+    margin-bottom: 0;
+    width: 12em;
+
+}
+
+.commentDate {
+    display: inline;
+    margin-left: 0.3em;
+}
+
+.comment_content_container {
+    margin-top: 0.5em;
+    background: white;
+    border-radius: 25px;
+    padding: 0.5em;
+}
+
+.reply_container {
+    background: #BFD5F6;
+    border-radius: 25px;
+    padding: 0.5em;
+    margin-left: 5%;
+    margin-top: 0.5em;
+}
+
+.reply_container .extraWidth {
+    width: 14em;
+}
+
+#postComment {
+    background: #BFD5F6;
+}
+
+#postReply {
+    background: #789BD0;
+}
+
+.postCommentTop {
+    height: 60px;
+    margin-right: 0;
+}
+
+#commentTextArea {
+    border: none;
+    width: 98%;
+    height: 100%;
+    resize: none;
+}
+
+#commentTextArea:focus {
+    outline-width: 0;
 }
