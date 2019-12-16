@@ -56,7 +56,6 @@ function get_most_expensive_house()
   return $max_budget;
 }
 
-
 function get_rented_stories_by_dates($story_id, $start_date, $end_date)
 {
   global $db;
