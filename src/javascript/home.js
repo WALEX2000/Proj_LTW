@@ -28,6 +28,8 @@ let TrendFront = document.getElementById("trendingFront");
 let NewBack = document.getElementById("newBack");
 let NewFront = document.getElementById("newFront");
 
+let moving = false;
+
 function applyVisibility(houseList, index) {
     let validIndexes = [];
     for(let i = 0; i < numberOfHouses; i++) {
@@ -44,16 +46,40 @@ function applyVisibility(houseList, index) {
 }
 
 function goBack(houseList, index) {
+    if(index <= 0 || moving) return index;
     index--;
-    if(index < 0) index = houseList.length - 1;
+
+    /*
+    //apply animation
+    for(let i = 0; i < numberOfHouses + 1; i++) {
+        let house = houseList[i];
+        void house.offsetWidth;
+        house.classList.add("slideRightAnimation");
+    }
+    moving = true;
+    */
+
+    //when animation ends
     applyVisibility(houseList, index);
 
     return index;
 }
 
 function goFoward(houseList, index) {
+    if(index >= houseList.length - numberOfHouses || moving) return index;
     index++;
-    if(index >= houseList.length) index = 0;
+
+    /*
+    //apply animation
+    for(let i = 0; i < numberOfHouses + 1; i++) {
+        let house = houseList[i];
+        void house.offsetWidth;
+        house.classList.add("slideLeftAnimation");
+    }
+    moving = true;
+    */
+
+    //when animation ends
     applyVisibility(houseList, index);
 
     return index;
