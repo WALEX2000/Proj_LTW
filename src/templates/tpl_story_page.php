@@ -4,13 +4,15 @@ include_once('../database/comment_queries.php');
 function draw_story_info($story_info, $story_images, $story_main_image, $username)
 {
     ?>
-        <button type="button" class = "arrowButton" id="houseBack"><i class="fa fa-chevron-left fa-5x"></i></button>
-        <button type="button" class = "arrowButton" id="houseFront"><i class="fa fa-chevron-right fa-5x"></i></button>
-        <div id="imageViewer">
-            <img src="../../images/<?= $story_main_image ?>" class="houseImage" alt="Photo of  <?= $story_info['name'] ?>">
-            <?php
-            display_all_images($story_images, $story_main_image);
-            ?>
+        <div id="imageViewerCropper">
+            <button type="button" class = "arrowButton" id="houseBack"><i class="fa fa-chevron-left fa-5x"></i></button>
+            <button type="button" class = "arrowButton" id="houseFront"><i class="fa fa-chevron-right fa-5x"></i></button>
+            <div id="imageViewer">
+                <img src="../../images/<?= $story_main_image ?>" class="houseImage" alt="Photo of  <?= $story_info['name'] ?>">
+                <?php
+                display_all_images($story_images, $story_main_image);
+                ?>
+            </div>
         </div>
             <?php
             if ($username == $story_info['owner']) {
