@@ -13,6 +13,7 @@ function draw_header($stylesheet, $scripts_defer)
 
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Homie</title>
     <link href="../css/<?= $stylesheet ?>" rel="stylesheet" />
     <link href="../css/topBar.css" rel="stylesheet" />

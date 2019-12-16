@@ -18,7 +18,7 @@ a {
     display: grid;
     align-items: center;
     grid-template-columns: 5em 20em auto 5em 5em;
-    grid-template-rows: 5em;
+    grid-template-rows: 100%;
     z-index: 1;
     color: #fff;
     background: linear-gradient(-45deg, #e99076, #df83e2, #62bbdb, #6ae7ca);
@@ -89,7 +89,7 @@ background-position: 0% 50%;
     background-color: transparent;
     border-radius: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    width: 80%;
+    width: calc(100% - 2.5em);
     font-size: 20px;
 }
 
@@ -102,7 +102,7 @@ background-position: 0% 50%;
     width: 3em;
     height: 100%;
     border: none;
-    background-color: white;
+    background-color: transparent;
     color: rgb(207, 207, 207)
 }
 
@@ -414,5 +414,36 @@ input[type=range]::-ms-thumb {
   border-radius: 3px;
   background: #ffffff;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  #all {
+    grid-template-rows: 8em min-content auto;
+  }
+
+  #topBar {
+    grid-template-columns: 10em auto 5em 5em;
+    grid-template-rows: 5em auto;
+  }
+
+  #logo {
+    width: 5em;
+      margin-left: 2.5em;
+      margin-right: auto;
+  }
+
+  #searchBar {
+    margin: auto;
+    background-color: white;
+    height: 2em;
+    width: 90%;
+    border-radius: 25px;
+    grid-row: 2;
+    grid-column: 1 / 5;
+}
+
+  body {
+    background-color: lightblue;
+  }
 }
   
