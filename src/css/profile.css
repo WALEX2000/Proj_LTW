@@ -411,8 +411,8 @@ body {
 
     #editButtonTotal{
         position: relative;
-        top: 12em;
-        left: 2.5em;
+        top: 11em;
+        left: 2.25em;
     }
 
     #editProfileDiv {
@@ -427,6 +427,14 @@ body {
         padding: 1em;
     }
 
+    #editButton {
+        background-color: rgba(255,255,255,0.95);
+        border: none;
+        width: 4em;
+        height: 4em;
+        clip-path: circle(2em at center);
+    }
+
     .ownedHouse .rating {
         border-radius: 25px;
         height: 150%;
@@ -434,5 +442,18 @@ body {
         position: absolute;
         bottom: 8em;
         right: -0.5em;
+    }
+
+    .ratingCenter {
+        border-radius: 25px;
+        height: 150%;
+        background-color: rgba(240, 248, 255, 0.95);
+        position: absolute;
+        top: -8.5em;
+        left: 55%;
+    }
+
+    .tripDates {
+        display: none;
     }
   }
