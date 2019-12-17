@@ -33,6 +33,7 @@
 }
 
 .result_image_container {
+    height: max-content;
     width: 40em;
     border-radius: 25px;
     overflow: hidden;
@@ -49,4 +50,14 @@
 
 .flex {
     display: flex;
+}
+
+@media only screen and (max-width: 600px) {
+    p {
+        font-size: xx-large;
+    }
+
+    .search_result_container {
+        max-width: 40em;
+    }
 }

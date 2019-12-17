@@ -440,10 +440,6 @@ input[type=range]::-ms-thumb {
     border-radius: 25px;
     grid-row: 2;
     grid-column: 1 / 5;
-}
-
-  body {
-    background-color: lightblue;
   }
 }
   

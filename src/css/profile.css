@@ -340,3 +340,121 @@ body {
     font-size: xx-large;
 }
 
+@media only screen and (max-width: 600px) {
+    #all {
+        display: grid;
+        grid-template-rows: 5em min-content max-content;
+        height: 100%;
+    }
+
+    #body {
+        display: grid;
+        grid-template-columns: 10em auto;
+        font-family: Righteous, sans-serif;
+        height: 100%;
+        min-height: 100em;
+        overflow: scroll;
+    }
+
+    .ownedHouse, .trip {
+        position: relative;
+        width: 90%;
+        height: 20em;
+        border-radius: 25px;
+        overflow: hidden;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 2em;
+    }
+    
+    .ownedHouseImg, .tripImg {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+         -moz-transform: translate(-50%, -50%);
+         -webkit-transform: translate(-50%, -50%);
+         transform: translate(-50%, -50%);
+         height: 100%;
+         min-width: 100%;
+    }
+
+    #profileContainer {
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+        height: auto;
+    }
+
+    #profilePicture {
+        height: auto;
+        width: 100%;
+        border-radius: 2em;
+        object-fit: cover;
+    }
+
+    #user_info h3{
+        display: none;
+    }
+
+    .panelButton {
+        background-color: #789BD0;
+        display: block;
+        width: 80%;
+        height: auto;
+        margin: 20px;
+        margin-top: 0;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 15px;
+        font-family: Righteous, sans-serif;
+        font-size: x-large;
+    }
+
+    #editButtonTotal{
+        position: relative;
+        top: 11em;
+        left: 2.25em;
+    }
+
+    #editProfileDiv {
+        background-color: #789BD0;
+        height: min-content;
+        margin-top: 10em;
+        width: 80%;
+        min-width: 15em;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 20px;
+        padding: 1em;
+    }
+
+    #editButton {
+        background-color: rgba(255,255,255,0.95);
+        border: none;
+        width: 4em;
+        height: 4em;
+        clip-path: circle(2em at center);
+    }
+
+    .ownedHouse .rating {
+        border-radius: 25px;
+        height: 150%;
+        background-color: rgba(240, 248, 255, 0.95);
+        position: absolute;
+        bottom: 8em;
+        right: -0.5em;
+    }
+
+    .ratingCenter {
+        border-radius: 25px;
+        height: 150%;
+        background-color: rgba(240, 248, 255, 0.95);
+        position: absolute;
+        top: -8.5em;
+        left: 55%;
+    }
+
+    .tripDates {
+        display: none;
+    }
+  }
