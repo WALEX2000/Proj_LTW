@@ -25,7 +25,8 @@ try{
     $old_user_info = get_user_info($username);
     update_user_info($old_user_info, $new_user_info, $current_password);
     $_SESSION['username'] = $username;
-    header('Location: ../pages/home.php');
+    $go_to = "Refresh:0;url=../pages/" . $_SESSION['last_page'];
+    die(header($go_to));
   }
   else{
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to update profile!');

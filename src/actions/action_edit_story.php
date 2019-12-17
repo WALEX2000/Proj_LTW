@@ -33,7 +33,7 @@ try {
   $old_story_info = get_story_info($story_id);
   update_story_info($old_story_info,$new_story_info);
   $_SESSION['story_id'] = $story_id;
-  header('Location: ../pages/home.php');
+  header("Location: ../pages/story.php?story_id=$story_id");
 } catch (PDOException $e) {
   die($e->getMessage());
   $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to update place\'s information!');

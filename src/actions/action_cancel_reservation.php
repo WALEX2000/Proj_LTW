@@ -8,15 +8,16 @@
 
     $rent_id = $_SESSION['rent_id'];
     $username = $_SESSION['username'];
-    print_r($rent_id);
 
     try {
         delete_reservation($rent_id);
-        header('Location: ../pages/profile.php?username=username=$username');
+        $go_to = "Refresh:0;url=../pages/" . $_SESSION['last_page'];
+        header($go_to);
     } catch (PDOException $e) {
         die($e->getMessage());
         $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to cancel reservation!');
-        header("Location: ../pages/profile.php?username=username=$username");
+        $go_to = "Refresh:0;url=../pages/" . $_SESSION['last_page'];
+        header($go_to);
     }
 
 ?>

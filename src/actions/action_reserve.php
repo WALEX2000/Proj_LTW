@@ -23,13 +23,23 @@
       die(header("Location: ../pages/story.php?story_id=$story_id"));
     }
 
+    if ($start_date == $end_date){
+      $_SESSION['messages'][] = array('type' => 'error', 'content' => 'You cannot check in and out in the same day!');
+      die(header("Location: ../pages/story.php?story_id=$story_id")); 
+    }
+    $now = date("Y-m-d");
+    if($start_date < $now){
+      $_SESSION['messages'][] = array('type' => 'error', 'content' => 'You cannot check in before the present day!');
+      die(header("Location: ../pages/story.php?story_id=$story_id"));
+    }
+
   try {
     $story =get_story_info($story_id);
     $total_price = $num_guests * $story['price_per_night'];
     $reservation_info = array('username' => $_SESSION['username'], 'story_id' =>$story_id, 'start_date' =>$start_date, 'end_date' =>$end_date, 'num_guests' =>$num_guests, 'total_price' =>$total_price);
     insert_reservation($reservation_info);
     $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Reservation finished with success!');
-    header('Location: ../pages/home.php');
+    die(header("Location: ../pages/story.php?story_id=$story_id"));
   } catch (PDOException $e) {
     die($e->getMessage());
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to make reservation!');
