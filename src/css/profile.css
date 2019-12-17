@@ -414,4 +414,25 @@ body {
         top: 12em;
         left: 2.5em;
     }
+
+    #editProfileDiv {
+        background-color: #789BD0;
+        height: min-content;
+        margin-top: 10em;
+        width: 80%;
+        min-width: 15em;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 20px;
+        padding: 1em;
+    }
+
+    .ownedHouse .rating {
+        border-radius: 25px;
+        height: 150%;
+        background-color: rgba(240, 248, 255, 0.95);
+        position: absolute;
+        bottom: 8em;
+        right: -0.5em;
+    }
   }
