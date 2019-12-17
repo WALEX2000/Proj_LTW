@@ -182,10 +182,6 @@ body {
         border-radius: 40px;
     }
 
-    #body {
-        grid-template-rows: auto auto;
-    }
-
     .arrowButton {
         background: none;
         outline-width: 0;

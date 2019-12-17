@@ -23,7 +23,7 @@
         </div>
         <div id="SpotlightFrame">
             <div id="Recommendations" class="HousePreviewer">
-                <button type="button" class="arrowButton" id="recommendedBack"><i class="fa fa-chevron-left fa-5x"></i></button>
+                <button type="button" class="arrowButton" id="recommendedBack"><i class="fa fa-chevron-left fa-5x"></i></button>C
                 <?php
                     foreach ($top_stories as $story) {
                         $image_url = get_image_url($story['main_image']);
