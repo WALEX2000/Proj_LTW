@@ -333,6 +333,13 @@
     margin-right: auto;
 }
 
+.all_comments{
+    height: 75%;
+    overflow: scroll;
+    display:flex;
+    flex-direction: column;
+}
+
 .comment_container {
     position: relative;
     border-radius: 25px;

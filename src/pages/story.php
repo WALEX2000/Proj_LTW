@@ -7,12 +7,18 @@ include_once('../database/comment_queries.php');
 include_once('../database/image_queries.php');
 include_once('../includes/session.php');
 
-$_SESSION['last_page'] = "story.php";
-
 if (array_key_exists('story_id', $_GET)) {
     $story_id = $_GET['story_id'];
     $_SESSION['story_id'] = $story_id;
 }
+else if(array_key_exists('story_id', $$_SESSION)){
+    $story_id = $_SESSION['story_id'];
+}
+else{
+    header("Location: ../pages/home.php");
+}
+$_SESSION['last_page'] = "story.php";
+
 
 $story_info = get_story_info($story_id);
 $all_story_images = get_all_url_images_of_story($story_id);
@@ -45,9 +51,9 @@ draw_header("story.css", ['topBar.js', 'house.js', 'comment.js']);
 </div>
 <div id="allComments">
     <?php
-        if ($username != null && $reserved != FALSE && $commented == FALSE) {
+        //if ($username != null && $reserved != FALSE && $commented == FALSE) {
             draw_comment_form($username, $owner);
-        }
+        //}
         draw_all_comments($comments, $owner, $username);
     ?>
 </div>

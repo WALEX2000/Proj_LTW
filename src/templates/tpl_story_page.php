@@ -209,14 +209,14 @@ function draw_story_info($story_info, $story_images, $story_main_image, $usernam
                 $user_info = get_user_info($username);
                 $image_url = get_image_url($user_info['profile_image']);
                 ?>
-                <div class="comment_container">
+                <div class="comment_container" id = "comment_form_container">
                     <div class="postCommentTop">
                         <div class="cropper">
                             <img class="profileImg" src="../../images/<?= $image_url ?>" alt="Commenter's profile image" />
                         </div>
                         <p class="name"><?= $user_info['name'] ?></p>
                     </div>
-                    <form action="../actions/action_add_comment.php" id="comment_form" method="post"><!-- action="../actions/action_add_comment.php"-->
+                    <form id="comment_form" method="post"><!-- action="../actions/action_add_comment.php"-->
                             <div class="rate">
                                 <input type="radio" id="star5" name="rate" value="5" required/>
                                 <label for="star5" title="text">5 stars</label>
