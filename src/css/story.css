@@ -437,3 +437,73 @@
     from {transform: translate(0, 0)} 
     to {transform: translate(100%, 0)}
 }
+
+@media only screen and (max-width: 600px) {
+    #story_info {
+        position: relative;
+        background: #789BD0;
+        margin-top: 2em;
+        padding: 2em;
+        border-radius: 25px;
+        width: 40em;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #allComments {
+        margin-top: 1em;
+        margin-bottom: 1em;
+        width: 44em;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #imageViewerCropper {
+        position: relative;
+        width: 90%;
+    
+        height: 30em;
+    
+        border-radius: 25px;
+        overflow: hidden;
+    
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    #imageViewer {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 100%;
+    }
+
+    #descriptionBox p {
+        font-size: large;
+        font-family: sans-serif;
+    }
+
+    #reservationForm {
+        border-radius: 25px;
+        background: #BFD5F6;
+        padding: 0.5em;
+        font-family: Righteous, sans-serif;
+    
+        flex-grow: 1;
+        overflow: hidden;
+        min-width: max-content;
+        height: min-content;
+    }
+    
+    #reservationForm label {
+        display: block;
+    }
+    
+    #reservationForm label p{
+        display: inline;
+    }
+
+    #totalPriceRes {
+        font-size: large;
+    }
+}
