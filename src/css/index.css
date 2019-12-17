@@ -34,13 +34,14 @@ body {
 #TopHouse {
     border-radius: 25px;
     width: 100%;
+    margin-top:20px;
 }
 
 .HousePreviewer {
     display: flex;
-    background-color: #BFD5F6;
+    background-color: white;
     width: 80%;
-    height: 15em;
+    height: 100%;
     border-radius: 40px;
     margin-left: auto;
     margin-right: auto;
@@ -96,7 +97,7 @@ body {
     height: 5em;
     margin-top: auto;
     margin-bottom: auto;
-    color: #789BD0;
+    color: #82c1df;
     margin-right: 2em;
     margin-left: 2em;
 }
@@ -142,7 +143,7 @@ body {
 
 .previwerTitle {
     display: block;
-    background: rgb(133, 179, 249);
+    border-bottom: 10px solid #82c1df;
     text-align: center;
     padding: 1em;
     font-family: Righteous, sans-serif;
@@ -150,6 +151,17 @@ body {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 0.25em;
+    width: 70%;
+}
+
+.TopHouseTitle {
+    display: block;
+    border-bottom: 10px solid #82c1df;
+    text-align: center;
+    padding: 40px;
+    font-family: Righteous, sans-serif;
+    font-size: xx-large;
+    margin:0;
 }
 
 @media only screen and (max-width: 600px) {
@@ -192,7 +204,7 @@ body {
 
     .HousePreviewer {
         display: flex;
-        background-color: #BFD5F6;
+        background-color: rgb(180, 230, 243);
         width: 70%;
         height: 15em;
         border-radius: 40px;
@@ -211,7 +223,7 @@ body {
         height: 5em;
         margin-top: auto;
         margin-bottom: auto;
-        color: #789BD0;
+        color: #82c1df;
         margin-right: 0;
         margin-left: 0;
     }

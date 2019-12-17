@@ -80,7 +80,7 @@ body {
 
 #userPanel {
     height: 100%;
-    background-color: rgb(161, 192, 238);
+    background-color: #82c1df;
 }
 
 .panelButton {
@@ -114,7 +114,7 @@ body {
 }
 
 #editProfileDiv {
-    background-color: #789BD0;
+    background-color: #82c1df;
     height: min-content;
     margin-top: 10em;
     width: 80%;
@@ -405,7 +405,7 @@ body {
     }
 
     .panelButton {
-        background-color: #789BD0;
+        background-color: #82c1df;
         display: block;
         width: 80%;
         height: auto;
@@ -425,7 +425,7 @@ body {
     }
 
     #editProfileDiv {
-        background-color: #789BD0;
+        background-color: #82c1df;
         height: min-content;
         margin-top: 10em;
         width: 80%;

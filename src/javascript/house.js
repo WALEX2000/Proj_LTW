@@ -13,13 +13,13 @@ function greyOutButton() {
         backButton.style.color = "#75757588";
     } 
     else {
-        backButton.style.color = "#789BD0FF";
+        backButton.style.color = "#82c1dfFF";
     }
     if(pos == nHouses - 1) {
         frontButton.style.color = "#75757588";
     }
     else {
-        frontButton.style.color = "#789BD0FF";
+        frontButton.style.color = "#82c1dfFF";
     }
 }
 

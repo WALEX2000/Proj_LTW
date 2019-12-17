@@ -75,17 +75,15 @@ function draw_header($stylesheet, $scripts_defer)
             <div id="dropdown">
                   <div id="search_form" class="dropdown-content noShow">
                       <form id="form" action="../actions/action_search.php" method="post">
-                        <div>
+                        <div id = "check_in_out_search">
                             <label> Check-In: </label><input id="stay_begin" type="date" name="check_in"/>
                             <label> Check-Out: </label><input id="stay_end" type="date" name="check_out"/>
                         </div>
                         <div>
-                            <br/>
                             <label class="centerLabel"> Guests: </label>
                             <input id="guests" type="number" min= "1" name="guests" value="1" required/>
                         </div>
-                        <div>
-                            <br/>
+                        <div id = "budget_div">
                             <label class="centerLabel"> Budget: </label><span id = "budget_value"></span><input type="range" min="1" max="100000000" class="budget_slider" id="budget_slider" name="budget">
                         </div>
                         <button id="closeExtraOption" type="button" name="close"><i class="fa fa-times-circle fa-5x"></i></button>

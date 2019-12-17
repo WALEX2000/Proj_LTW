@@ -9,6 +9,7 @@
                         //echo $log;
                         ?>
                     <a href="story.php?story_id=<?= $top_stories[0]['id'] ?>">
+                        <h2 class="TopHouseTitle">House of the week</h2>
                         <img id="TopHouse" src="../../images/<?= $image_url ?>" alt="TopHouse" />
                     </a>
                     <div class="BottomText">
