@@ -1,3 +1,11 @@
+:root {
+    --blue: #75c9cc;
+    --lightBlue: #afdfdb;
+    --washy: #eceae5;
+    --pinkish: #fbdcce;
+    --redish: #f2b2a2;
+  }
+
 #body {
     display: grid;
     grid-template-columns: 18em auto;
@@ -72,11 +80,11 @@ body {
 
 #userPanel {
     height: 100%;
-    background-color: #BFD5F6;
+    background-color: rgb(161, 192, 238);
 }
 
 .panelButton {
-    background-color: #789BD0;
+    background-color: var(--redish);
     display: block;
     width: 250px;
     height: 80px;

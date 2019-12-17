@@ -70,7 +70,7 @@ function get_user_rented($username)
 {
   global $db;
 
-  $stmt = $db->prepare('Select distinct * from Story S, Rented R where R.story = S.id and R.renter = ?');
+  $stmt = $db->prepare('Select distinct * from Story S, Rented R where R.story = S.id and R.renter = ? order by date(R.stay_start) desc, date(R.stay_end) desc');
   $stmt->execute(array($username));
   $rented_by_user = $stmt->fetchAll();
   return $rented_by_user;

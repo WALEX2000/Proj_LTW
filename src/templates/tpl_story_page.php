@@ -287,6 +287,7 @@ function draw_story_info($story_info, $story_images, $story_main_image, $usernam
             </div>
             <?php
                     $reply = get_reply($comment['id']);
+
                     if ($reply != null) {
                         $replyer_info = get_user_info($reply['username']);
                         $replyer_image_url = get_image_url($replyer_info['profile_image']);
@@ -308,18 +309,18 @@ function draw_story_info($story_info, $story_images, $story_main_image, $usernam
                         $user_info = get_user_info($username);
                         $user_image_url = get_image_url($user_info['profile_image']);
                     ?>
-                        <div class="reply_container">
+                        <div class="reply_container" id = "reply_form_container">
                             <div class="comment_header">
                                 <div class="cropper">
                                     <img class="profileImg" src="../../images/<?= $user_image_url  ?>" alt="Commenter's profile image" />
                                 </div>
                                 <p class="name extraWidth"><?= $user_info['name'] ?></p> <br></br>
                             </div>
-                            <form action="../actions/action_add_reply.php" id="reply_form" method="post">
+                            <form id="reply_form" method="post">
                                 <div class="comment_content_container">
                                     <textarea id="commentTextArea" name="reply_content" placeholder="Enter your reply here..." required></textarea>
                                 </div>
-                                <input type="hidden" name="comment" value=<?= $comment['id'] ?>>
+                                <input type="hidden" name="comment" value=<?=$comment['id']?>>
                                 <button id="postReply" type="submit" value="Send reply">Post Reply</button>
                             </form>
                         </div>

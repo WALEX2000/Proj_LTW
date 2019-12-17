@@ -17,7 +17,7 @@ function draw_header($stylesheet, $scripts_defer)
     <title>Homie</title>
     <link href="../css/<?= $stylesheet ?>" rel="stylesheet" />
     <link href="../css/topBar.css" rel="stylesheet" />
-    <link href="../css/searchResults.css" rel="stylesheet" />
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
     <script src = "../javascript/ajax.js" async ></script>
@@ -31,34 +31,6 @@ function draw_header($stylesheet, $scripts_defer)
 
 </head>
   <body>
-      <div id="login_modal" class="modal">
-            <div class="modal-content animate">
-                <form id="login_form" action="../actions/action_login.php" method="post">
-                    <div class="input-div">
-                        <label> Username <input type="text" name="username" required> </label>
-                        <label> Password <input type="password" name="password" required> </label>
-                        <button type="submit">Login</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <div id="register_modal" class="modal">
-            <div class="modal-content animate">
-                <form id="register_form" action="../actions/action_register.php" method="post" enctype="multipart/form-data">
-                    <div class="input-div">
-                        <label> Username <input type="text" name="username" required> </label>
-                        <label> Name <input type="text" name="name" required> </label>
-                        <label> Email <input type="text" name="email" required> </label>
-                        <label> Birthday <input type="date" name="birthday" required> </label>
-                        <label> Nationality <input type="text" name="nationality" required> </label>
-                        <label> Password <input type="password" name="password" required> </label>
-                        <label> Profile Image <input type="file" name="profile_img" id="profile_img">  </label>
-                        <button type="submit">Register</button>
-                    </div>
-                </form>
-            </div>
-        </div>
     <div id="all">
       <div id="topBar">
         <a href="home.php">
@@ -86,9 +58,13 @@ function draw_header($stylesheet, $scripts_defer)
         <?php
           } else {
             ?>
-          <button class = "top_bar_btn" onclick="document.getElementById('register_modal').style.display='block'">Register</button>
+          <a id="RegisterLink" href="../pages/register.php">
+            <button class = "top_bar_btn" href="../pages/register.php">Register</button>
+          </a>
           <!--<a id="Log In" href="../pages/login.php">Log In</a>-->
-          <button class= "top_bar_btn" onclick="document.getElementById('login_modal').style.display='block'">Login</button>
+          <a id="Log In" href="../pages/login.php">
+            <button class= "top_bar_btn" href="../pages/login.php">Login</button>
+          </a>
         <?php
           }
           /*if (isset($_SESSION['message'])) {

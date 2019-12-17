@@ -80,7 +80,9 @@ for(let i = 0; i < nHouses; i++) {
 let reservationCheckIn = document.getElementById("checkInRes");
 let reservationCheckOut = document.getElementById("checkOutRes");
 let totalPriceRes = document.getElementById("totalPriceRes");
-let ppn = parseFloat(document.getElementById("ppn").value);
+let ppn = 0;
+let ppnElement = document.getElementById("ppn");
+if(ppnElement != null) ppn = parseFloat(ppnElement.value);
 
 function date_diff_indays(date1, date2) {
     dt1 = new Date(date1);
@@ -91,9 +93,9 @@ function date_diff_indays(date1, date2) {
 function updateTotal() {
     if(reservationCheckIn.value == "" || reservationCheckOut.value == "") return;
     let days = date_diff_indays(reservationCheckIn.value, reservationCheckOut.value);
-    totalPriceRes.innerText = days*ppn + "€";
-    console.log(days*ppn);
+    if(days > 0) totalPriceRes.innerText = days*ppn + "€";
+    else totalPriceRes.innerText = "Invalid Dates!";
 }
 
-reservationCheckIn.addEventListener("change", updateTotal);
-reservationCheckOut.addEventListener("change", updateTotal);
+if(reservationCheckIn != null) reservationCheckIn.addEventListener("change", updateTotal);
+if(reservationCheckOut != null) reservationCheckOut.addEventListener("change", updateTotal);

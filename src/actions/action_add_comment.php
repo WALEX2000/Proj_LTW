@@ -2,6 +2,8 @@
 
 include_once('../database/connection.php');
 include_once('../database/comment_queries.php');
+include_once('../database/profile_queries.php');
+include_once('../database/image_queries.php');
 include_once('../includes/session.php');
 
 if (!isset($_SESSION['username']))
@@ -17,10 +19,10 @@ $current_date = date("Y-m-d");
   else{
     $rating = null;
   }
-
 try {
     insert_comment($story_id, $username, $content, $current_date, $rating);
-    $enchoded = array('name' => $username, 'story_id' => $story_id);
+    $user_pic = get_image_url(get_user_info($username)['profile_image']);
+    $enchoded = array('username' => $username, 'rate' => $rating, 'pic' => $user_pic, 'comment_date' => $current_date, 'comment_content' => $content);
     echo json_encode($enchoded);
   } catch (PDOException $e) {
     die($e->getMessage());

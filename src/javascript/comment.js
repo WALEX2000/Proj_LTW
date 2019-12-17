@@ -19,12 +19,39 @@ function reload_comment_section() {
     console.log(data);
 
     let comment_section = document.getElementsByClassName('all_comments')[0];
-    let comments_container = document.getElementById('allComments');
     document.querySelector('#comment_form_container').remove();
     let comment = document.createElement('div');
+    comment.setAttribute('class', 'comment_container');
     
-    comment.innerHTML = '<div class="comment_header"> </div>' +
-    '<div class = "comment_content_container">' + data['name'] + '</div>';
+    let given_starts = "";
+    for(let i = 0; i < data['rate']; i++){
+        given_starts +="★";
+    }
 
-    comment_section.appendChild(comment);
+    let left_starts = "";
+    for(let i = 0; i < 5 - data['rate']; i++){
+        left_starts +="★";
+    }
+
+    comment.innerHTML = "" +
+        '<div class = "comment_header">'+
+            '<div class="rating_display">'+
+                '<div class="rating_given_display">'+
+                    given_starts +
+                '</div>' +
+                '<div class="rating_left_display">'+ 
+                    left_starts+
+                '</div>' + 
+            '</div>' +
+            '<div class="cropper">' +
+            '<img class="profileImg" src="../../images/' + data['pic'] + '" alt="Commenter\'s profile image" />' +
+            '</div>' +
+            '<p class="name">' + data['username'] + '</p>' +
+            '<p class="commentDate">'  + data['comment_date'] + '</p>' +
+        '</div>' +
+        '<div class="comment_content_container">' +
+        data['comment_content'] + 
+        '</div>';
+
+    comment_section.insertBefore(comment, comment_section.childNodes[0]);
 }

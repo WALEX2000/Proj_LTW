@@ -18,24 +18,26 @@ $birthday= dust_off( $_POST['birthday']);
 $nationality= dust_off( $_POST['nationality']);
 $current_password = dust_off($_POST['current_password']);
 $new_password = dust_off($_POST['new_password']);
+$dob = new DateTime($birthday);
+$now = new DateTime();
+$difference = $now->diff($dob);
+$age = $difference->y;
 
 try{
   if(check_user_password($username,$current_password)){
-    $new_user_info = array('username' => $username, 'name' =>$name, 'email' =>$email, 'birthday' =>$birthday, 'nationality' =>$nationality, 'password' =>$new_password);
-    $old_user_info = get_user_info($username);
-    update_user_info($old_user_info, $new_user_info, $current_password);
+    $new_info = array('username' => $username, 'name' =>$name, 'email' =>$email, 'birthday' =>$birthday, 'nationality' =>$nationality, 'password' =>$new_password);
+    $old_info = get_user_info($username);
+    update_user_info($old_info, $new_info, $current_password);
+    $enchoded = array('name' => $new_info['name'],'email' => $new_info['email'], 'nationality' => $new_info['nationality'], 'age' => $age);
+    echo json_encode($enchoded);
     $_SESSION['username'] = $username;
-    $go_to = "Refresh:0;url=../pages/" . $_SESSION['last_page'];
-    die(header($go_to));
   }
   else{
     $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to update profile!');
-    header('Location: ../pages/edit_profile.php');
   }
 } catch (PDOException $e) {
   die($e->getMessage());
   $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to update profile!');
-  header('Location: ../pages/edit_profile.php');
 }
 
 ?>

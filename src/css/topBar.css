@@ -1,3 +1,11 @@
+:root {
+  --blue: #75c9cc;
+  --lightBlue: #afdfdb;
+  --washy: #eceae5;
+  --pinkish: #fbdcce;
+  --redish: #f2b2a2;
+}
+
 body {
     background-color: white;
     margin:0;
@@ -106,6 +114,10 @@ background-position: 0% 50%;
     color: rgb(207, 207, 207)
 }
 
+#searchButton:hover {
+  cursor: pointer;
+}
+
 #Register, #LogIn {
     margin-left:auto;
     margin-right:auto;
@@ -193,11 +205,29 @@ background-position: 0% 50%;
   border-bottom: thin solid white;
 }
 
-
 #login_form, #register_form{
-    border: 3px solid white;
+    border: none;
     background-color: white;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#registerPrompt {
+  margin-top: 0;
+  display: inline-block;
+  width: max-content;
+  font-family: Righteous, sans-serif;
+}
+
+#registerPromptButton {
+  background-color: #789BD0;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 25px; 
+    transition: 0.5s;
+    float: right;
 }
 
 input{
@@ -226,22 +256,21 @@ form button[type="submit"] {
   
   .modal {
     position: absolute;
-    display: none; /* Hidden by default */
-    z-index: 2; /* Sit on top */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 250%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0); /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.719); /* Black w/ opacity */
+  }
+
+  .input-div {
+    background-color: #BFD5F6;
+    border: none;
+    margin-bottom: 1em;
   }
 
   .modal-content {
     position: fixed;
     top: 20em;
     left: calc(50% - 10em);
-    background-color: #fefefe;
+    background-color: #BFD5F6;
     border: 1px solid #888;
     width: 25em; 
     height: auto;
@@ -442,16 +471,25 @@ input[type=range]::-ms-thumb {
   }
 
   .modal {
+    position: relative;
+  }
+
+  .modal-content {
     position: absolute;
-    display: none; /* Hidden by default */
-    z-index: 2; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 200%; /* Full width */
-    height: 450%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0); /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.719); /* Black w/ opacity */
+    top: 50%;
+    left: 7.5%;
+    background-color: #BFD5F6;
+    border: 1px solid #888;
+    width: 80%; 
+    height: auto;
+    padding: 1em;
+    border-radius: 20px;
+
+    font-size: x-large;
+  }
+
+  .modal-content button{
+    font-size: x-large;
   }
 }
   

@@ -19,8 +19,8 @@ function draw_user_info($user_info, $image_url)
             <div id="profileContainer">
                 <img src="../../images/<?= $image_url ?>" id="profilePicture" alt="Photo of <?= $user_info['name'] ?>">
             </div>
-            <h2 class="userInfoText"><?= $user_info['name'] ?></h2>
-            <h3 class="userInfoText"><?= $user_info['nationality'] ?> | <?= $age ?> years old</h3>
+            <h2 class="userInfoText" id = "user_info_name"><?= $user_info['name'] ?></h2>
+            <h3 class="userInfoText" id = "user_info_nationality_age"><?= $user_info['nationality'] ?> | <?= $age ?> years old</h3>
         </div>
         <div>
             <button id="tripsButton" class="panelButton">Your Trips</button>
@@ -36,7 +36,7 @@ function draw_rented_stories($rented)
     <div id="userTrips" class="currentPanel">
         <?php
             if ($rented != FALSE) {
-                foreach ($rented as $story) {
+                foreach($rented as $story) {
                     $image_url = get_image_url($story['main_image']);
                     ?>
                 <div class="trip">

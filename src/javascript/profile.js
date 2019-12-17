@@ -30,11 +30,11 @@ function changePanel(newPanel) {
 
 function highlightButton(button) {
     if(moving) return;
-    editButton.style.background = "rgba(255,255,255,0.95)";
-    tripsButton.style.background = "#789BD0";
-    ownedHousesButton.style.background = "#789BD0";
+    editButton.style.background = "#fbdcce";
+    tripsButton.style.background = "#fbdcce";
+    ownedHousesButton.style.background = "#fbdcce";
 
-    button.style.background = "#e6e227";
+    button.style.background = "#f2b2a2";
 }
 
 highlightButton(tripsButton);

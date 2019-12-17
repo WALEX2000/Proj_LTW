@@ -67,5 +67,4 @@ function update_user_info($user_data, $new_user_data,$current_password)
   $options = ['cost' => 12];
   $stmt = $db->prepare('update User set name = ?, email = ?, birthday = ?, nationality = ?, password = ? where username = ?');
   $stmt->execute(array( $name, $email, $birthday,$nationality, password_hash($password, PASSWORD_DEFAULT, $options),$user_data['username']));
-  print_r($nationality);
 }

@@ -38,7 +38,7 @@ if (isset($_SESSION['username'])) {
     $reserved = null;
 }
 
-draw_header("story.css", ['topBar.js', 'house.js', 'comment.js']);
+draw_header("story.css", ['topBar.js', 'house.js', 'comment.js', 'add_reply.js']);
 ?>
 <div id="body">
     <div id="story_info">
@@ -51,9 +51,9 @@ draw_header("story.css", ['topBar.js', 'house.js', 'comment.js']);
 </div>
 <div id="allComments">
     <?php
-        //if ($username != null && $reserved != FALSE && $commented == FALSE) {
+        if ($username != null && $reserved != FALSE && $commented == FALSE) {
             draw_comment_form($username, $owner);
-        //}
+        }
         draw_all_comments($comments, $owner, $username);
     ?>
 </div>
