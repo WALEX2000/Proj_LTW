@@ -210,8 +210,7 @@ input{
 }
 
 form button[type="submit"] {
-  background-color: transparent;
-    color: white;
+  background-color: #789BD0;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
@@ -232,7 +231,7 @@ form button[type="submit"] {
     left: 0;
     top: 0;
     width: 100%; /* Full width */
-    height: 200%; /* Full height */
+    height: 250%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0, 0, 0); /* Fallback color */
     background-color: rgba(0, 0, 0, 0.719); /* Black w/ opacity */
@@ -440,6 +439,19 @@ input[type=range]::-ms-thumb {
     border-radius: 25px;
     grid-row: 2;
     grid-column: 1 / 5;
+  }
+
+  .modal {
+    position: absolute;
+    display: none; /* Hidden by default */
+    z-index: 2; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 200%; /* Full width */
+    height: 450%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.719); /* Black w/ opacity */
   }
 }
   

@@ -39,10 +39,15 @@ body {
 .HousePreviewer {
     display: flex;
     background-color: #BFD5F6;
-    margin: 3em auto auto;
     width: 80%;
     height: 15em;
     border-radius: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.previwerMargin {
+    margin: 3em auto auto;
 }
 
 .PreviewedHouse {
@@ -135,6 +140,18 @@ body {
     to {transform: translate(100%, 0)}
 }
 
+.previwerTitle {
+    display: block;
+    background: rgb(133, 179, 249);
+    text-align: center;
+    padding: 1em;
+    font-family: Righteous, sans-serif;
+    font-size: xx-large;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0.25em;
+}
+
 @media only screen and (max-width: 600px) {
     #TopHouseFrame {
         position: relative;
@@ -176,10 +193,15 @@ body {
     .HousePreviewer {
         display: flex;
         background-color: #BFD5F6;
-        margin: 3em auto auto;
         width: 70%;
         height: 15em;
         border-radius: 40px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .previwerMargin {
+        margin: 3em auto auto;
     }
 
     .arrowButton {
@@ -208,5 +230,10 @@ body {
         font-family: Righteous,
         sans-serif;
         font-size: larger;
+    }
+
+    .BottomTextPreview p{
+        font-size: larger;
+        padding: 0.5em;
     }
 }  
