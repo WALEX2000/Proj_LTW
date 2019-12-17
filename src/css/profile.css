@@ -3,7 +3,7 @@
     grid-template-columns: 18em auto;
     font-family: Righteous, sans-serif;
     height: 100%;
-    overflow: scroll;
+    overflow: hidden;
 }
 
 #all {
@@ -60,7 +60,7 @@ body {
 .userInfoText {
     margin-bottom: 0.5em;
     margin-top: 0.5em;
-    overflow: scroll;
+    overflow: hidden;
     max-width: 10em;
     margin-left: auto;
     margin-right: auto;
@@ -98,7 +98,8 @@ body {
 }
 
 #housesPanel {
-    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: scroll;
     width: 100%;
     height: 100%;
     position: relative;

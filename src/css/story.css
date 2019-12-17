@@ -228,10 +228,7 @@
     margin-right: auto;
 }
 
-#reservationsList {
-    padding-left: 1em;
-    padding-right: 1em;
-}
+
 
 .reservationBlock {
     border-radius: 25px;
@@ -293,7 +290,10 @@
 
 #reservationsList {
     max-height: 15em;
-    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding-left: 1em;
+    padding-right: 1em;
 }
 
 #reservationForm {
@@ -335,7 +335,7 @@
 
 .all_comments{
     height: 75%;
-    overflow: scroll;
+    overflow: hidden;
     display:flex;
     flex-direction: column;
 }
