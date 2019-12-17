@@ -162,7 +162,7 @@ body {
 
 #editProfileDiv input[type="submit"]{
     border: none;
-    background-color:  #BFD5F6;
+    background-color: rgb(247, 181, 120);
     display: block;
     margin-left: auto;
     margin-right: auto;
